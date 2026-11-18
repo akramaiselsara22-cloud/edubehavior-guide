@@ -1395,7 +1395,33 @@
                 display: none;
             }
         }
-    </style>
+    
+    /* Content Protection: Disable Selection & Drag */
+    body, html {
+      -webkit-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+      -webkit-touch-callout: none !important;
+    }
+
+    img {
+      -webkit-user-drag: none !important;
+      -khtml-user-drag: none !important;
+      -moz-user-drag: none !important;
+      -o-user-drag: none !important;
+      user-drag: none !important;
+      pointer-events: none !important;
+    }
+
+    input, textarea, select {
+      -webkit-user-select: text !important;
+      -moz-user-select: text !important;
+      -ms-user-select: text !important;
+      user-select: text !important;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -2880,6 +2906,45 @@
             });
         });
     </script>
+
+  <!-- ==================== درع حماية المحتوى والملكية الفكرية ==================== -->
+  <script>
+    (function() {
+      // 1. منع النقر بزر الفأرة الأيمن
+      document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+
+      // 2. منع تحديد النصوص والسحب
+      document.addEventListener('selectstart', function(e) { e.preventDefault(); return false; });
+      document.addEventListener('dragstart', function(e) { e.preventDefault(); return false; });
+
+      // 3. منع أحداث النسخ والقص المباشرة
+      document.addEventListener('copy', function(e) { e.preventDefault(); return false; });
+      document.addEventListener('cut', function(e) { e.preventDefault(); return false; });
+
+      // 4. حظر اختصارات لوحة المفاتيح
+      document.addEventListener('keydown', function(e) {
+        var isCtrl = e.ctrlKey || e.metaKey;
+        if (isCtrl && (e.key === 'c' || e.key === 'C' || e.keyCode === 67)) { e.preventDefault(); return false; }
+        if (isCtrl && (e.key === 'u' || e.key === 'U' || e.keyCode === 85)) { e.preventDefault(); return false; }
+        if (isCtrl && (e.key === 's' || e.key === 'S' || e.keyCode === 83)) { e.preventDefault(); return false; }
+        if (isCtrl && (e.key === 'a' || e.key === 'A' || e.keyCode === 65)) { e.preventDefault(); return false; }
+        if (isCtrl && (e.key === 'p' || e.key === 'P' || e.keyCode === 80)) { e.preventDefault(); return false; }
+        if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); return false; }
+        if (isCtrl && e.shiftKey && (
+          e.key === 'I' || e.key === 'i' || e.keyCode === 73 ||
+          e.key === 'J' || e.key === 'j' || e.keyCode === 74 ||
+          e.key === 'C' || e.key === 'c' || e.keyCode === 67
+        )) { e.preventDefault(); return false; }
+      });
+
+      // 5. رسالة تحذيرية في الكونسول
+      try {
+        console.log("%c⚠️ تنبيه حماية الملكية الفكرية", "color: #ef4444; font-size: 20px; font-weight: bold;");
+        console.log("%cجميع محتويات هذا الموقع والبرومبتات محمية بموجب حقوق النشر. يُحظر النسخ أو الاقتباس دون إذن كتابي مسبق.", "font-size: 13px; color: #64748b;");
+      } catch(err) {}
+    })();
+  </script>
+
 </body>
 
 </html>
