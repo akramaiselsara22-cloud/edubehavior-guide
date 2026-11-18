@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوصلة السلوك المدرسية | EduBehavior — الدليل التربوي ومسار ADHD</title>
+    <title>بوصلة السلوك المدرسية | EduBehavior — المنصة التربوية التفاعلية</title>
     <!-- Google Fonts: Cairo & Alexandria -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;700;800&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;700;800&family=Cairo:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
         :root {
             --bg-primary: #071224;
@@ -32,7 +35,7 @@
             --font-heading: 'Cairo', sans-serif;
             --font-body: 'Alexandria', sans-serif;
             --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
-            --shadow-glow: 0 0 25px rgba(0, 180, 216, 0.2);
+            --shadow-glow: 0 0 25px rgba(0, 180, 216, 0.25);
         }
 
         * {
@@ -51,13 +54,42 @@
             overflow-x: hidden;
         }
 
+        /* Animations */
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 10px rgba(0, 180, 216, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(0, 180, 216, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 10px rgba(0, 180, 216, 0.2);
+            }
+        }
+
+        @keyframes floatEffect {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 10px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--bg-primary);
         }
+
         ::-webkit-scrollbar-thumb {
             background: var(--bg-card);
             border-radius: 5px;
@@ -73,6 +105,7 @@
             position: relative;
             z-index: 100;
         }
+
         .header-top-banner img {
             width: 100%;
             max-height: 180px;
@@ -84,12 +117,13 @@
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(13, 30, 56, 0.95);
-            backdrop-filter: blur(12px);
+            background: rgba(13, 30, 56, 0.96);
+            backdrop-filter: blur(14px);
             z-index: 999;
             border-bottom: 1px solid rgba(0, 180, 216, 0.3);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
+
         .nav-container {
             max-width: 1350px;
             margin: 0 auto;
@@ -98,6 +132,7 @@
             justify-content: space-between;
             padding: 0.8rem 1.5rem;
         }
+
         .nav-brand {
             display: flex;
             align-items: center;
@@ -105,13 +140,16 @@
             text-decoration: none;
             color: var(--text-main);
         }
+
         .nav-brand img {
             height: 48px;
             width: 48px;
             border-radius: 50%;
             border: 2px solid var(--accent-gold);
             box-shadow: 0 0 10px rgba(229, 185, 95, 0.4);
+            animation: floatEffect 4s ease-in-out infinite;
         }
+
         .nav-brand-title {
             font-family: var(--font-heading);
             font-weight: 800;
@@ -119,40 +157,47 @@
             color: var(--accent-gold);
             line-height: 1.2;
         }
+
         .nav-brand-sub {
             font-size: 0.78rem;
             color: var(--accent-cyan);
             letter-spacing: 0.5px;
         }
+
         .nav-links {
             display: flex;
-            gap: 1rem;
+            gap: 0.9rem;
             list-style: none;
             align-items: center;
         }
+
         .nav-links a {
             color: var(--text-main);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             transition: all 0.3s ease;
             padding: 6px 10px;
             border-radius: 6px;
         }
+
         .nav-links a:hover {
             color: var(--accent-cyan-glow);
             background: rgba(0, 180, 216, 0.15);
         }
+
         .nav-links a.highlight-adhd {
             color: #d8b4fe;
             background: rgba(168, 85, 247, 0.15);
             border: 1px solid rgba(168, 85, 247, 0.4);
         }
+
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .btn-print {
             background: linear-gradient(135deg, var(--accent-gold), #b38938);
             color: #071224;
@@ -170,6 +215,7 @@
             transition: all 0.3s ease;
             font-size: 0.88rem;
         }
+
         .btn-print:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(229, 185, 95, 0.5);
@@ -183,13 +229,18 @@
             position: relative;
             overflow: hidden;
         }
+
         .hero::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300b4d8' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
             opacity: 0.6;
         }
+
         .hero-container {
             max-width: 1250px;
             margin: 0 auto;
@@ -200,6 +251,7 @@
             position: relative;
             z-index: 2;
         }
+
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -213,12 +265,14 @@
             font-weight: 700;
             margin-bottom: 1.2rem;
         }
+
         .hero-badge-adhd {
             background: rgba(168, 85, 247, 0.15);
             border-color: var(--purple-adhd);
             color: #d8b4fe;
             margin-right: 8px;
         }
+
         .hero-title {
             font-family: var(--font-heading);
             font-size: 2.8rem;
@@ -226,13 +280,15 @@
             color: #ffffff;
             line-height: 1.25;
             margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
+
         .hero-title span {
             background: linear-gradient(135deg, var(--accent-cyan-glow), var(--accent-gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .hero-motto {
             font-size: 1.35rem;
             color: var(--accent-cyan);
@@ -242,6 +298,7 @@
             align-items: center;
             gap: 10px;
         }
+
         .hero-description {
             font-size: 1.05rem;
             color: var(--text-muted);
@@ -249,11 +306,13 @@
             max-width: 720px;
             line-height: 1.9;
         }
+
         .hero-actions {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
+
         .btn-primary {
             background: linear-gradient(135deg, var(--accent-cyan), #0077b6);
             color: #ffffff;
@@ -268,10 +327,12 @@
             box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
             transition: all 0.3s ease;
         }
+
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 180, 216, 0.6);
         }
+
         .btn-adhd {
             background: linear-gradient(135deg, #a855f7, #6b21a8);
             color: #ffffff;
@@ -286,6 +347,7 @@
             box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
             transition: all 0.3s ease;
         }
+
         .btn-adhd:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6);
@@ -298,21 +360,33 @@
             border-radius: 20px;
             padding: 1.8rem;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(229, 185, 95, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(229, 185, 95, 0.2);
             position: relative;
         }
+
         .hero-author-img-wrapper {
             position: relative;
             margin: 0 auto 1.2rem;
-            width: 200px;
-            height: 180px;
+            width: 210px;
+            height: 220px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(229, 185, 95, 0.3);
         }
+
         .hero-author-img-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+            object-fit: cover;
+            object-position: center 8%;
+            transition: transform 0.4s ease;
         }
+
+        .hero-author-img-wrapper:hover img {
+            transform: scale(1.06);
+        }
+
         .hero-author-name {
             font-family: var(--font-heading);
             font-size: 1.35rem;
@@ -320,6 +394,7 @@
             color: var(--accent-gold);
             margin-bottom: 0.2rem;
         }
+
         .hero-author-role {
             font-size: 0.88rem;
             color: var(--accent-cyan);
@@ -334,6 +409,7 @@
             gap: 10px;
             margin-top: 1.2rem;
         }
+
         .btn-contact-custom {
             display: flex;
             align-items: center;
@@ -347,25 +423,31 @@
             font-size: 0.92rem;
             font-family: var(--font-heading);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
+
         .btn-whatsapp-action {
             background: linear-gradient(135deg, #25D366, #128C7E);
         }
+
         .btn-whatsapp-action:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
         }
+
         .btn-telegram-action {
             background: linear-gradient(135deg, #0088cc, #006699);
         }
+
         .btn-telegram-action:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(0, 136, 204, 0.45);
         }
+
         .btn-facebook-action {
             background: linear-gradient(135deg, #1877F2, #0d5cb6);
         }
+
         .btn-facebook-action:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(24, 119, 242, 0.45);
@@ -392,6 +474,7 @@
             padding: 1.5rem;
             box-shadow: var(--shadow-lg);
         }
+
         .sidebar-title {
             font-family: var(--font-heading);
             font-size: 1.15rem;
@@ -404,12 +487,14 @@
             border-bottom: 1px solid rgba(229, 185, 95, 0.2);
             padding-bottom: 0.6rem;
         }
+
         .toc-list {
             list-style: none;
             display: flex;
             flex-direction: column;
             gap: 6px;
         }
+
         .toc-item a {
             display: flex;
             align-items: center;
@@ -422,21 +507,21 @@
             border-radius: 8px;
             transition: all 0.25s ease;
         }
-        .toc-item a:hover, .toc-item a.active {
+
+        .toc-item a:hover,
+        .toc-item a.active {
             color: #ffffff;
             background: var(--bg-card);
             border-right: 3px solid var(--accent-cyan);
             transform: translateX(-4px);
         }
+
         .toc-item a.toc-adhd {
             color: #d8b4fe;
             border-right: 3px solid var(--purple-adhd);
             background: rgba(168, 85, 247, 0.1);
         }
-        .toc-item a.toc-adhd:hover {
-            color: #ffffff;
-            background: rgba(168, 85, 247, 0.25);
-        }
+
         .toc-item i {
             color: var(--accent-cyan);
             font-size: 0.85rem;
@@ -448,6 +533,7 @@
         .content-area {
             min-width: 0;
         }
+
         .section-card {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -457,11 +543,13 @@
             box-shadow: var(--shadow-lg);
             position: relative;
         }
+
         .section-card.adhd-card {
             border: 2px solid var(--purple-adhd);
             box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.3);
             background: linear-gradient(180deg, #141b3a 0%, #0d1e38 100%);
         }
+
         .section-header {
             display: flex;
             align-items: center;
@@ -470,6 +558,7 @@
             border-bottom: 1px solid rgba(0, 180, 216, 0.2);
             padding-bottom: 1rem;
         }
+
         .section-num {
             width: 44px;
             height: 44px;
@@ -484,16 +573,19 @@
             font-size: 1.2rem;
             box-shadow: 0 4px 10px rgba(0, 180, 216, 0.3);
         }
+
         .section-num-adhd {
             background: linear-gradient(135deg, #a855f7, #6b21a8);
             box-shadow: 0 4px 10px rgba(168, 85, 247, 0.4);
         }
+
         .section-title {
             font-family: var(--font-heading);
             font-size: 1.65rem;
             font-weight: 800;
             color: #ffffff;
         }
+
         .section-subtitle {
             font-size: 0.95rem;
             color: var(--accent-cyan);
@@ -511,15 +603,18 @@
             align-items: flex-start;
             gap: 14px;
         }
+
         .callout-adhd {
             border-right-color: var(--purple-adhd);
             background: rgba(168, 85, 247, 0.12);
         }
+
         .callout-icon {
             color: var(--accent-gold);
             font-size: 1.5rem;
             margin-top: 3px;
         }
+
         .callout-text {
             font-size: 0.98rem;
             color: var(--text-main);
@@ -535,6 +630,7 @@
             margin: 1.8rem 0;
             box-shadow: 0 0 25px rgba(239, 68, 68, 0.25);
         }
+
         .safety-gate-header {
             display: flex;
             align-items: center;
@@ -545,24 +641,30 @@
             font-size: 1.3rem;
             margin-bottom: 1rem;
         }
+
         .safety-checklist {
             list-style: none;
             margin-bottom: 1.2rem;
         }
+
         .safety-checklist li {
-            padding: 8px 12px;
-            margin-bottom: 6px;
-            background: rgba(0,0,0,0.25);
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 8px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
             font-size: 0.95rem;
             color: #fee2e2;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
-        .safety-checklist i {
-            color: var(--danger-red);
+
+        .safety-checklist li:hover {
+            background: rgba(239, 68, 68, 0.2);
         }
+
         .safety-alert-msg {
             background: #dc2626;
             color: #ffffff;
@@ -572,6 +674,7 @@
             font-size: 1rem;
             text-align: center;
             box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            cursor: pointer;
         }
 
         /* Modern Tables */
@@ -582,12 +685,14 @@
             border-radius: 12px;
             border: 1px solid var(--border-color);
         }
+
         .custom-table {
             width: 100%;
             border-collapse: collapse;
             text-align: right;
             font-size: 0.94rem;
         }
+
         .custom-table th {
             background: #0f2b52;
             color: var(--accent-gold);
@@ -597,101 +702,145 @@
             border-bottom: 2px solid var(--accent-cyan);
             white-space: nowrap;
         }
+
         .custom-table th.th-adhd {
             background: #3b1b68;
             color: #e9d5ff;
             border-bottom-color: var(--purple-adhd);
         }
+
         .custom-table td {
             padding: 12px 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             background: var(--bg-card);
             color: var(--text-main);
             vertical-align: top;
         }
+
         .custom-table tr:hover td {
             background: var(--bg-card-hover);
         }
+
+        /* Interactive Clickable Badges */
+        .badge-interactive {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
         .badge-avoid {
-            background: rgba(239, 68, 68, 0.2);
+            background: rgba(239, 68, 68, 0.25);
             color: #fca5a5;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.85rem;
+            border: 1px solid rgba(239, 68, 68, 0.4);
         }
+
+        .badge-avoid:hover {
+            background: rgba(239, 68, 68, 0.45);
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
         .badge-replace {
-            background: rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.25);
             color: #6ee7b7;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.85rem;
+            border: 1px solid rgba(16, 185, 129, 0.4);
         }
+
+        .badge-replace:hover {
+            background: rgba(16, 185, 129, 0.45);
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
         .badge-adhd {
             background: rgba(168, 85, 247, 0.25);
             color: #d8b4fe;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 0.85rem;
+            border: 1px solid rgba(168, 85, 247, 0.4);
         }
 
-        /* 11 Outcome Cards Grid */
+        /* Cards Grid & Clickable Cards */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.2rem;
             margin: 1.5rem 0;
         }
+
         .result-card {
             background: var(--bg-card);
-            border: 1px solid rgba(0, 180, 216, 0.2);
+            border: 1px solid rgba(0, 180, 216, 0.25);
             border-radius: 14px;
-            padding: 1.3rem;
-            transition: all 0.3s ease;
+            padding: 1.4rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            user-select: none;
         }
+
         .result-card.card-adhd {
-            border-color: rgba(168, 85, 247, 0.4);
+            border-color: rgba(168, 85, 247, 0.45);
             background: #171d3d;
         }
+
         .result-card.card-adhd::before {
             background: linear-gradient(90deg, var(--purple-adhd), var(--accent-gold));
         }
+
         .result-card::before {
             content: '';
             position: absolute;
-            top: 0; right: 0; left: 0;
+            top: 0;
+            right: 0;
+            left: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--accent-cyan), var(--accent-gold));
         }
+
         .result-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px) scale(1.01);
             border-color: var(--accent-cyan-glow);
-            box-shadow: var(--shadow-glow);
+            box-shadow: 0 12px 25px rgba(0, 180, 216, 0.35);
         }
+
+        .result-card.card-adhd:hover {
+            border-color: #d8b4fe;
+            box-shadow: 0 12px 25px rgba(168, 85, 247, 0.4);
+        }
+
         .card-num {
             font-size: 0.8rem;
             font-weight: 800;
             color: var(--accent-gold);
             text-transform: uppercase;
             margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
+
         .card-title {
             font-family: var(--font-heading);
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 0.6rem;
         }
+
         .card-purpose {
             font-size: 0.88rem;
             color: var(--text-muted);
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.9rem;
             line-height: 1.6;
         }
+
         .card-question {
             background: rgba(7, 18, 36, 0.6);
             border-radius: 8px;
@@ -700,6 +849,25 @@
             color: var(--accent-cyan);
             font-weight: 600;
             border-right: 3px solid var(--accent-cyan);
+            margin-bottom: 0.8rem;
+        }
+
+        .card-click-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            background: rgba(229, 185, 95, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .result-card:hover .card-click-hint {
+            background: var(--accent-gold);
+            color: #071224;
         }
 
         /* Interactive Worksheets */
@@ -710,10 +878,12 @@
             padding: 1.8rem;
             margin: 1.5rem 0;
         }
+
         .worksheet-box.adhd-box {
             border-color: var(--purple-adhd);
             background: #0f1633;
         }
+
         .worksheet-title {
             font-family: var(--font-heading);
             color: var(--accent-gold);
@@ -724,9 +894,11 @@
             align-items: center;
             justify-content: space-between;
         }
+
         .form-group {
             margin-bottom: 1.2rem;
         }
+
         .form-label {
             display: block;
             font-weight: 700;
@@ -734,25 +906,169 @@
             color: #ffffff;
             margin-bottom: 6px;
         }
+
         .form-control {
             width: 100%;
             padding: 10px 14px;
             background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 8px;
             color: #ffffff;
             font-family: var(--font-body);
             font-size: 0.92rem;
             transition: all 0.3s ease;
         }
+
         .form-control:focus {
             outline: none;
             border-color: var(--accent-cyan);
             box-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
         }
+
         textarea.form-control {
             min-height: 80px;
             resize: vertical;
+        }
+
+        /* Interactive Modal Dialog */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(4, 9, 20, 0.88);
+            backdrop-filter: blur(10px);
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-container {
+            background: linear-gradient(145deg, #10264b, #09172f);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 20px;
+            max-width: 680px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 180, 216, 0.35);
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 1.5rem 1.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            background: #10264b;
+            z-index: 10;
+        }
+
+        .modal-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .modal-badge {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+        }
+
+        .modal-title {
+            font-family: var(--font-heading);
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .modal-close-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: var(--danger-red);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 1.8rem;
+        }
+
+        .modal-section {
+            margin-bottom: 1.4rem;
+        }
+
+        .modal-section-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-box-highlight {
+            background: rgba(0, 180, 216, 0.12);
+            border-right: 4px solid var(--accent-cyan);
+            padding: 12px 16px;
+            border-radius: 0 10px 10px 0;
+            color: #ffffff;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .modal-example-box {
+            background: #061122;
+            border: 1px solid rgba(229, 185, 95, 0.3);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: #e2e8f0;
+            font-size: 0.92rem;
+            line-height: 1.8;
+        }
+
+        .modal-footer {
+            padding: 1.2rem 1.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.25);
         }
 
         /* Code/Prompt Accordion */
@@ -764,34 +1080,39 @@
             margin: 1.2rem 0;
             position: relative;
         }
+
         .code-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.8rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 0.5rem;
         }
+
         .code-title {
             color: var(--accent-cyan);
             font-family: monospace;
             font-size: 0.9rem;
             font-weight: 700;
         }
+
         .btn-copy {
             background: var(--bg-card);
             color: var(--text-muted);
-            border: 1px solid rgba(255,255,255,0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 4px 10px;
             border-radius: 6px;
             cursor: pointer;
             font-size: 0.8rem;
             transition: all 0.2s ease;
         }
+
         .btn-copy:hover {
             color: #ffffff;
             border-color: var(--accent-cyan);
         }
+
         pre {
             white-space: pre-wrap;
             word-break: break-word;
@@ -808,6 +1129,7 @@
             padding: 3.5rem 1.5rem 2rem;
             margin-top: 4rem;
         }
+
         .footer-container {
             max-width: 1250px;
             margin: 0 auto;
@@ -816,30 +1138,35 @@
             gap: 3rem;
             align-items: center;
         }
+
         .footer-brand {
             display: flex;
             align-items: center;
             gap: 15px;
             margin-bottom: 1.2rem;
         }
+
         .footer-brand img {
             height: 60px;
             width: 60px;
             border-radius: 50%;
             border: 2px solid var(--accent-gold);
         }
+
         .footer-title {
             font-family: var(--font-heading);
             font-size: 1.5rem;
             font-weight: 900;
             color: var(--accent-gold);
         }
+
         .footer-text {
             color: var(--text-muted);
             font-size: 0.92rem;
             line-height: 1.8;
             max-width: 500px;
         }
+
         .footer-contact-box {
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
@@ -855,6 +1182,7 @@
             gap: 10px;
             margin-top: 1.2rem;
         }
+
         .btn-footer-contact {
             display: flex;
             align-items: center;
@@ -869,26 +1197,32 @@
             color: #ffffff;
             transition: all 0.3s ease;
         }
+
         .btn-footer-whatsapp {
             background: linear-gradient(135deg, #25D366, #128C7E);
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
+
         .btn-footer-whatsapp:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
         }
+
         .btn-footer-telegram {
             background: linear-gradient(135deg, #0088cc, #006699);
             box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
         }
+
         .btn-footer-telegram:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 136, 204, 0.5);
         }
+
         .btn-footer-facebook {
             background: linear-gradient(135deg, #1877F2, #0d5cb6);
             box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
         }
+
         .btn-footer-facebook:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(24, 119, 242, 0.5);
@@ -898,7 +1232,7 @@
             text-align: center;
             padding-top: 2rem;
             margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--text-muted);
             font-size: 0.85rem;
         }
@@ -911,15 +1245,27 @@
                 font-size: 11pt;
                 line-height: 1.6;
             }
-            .header-top-banner, .navbar, .sidebar, .btn-print, .btn-copy, .hero-actions, .author-contact-actions, .footer-buttons-grid {
+
+            .header-top-banner,
+            .navbar,
+            .sidebar,
+            .btn-print,
+            .btn-copy,
+            .hero-actions,
+            .author-contact-actions,
+            .footer-buttons-grid,
+            .modal-overlay,
+            .card-click-hint {
                 display: none !important;
             }
+
             .main-wrapper {
                 display: block !important;
                 max-width: 100% !important;
                 margin: 0 !important;
                 padding: 0 !important;
             }
+
             .section-card {
                 background: #ffffff !important;
                 border: 1px solid #e5e7eb !important;
@@ -928,63 +1274,76 @@
                 margin-bottom: 2rem !important;
                 page-break-inside: avoid;
             }
+
             .section-card.page-break-before {
                 page-break-before: always;
             }
+
             .section-title {
                 color: #0f172a !important;
             }
+
             .section-subtitle {
                 color: #2563eb !important;
             }
+
             .section-num {
                 background: #0f172a !important;
                 color: #ffffff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+
             .custom-table th {
                 background: #1e293b !important;
                 color: #ffffff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+
             .custom-table td {
                 background: #ffffff !important;
                 color: #1e293b !important;
                 border: 1px solid #e2e8f0 !important;
             }
+
             .callout {
                 background: #f8fafc !important;
                 border-right: 4px solid #d97706 !important;
                 color: #1e293b !important;
             }
+
             .safety-gate-box {
                 background: #fef2f2 !important;
                 border: 2px solid #dc2626 !important;
                 color: #991b1b !important;
             }
+
             .safety-alert-msg {
                 background: #dc2626 !important;
                 color: #ffffff !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+
             .result-card {
                 background: #f8fafc !important;
                 border: 1px solid #cbd5e1 !important;
                 page-break-inside: avoid;
             }
+
             .worksheet-box {
                 background: #ffffff !important;
                 border: 1px solid #94a3b8 !important;
                 page-break-inside: avoid;
             }
+
             .form-control {
                 background: #ffffff !important;
                 border: 1px solid #cbd5e1 !important;
                 color: #000000 !important;
             }
+
             .footer {
                 background: #ffffff !important;
                 color: #475569 !important;
@@ -998,37 +1357,47 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+
             .hero-motto {
                 justify-content: center;
             }
+
             .hero-description {
                 margin: 0 auto 2rem;
             }
+
             .hero-actions {
                 justify-content: center;
             }
+
             .main-wrapper {
                 grid-template-columns: 1fr;
             }
+
             .sidebar {
                 display: none;
             }
+
             .footer-container {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
+
             .footer-brand {
                 justify-content: center;
             }
+
             .footer-text {
                 margin: 0 auto;
             }
+
             .nav-links {
                 display: none;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- 1. Header Reference Banner Image -->
@@ -1043,17 +1412,17 @@
                 <img src="compass_logo.png" alt="AI Navigators Compass">
                 <div>
                     <div class="nav-brand-title">EduBehavior | بوصلة السلوك</div>
-                    <div class="nav-brand-sub">الدليل التربوي ومسار دعم ADHD</div>
+                    <div class="nav-brand-sub">المنصة التربوية التفاعلية الميدانية</div>
                 </div>
             </a>
             <ul class="nav-links">
-                <li><a href="#intro"><i class="fa-solid fa-compass"></i> المنطلق</a></li>
                 <li><a href="#observation"><i class="fa-solid fa-eye"></i> الملاحظة</a></li>
                 <li><a href="#pbis"><i class="fa-solid fa-layer-group"></i> PBIS</a></li>
                 <li><a href="#abc"><i class="fa-solid fa-diagram-project"></i> ABC+</a></li>
                 <li><a href="#safety"><i class="fa-solid fa-shield-halved"></i> السلامة</a></li>
                 <li><a href="#teacher-language"><i class="fa-solid fa-comment-dots"></i> لغة المعلم</a></li>
                 <li><a href="#adhd-track" class="highlight-adhd"><i class="fa-solid fa-brain"></i> مسار ADHD</a></li>
+                <li><a href="#cards"><i class="fa-solid fa-id-card"></i> البطاقات الـ 11</a></li>
                 <li><a href="#worksheets"><i class="fa-solid fa-file-signature"></i> النماذج</a></li>
                 <li><a href="#contact"><i class="fa-solid fa-envelope"></i> تواصل معنا</a></li>
             </ul>
@@ -1070,54 +1439,58 @@
         <div class="hero-container">
             <div>
                 <div class="hero-badge">
-                    <i class="fa-solid fa-award"></i> الإصدار الميداني الأول 2026 — RC1
+                    <i class="fa-solid fa-award"></i> الإصدار التفاعلي الشامل 2026 — RC1
                 </div>
                 <div class="hero-badge hero-badge-adhd">
-                    <i class="fa-solid fa-brain"></i> متضمن مسار فرط الحركة وتشتت الانتباه
+                    <i class="fa-solid fa-brain"></i> مسار ADHD التفاعلي
                 </div>
                 <h1 class="hero-title">
                     بوصلة السلوك المدرسية<br>
-                    <span>EduBehavior & ADHD Track</span>
+                    <span>EduBehavior Interactive Suite</span>
                 </h1>
                 <div class="hero-motto">
                     <i class="fa-solid fa-quote-right" style="color: var(--accent-gold);"></i>
                     افهم السلوك، ضع الحد، قدم الدعم، تابع الأثر.
                 </div>
                 <p class="hero-description">
-                    دليل تطبيقي متكامل للمعلمين والأخصائيين والمرشدين والإدارات المدرسية. يهدف إلى تفكيك المواقف السلوكية وفهمها بطريقة تربوية آمنة، دون تشخيص الطالب أو وصمه، مع مسار متخصص لتيسيرات فرط الحركة وتشتت الانتباه (ADHD) وتنظيم الوظائف التنفيذية.
+                    منصة تربوية تفاعلية حية تمكّن المعلمين والمختصين من النقر على أي مفهوم، أو حكم، أو استجابة، أو نموذج
+                    لتفقد الغاية والهدف والسؤال المركزي مع دراسة حالة وأمثلة واقعية حية من الفصل الدراسي.
                 </p>
                 <div class="hero-actions">
-                    <a href="#intro" class="btn-primary">
-                        <i class="fa-solid fa-book-open"></i> استكشاف الفصول
+                    <a href="#observation" class="btn-primary">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> تفكيك الأحكام التفاعلي
                     </a>
-                    <a href="#adhd-track" class="btn-adhd">
-                        <i class="fa-solid fa-brain"></i> مسار دعم ADHD
-                    </a>
-                    <a href="#worksheets" class="btn-outline">
-                        <i class="fa-solid fa-clipboard-check"></i> النماذج الجاهزة
+                    <a href="#cards" class="btn-adhd">
+                        <i class="fa-solid fa-id-card"></i> استعراض البطاقات الـ 11
                     </a>
                 </div>
             </div>
 
             <!-- Author & Dedicated Contact Buttons Card -->
             <div class="hero-author-card">
-                <div class="hero-author-img-wrapper">
-                    <img src="author_robot.png" alt="Abo Aisel with Friendly AI Robot">
+                <div class="hero-author-img-wrapper" title="أبو أيسل - خبير هندسة الأوامر والحلول التربوية">
+                    <img src="author_portrait.jpg" alt="Abo Aisel - خبير هندسة الأوامر والحلول التربوية">
                 </div>
                 <div class="hero-author-name">إعداد وتقديم: Abo Aisel</div>
                 <div class="hero-author-role">مبادرة AI NAVIGATORS | هندسة الأوامر والحلول التربوية</div>
-                
-                <!-- 3 Dedicated Contact Buttons -->
+                <div style="margin-top: -6px; margin-bottom: 12px;">
+                    <a href="author_character_sheet.jpg" target="_blank" style="display: inline-flex; align-items: center; gap: 5px; font-size: 0.78rem; color: var(--accent-cyan); text-decoration: none; padding: 3px 10px; border-radius: 6px; background: rgba(0, 180, 216, 0.1); border: 1px solid rgba(0, 180, 216, 0.25); transition: all 0.2s ease;">
+                        <i class="fa-solid fa-id-badge"></i> عرض شيت الشخصية المعتمد
+                    </a>
+                </div>
+
                 <div class="author-contact-actions">
                     <a href="https://wa.me/201037489146" target="_blank" class="btn-contact-custom btn-whatsapp-action">
                         <i class="fa-brands fa-whatsapp" style="font-size: 1.25rem;"></i>
                         <span>تواصل عبر واتساب (01037489146)</span>
                     </a>
-                    <a href="https://t.me/+L695Phe56ecxZjc8" target="_blank" class="btn-contact-custom btn-telegram-action">
+                    <a href="https://t.me/+L695Phe56ecxZjc8" target="_blank"
+                        class="btn-contact-custom btn-telegram-action">
                         <i class="fa-brands fa-telegram" style="font-size: 1.25rem;"></i>
                         <span>انضم لقناة التليجرام</span>
                     </a>
-                    <a href="https://www.facebook.com/abo.aisel.elmasry" target="_blank" class="btn-contact-custom btn-facebook-action">
+                    <a href="https://www.facebook.com/abo.aisel.elmasry" target="_blank"
+                        class="btn-contact-custom btn-facebook-action">
                         <i class="fa-brands fa-facebook-f" style="font-size: 1.2rem;"></i>
                         <span>تابعنا على فيسبوك</span>
                     </a>
@@ -1128,28 +1501,41 @@
 
     <!-- 4. Main Content Area & Sidebar Layout -->
     <div class="main-wrapper">
-        
+
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="sidebar-title">
-                <i class="fa-solid fa-list-ul"></i> فهرس الفصول
+                <i class="fa-solid fa-list-ul"></i> المحطات التفاعلية
             </div>
             <ul class="toc-list">
-                <li class="toc-item"><a href="#intro"><i class="fa-solid fa-bullseye"></i> 1. الغاية والمنهج التربوي</a></li>
-                <li class="toc-item"><a href="#observation"><i class="fa-solid fa-pen-fancy"></i> 2. الوصف بدل الوصم</a></li>
-                <li class="toc-item"><a href="#pbis"><i class="fa-solid fa-stairs"></i> 3. منظومة PBIS التربوية</a></li>
-                <li class="toc-item"><a href="#steps"><i class="fa-solid fa-shoe-prints"></i> 4. مسار الاستخدام (5 خطوات)</a></li>
-                <li class="toc-item"><a href="#abc"><i class="fa-solid fa-code-fork"></i> 5. نموذج ABC+ الموسع</a></li>
-                <li class="toc-item"><a href="#safety"><i class="fa-solid fa-triangle-exclamation"></i> 6. فحص السلامة ومسار التوقف</a></li>
-                <li class="toc-item"><a href="#teacher-language"><i class="fa-solid fa-bullhorn"></i> 7. لغة المعلم: حد ودعم</a></li>
-                <li class="toc-item"><a href="#adhd-track" class="toc-adhd"><i class="fa-solid fa-brain" style="color: var(--purple-adhd);"></i> 8. مسار دعم ADHD والتنظيم</a></li>
-                <li class="toc-item"><a href="#cards"><i class="fa-solid fa-id-card"></i> 9. بطاقات النتيجة الـ 11</a></li>
-                <li class="toc-item"><a href="#case-study"><i class="fa-solid fa-user-graduate"></i> 10. دراسة حالة الطالب «ن»</a></li>
-                <li class="toc-item"><a href="#monitoring"><i class="fa-solid fa-chart-line"></i> 11. القياس والمراجعة والإحالة</a></li>
-                <li class="toc-item"><a href="#privacy"><i class="fa-solid fa-user-shield"></i> 12. الخصوصية والأخلاقيات</a></li>
-                <li class="toc-item"><a href="#worksheets"><i class="fa-solid fa-file-lines"></i> 13. نماذج العمل القابلة للطباعة</a></li>
-                <li class="toc-item"><a href="#tech-appendix"><i class="fa-solid fa-robot"></i> 14. الملحق التقني: كود الـ Gem</a></li>
-                <li class="toc-item"><a href="#contact"><i class="fa-solid fa-address-book"></i> تواصل مع المؤلف</a></li>
+                <li class="toc-item"><a href="#intro"><i class="fa-solid fa-bullseye"></i> 1. الغاية والمنهج التربوي</a>
+                </li>
+                <li class="toc-item"><a href="#observation"><i class="fa-solid fa-pen-fancy"></i> 2. محول الملاحظة
+                        التفاعلي</a></li>
+                <li class="toc-item"><a href="#pbis"><i class="fa-solid fa-stairs"></i> 3. مستويات PBIS التفاعلية</a>
+                </li>
+                <li class="toc-item"><a href="#steps"><i class="fa-solid fa-shoe-prints"></i> 4. خطوات المسار الخمس</a>
+                </li>
+                <li class="toc-item"><a href="#abc"><i class="fa-solid fa-code-fork"></i> 5. مختبر ABC+ التفاعلي</a>
+                </li>
+                <li class="toc-item"><a href="#safety"><i class="fa-solid fa-triangle-exclamation"></i> 6. محاكي بوابة
+                        السلامة</a></li>
+                <li class="toc-item"><a href="#teacher-language"><i class="fa-solid fa-bullhorn"></i> 7. استوديو لغة
+                        المعلم</a></li>
+                <li class="toc-item"><a href="#adhd-track" class="toc-adhd"><i class="fa-solid fa-brain"
+                            style="color: var(--purple-adhd);"></i> 8. مسار ADHD التفاعلي</a></li>
+                <li class="toc-item"><a href="#cards"><i class="fa-solid fa-id-card"></i> 9. بطاقات النتيجة الـ 11</a>
+                </li>
+                <li class="toc-item"><a href="#case-study"><i class="fa-solid fa-user-graduate"></i> 10. دراسة حالة
+                        الطالب «ن»</a></li>
+                <li class="toc-item"><a href="#monitoring"><i class="fa-solid fa-chart-line"></i> 11. استوديو القياس
+                        والمتابعة</a></li>
+                <li class="toc-item"><a href="#worksheets"><i class="fa-solid fa-file-lines"></i> 12. مصمم النماذج
+                        التفاعلي</a></li>
+                <li class="toc-item"><a href="#tech-appendix"><i class="fa-solid fa-robot"></i> 13. الملحق التقني: كود
+                        الـ Gem</a></li>
+                <li class="toc-item"><a href="#contact"><i class="fa-solid fa-address-book"></i> تواصل مع المؤلف</a>
+                </li>
             </ul>
         </aside>
 
@@ -1167,774 +1553,714 @@
                 </div>
 
                 <p>
-                    الموقف السلوكي داخل الصف يحدث غالبًا في ثوانٍ معدودة وبشكل متسارع ومفاجئ، في حين أن المعالجة التربوية الرصينة تحتاج إلى <strong>إبطاء الحكم التلقائي وتفكيك المشهد</strong>. وظيفة «بوصلة السلوك» هي مساعدة المربي على جمع ما شاهده وسمعه بدقة، وفصل الوقائع الملموسة عن التفسيرات الذاتية، ثم صياغة استجابة صفية تجمع بين وضوح الحد وتقديم الدعم العملي.
+                    الموقف السلوكي داخل الصف يحدث غالبًا في ثوانٍ معدودة وبشكل متسارع ومفاجئ، في حين أن المعالجة
+                    التربوية الرصينة تحتاج إلى <strong>إبطاء الحكم التلقائي وتفكيك المشهد</strong>. وظيفة «بوصلة السلوك»
+                    هي مساعدة المربي على جمع ما شاهده وسمعه بدقة، وفصل الوقائع الملموسة عن التفسيرات الذاتية، ثم صياغة
+                    استجابة صفية تجمع بين وضوح الحد وتقديم الدعم العملي.
                 </p>
 
-                <div class="callout">
+                <div class="callout" onclick="openCardModal('core_principle')" style="cursor: pointer;">
                     <i class="fa-solid fa-compass callout-icon"></i>
                     <div class="callout-text">
                         <strong>المبدأ الجامع:</strong> افهم السلوك، ضع الحد، قدم الدعم، تابع الأثر.<br>
-                        تنبيه أساسي: هذه الأداة للدعم والتفكير التربوي، وليست بديلاً عن التقييم والتشخيص الطبي أو النفسي المتخصص، ولا تحل محل لوائح المدرسة وسياساتها المعتمدة.
+                        <span style="color: var(--accent-gold); font-size: 0.88rem; font-weight: 700;"><i
+                                class="fa-solid fa-hand-pointer"></i> اضغط هنا لفتح الغاية والهدف وتفاصيل المبدأ الجامع
+                            بمثال تطبيقي</span>
                     </div>
                 </div>
-
-                <h3 style="font-family: var(--font-heading); color: var(--accent-gold); margin: 1.5rem 0 0.8rem;">ما تفعله الأداة وما لا تفعله</h3>
-                <div class="table-responsive">
-                    <table class="custom-table">
-                        <thead>
-                            <tr>
-                                <th>ما تفعله الأداة (المجال المعتمد)</th>
-                                <th>ما لا تفعله الأداة (الحدود الصارمة)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>تنظم معلومات الموقف السلوكي في تسلسل منطقي محايد.</td>
-                                <td>لا تشخص أي اضطراب نفسي، سلوكي، أو عصبي.</td>
-                            </tr>
-                            <tr>
-                                <td>تدعم استبدال الأوصاف الانطباعية بوصف قابل للملاحظة.</td>
-                                <td>لا توصم الطالب ولا تقيّم شخصيته أو دوافعه الباطنية.</td>
-                            </tr>
-                            <tr>
-                                <td>تقدم إطاراً عملياً يوازن بين الحد الصفي والدعم الممكن.</td>
-                                <td>لا تصدر عقوبات أو تتخذ قرارات إدارية نهائية عالية الأثر.</td>
-                            </tr>
-                            <tr>
-                                <td>توقف المسار التربوي فوراً عند رصد أي مؤشر خطر على السلامة.</td>
-                                <td>لا تستبدل المختص البشري المؤهل أو بروتوكول حماية المدرسة.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 style="font-family: var(--font-heading); color: var(--accent-gold); margin: 1.5rem 0 0.8rem;">المبادئ الخمسة الحاكمة</h3>
-                <ul style="padding-right: 1.5rem; line-height: 2;">
-                    <li><strong>1. الوقائع أولاً:</strong> نسجل فقط ما يمكن لشخص آخر في الغرفة رؤيته بالعين أو سماعه بالأذن.</li>
-                    <li><strong>2. السياق مهم:</strong> ما سبق السلوك وما أعقبه في البيئة يساعد على فهم وظيفته دون افتراض السببية المطلقة.</li>
-                    <li><strong>3. السلامة تتقدم على التحليل:</strong> أي إشارة خطر تنقل المربي مباشرة إلى بروتوكول الطوارئ والحماية الرسمي.</li>
-                    <li><strong>4. الحد والدعم معاً:</strong> الحزم يوضح التوقع المطلوب، والدعم يُمكّن الطالب من أداء السلوك البديل بنجاح.</li>
-                    <li><strong>5. المتابعة جزء من التدخل:</strong> ما لا يُقاس بمؤشر بسيط لا يمكننا التحقق من جدواه أو تحسنه.</li>
-                </ul>
             </section>
 
-            <!-- الفصل 2: الوصف القابل للملاحظة بدل الوصم -->
+            <!-- الفصل 2: محول الملاحظة التفاعلي (NEW & FULLY INTERACTIVE) -->
             <section class="section-card" id="observation">
                 <div class="section-header">
                     <div class="section-num">02</div>
                     <div>
-                        <h2 class="section-title">الوصف القابل للملاحظة بدلاً من الوصم</h2>
-                        <div class="section-subtitle">صف الفعل أو القول كما وقع، ولا تختصر الطالب في صفة</div>
+                        <h2 class="section-title">محول الملاحظة بدل الوصم (Interactive Transformer)</h2>
+                        <div class="section-subtitle">اضغط على أي حكم انطباعي لترى غاية تفكيكه، والسؤال المركزي، والمثال
+                            الميداني الحي</div>
                     </div>
                 </div>
 
                 <p>
-                    الحكم على الطالب بصفات عامة (مثل: عنيد، كسول، مشاغب، مستفز) يغلق باب الحلول التربوية ويولد مقاومة دفاعية. التحول إلى الملاحظة الموضوعية يجعل المشكلة محددة وقابلة للتعليم والتعديل.
+                    الأحكام العامة تضع الطالب في خانة الاتهام، بينما الملاحظة الموضوعية تفتح باب الحل. <strong>انقر على
+                        أي بطاقة حكم تالياً لفتح دراسة حالتها وتفكيكها:</strong>
                 </p>
 
-                <div class="callout" style="border-right-color: var(--accent-cyan);">
-                    <i class="fa-solid fa-lightbulb callout-icon" style="color: var(--accent-cyan);"></i>
-                    <div class="callout-text">
-                        <strong>الصيغة الرباعية للوصف السلوكي الدقيق:</strong><br>
-                        [فعل أو قول محدد ومسموع] + [الموقف التعليمي أو التوقيت] + [التكرار أو المدة الزمنية] + [الأثر الواقع على التعلم أو السلامة].
+                <div class="cards-grid">
+                    <div class="result-card" onclick="openCardModal('obs_lazy')">
+                        <div class="card-num"><span class="badge-interactive badge-avoid">حكم: «كسول»</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">تفكيك وصف "كسول"</h4>
+                        <div class="card-purpose">تحويل تهمة الكسل إلى مدة استجابة ومهمة تعليمية محددة.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
                     </div>
-                </div>
 
-                <h3 style="font-family: var(--font-heading); color: var(--accent-gold); margin: 1.5rem 0 0.8rem;">جدول التحول: من الحكم إلى الملاحظة</h3>
-                <div class="table-responsive">
-                    <table class="custom-table">
-                        <thead>
-                            <tr>
-                                <th>الوصف الانطباعي غير المناسب</th>
-                                <th>البديل القابل للملاحظة والقياس</th>
-                                <th>لماذا البديل أفضل وأكثر مهنية؟</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="badge-avoid">كسول</span></td>
-                                <td>لم يبدأ ورقة العمل خلال 10 دقائق رغم تكرار التعليمات الفردية مرتين.</td>
-                                <td>يوضح السلوك المحدد والزمن دون إطلاق حكم مسبق على همة الطالب أو قدرته.</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge-avoid">عنيد</span></td>
-                                <td>رفض الانتقال إلى مقعده بعد 3 تنبيهات لفظية هادئة وبقي واقفاً دقيقتين.</td>
-                                <td>يصف الاستجابة الحركية الفعلية بدلاً من تثبيت صفة شخصية مقاومة للتغيير.</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge-avoid">سيئ ومشاغب</span></td>
-                                <td>دفع زميله بيده أثناء الوقوف والانتظار في صف الدخول للمختبر.</td>
-                                <td>يسجل حدثاً حركياً واقعياً يمكن متابعة حدوثه أو اختفائه بدقة معيارية.</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge-avoid">غير محترم</span></td>
-                                <td>قاطع شرح المعلم 4 مرات برفع صوته أثناء المناقشة الجماعية المفتوحة.</td>
-                                <td>يجعل الملاحظة قابلة للعد والقياس (4 مرات) وتحديد هدف التعديل بدقة.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="result-card" onclick="openCardModal('obs_stubborn')">
+                        <div class="card-num"><span class="badge-interactive badge-avoid">حكم: «عنيد»</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">تفكيك وصف "عنيد"</h4>
+                        <div class="card-purpose">استبدال العناد بوصف الاستجابة الحركية والزمنية للتعليمات.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
+                    </div>
+
+                    <div class="result-card" onclick="openCardModal('obs_bad')">
+                        <div class="card-num"><span class="badge-interactive badge-avoid">حكم: «سيئ ومشاغب»</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">تفكيك وصف "مشاغب"</h4>
+                        <div class="card-purpose">عزل الفعل الجسدي المشاهد بالعين عن الحكم الأخلاقي.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
+                    </div>
+
+                    <div class="result-card" onclick="openCardModal('obs_disrespect')">
+                        <div class="card-num"><span class="badge-interactive badge-avoid">حكم: «غير محترم»</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">تفكيك "غير محترم"</h4>
+                        <div class="card-purpose">تحويل الإهانة الشخصية إلى تكرار للمقاطعة أو ارتفاع في نبرة الصوت.
+                        </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
+                    </div>
                 </div>
             </section>
 
-            <!-- الفصل 3: منظومة PBIS التربوية -->
+            <!-- الفصل 3: مستويات PBIS التفاعلية -->
             <section class="section-card" id="pbis">
                 <div class="section-header">
                     <div class="section-num">03</div>
                     <div>
-                        <h2 class="section-title">منظومة الدعم متعددة المستويات (PBIS)</h2>
-                        <div class="section-subtitle">الدعم السلوكي الإيجابي متدرج التدخلات</div>
+                        <h2 class="section-title">منظومة الدعم متعددة المستويات (PBIS Interactive)</h2>
+                        <div class="section-subtitle">اضغط على أي مستوى لمعاينة خطته التشغيلية ودراسة حالة حية</div>
                     </div>
                 </div>
 
-                <p>
-                    تعتمد المدرسة الحديثة إطار التدخلات السلوكية الإيجابية متعددة المستويات (Positive Behavioral Interventions and Supports)، والذي يقسم الدعم إلى ثلاثة مستويات متكاملة:
-                </p>
-
                 <div class="cards-grid">
-                    <div class="result-card">
-                        <div class="card-num" style="color: var(--success-green);">Tier 1 — الوقاية العامة (للجميع)</div>
+                    <div class="result-card" onclick="openCardModal('tier1')">
+                        <div class="card-num" style="color: var(--success-green);">
+                            <span>Tier 1 — الوقاية العامة</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
                         <h4 class="card-title">المستوى الأول: البيئة الصفية الشاملة</h4>
                         <div class="card-purpose">
-                            تطبيق روتين واضح، بناء توقعات إيجابية معلنة (3–5 قواعد)، توفير فرص استجابة مستمرة، والتعزيز المباشر للسلوك الإيجابي لكافة الطلاب بنسبة 80-90%.
+                            تطبيق روتين واضح، بناء توقعات إيجابية معلنة (3–5 قواعد)، وتوفير فرص استجابة مستمرة.
                         </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لمعاينة الغاية
+                            والمثال الحي</div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num" style="color: var(--accent-cyan);">Tier 2 — التدخل الموجه (للمجموعات)</div>
+                    <div class="result-card" onclick="openCardModal('tier2')">
+                        <div class="card-num" style="color: var(--accent-cyan);">
+                            <span>Tier 2 — التدخل الموجه</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
                         <h4 class="card-title">المستوى الثاني: الدعم المركز والمبكر</h4>
                         <div class="card-purpose">
-                            تدخلات إضافية للطلاب الذين تظهر لديهم صعوبات متكررة، مثل: تدريب المهارات الاجتماعية، نظام المراجعة الصباحية (Check-in / Check-out)، وتيسيرات تشتت الانتباه.
+                            تدخلات إضافية للطلاب ذوي الصعوبات المتكررة بنظام Check-in/Check-out.
                         </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لمعاينة الغاية
+                            والمثال الحي</div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num" style="color: var(--danger-red);">Tier 3 — الدعم المكثف (الفردي)</div>
+                    <div class="result-card" onclick="openCardModal('tier3')">
+                        <div class="card-num" style="color: var(--danger-red);">
+                            <span>Tier 3 — الدعم المكثف</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
                         <h4 class="card-title">المستوى الثالث: التقييم التخصصي الفردي</h4>
                         <div class="card-purpose">
-                            خطة دعم سلوكي فردية يقودها فريق متعدد التخصصات (أخصائي، مرشد، إدارة، أسرة) مبنية على بيانات منظمة وتقييم وظيفي شامل ومعتمد رسمياً.
+                            خطة دعم سلوكي فردية يقودها فريق متعدد التخصصات مبنية على تقييم FBA.
                         </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لمعاينة الغاية
+                            والمثال الحي</div>
                     </div>
                 </div>
             </section>
 
-            <!-- الفصل 4: مسار الاستخدام (5 خطوات) -->
+            <!-- الفصل 4: مسار الاستخدام (5 خطوات تفاعلية) -->
             <section class="section-card" id="steps">
                 <div class="section-header">
                     <div class="section-num">04</div>
                     <div>
                         <h2 class="section-title">مسار الاستخدام العملي (رحلة الـ 5 خطوات)</h2>
-                        <div class="section-subtitle">التسلسل المنهجي المنظم من لحظة الرصد إلى اتخاذ الإجراء</div>
+                        <div class="section-subtitle">انقر على أي خطوة للاطلاع على الهدف، الأسئلة، وطريقة التنفيذ</div>
                     </div>
                 </div>
 
                 <div class="cards-grid">
-                    <div class="result-card">
-                        <div class="card-num">الخطوة 1</div>
+                    <div class="result-card" onclick="openCardModal('step1')">
+                        <div class="card-num"><span>الخطوة 1</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">تحديد دور المستخدم</h4>
-                        <div class="card-purpose">
-                            (معلم داخل الصف / أخصائي نفسي واجتماعي / إدارة مدرسية / مرشد طلابي). تحديد الدور يحدد زاوية التدخل دون تغيير معايير الأمان.
+                        <div class="card-purpose">(معلم / أخصائي / إدارة / مرشد). زاوية التدخل المهني.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح تفاصيل الخطوة
                         </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">الخطوة 2</div>
+                    <div class="result-card" onclick="openCardModal('step2')">
+                        <div class="card-num"><span>الخطوة 2</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">المرحلة الدراسية</h4>
-                        <div class="card-purpose">
-                            (ابتدائي / إعدادي-متوسط / ثانوي). لوضع السلوك ضمن سياقه النمائي دون إصدار توقعات مسبقة جائرة.
+                        <div class="card-purpose">(ابتدائي / إعدادي / ثانوي). وضع السلوك في سياقه النمائي.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح تفاصيل الخطوة
                         </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">الخطوة 3</div>
+                    <div class="result-card" onclick="openCardModal('card2')">
+                        <div class="card-num"><span>الخطوة 3</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">وصف السلوك الملحوظ</h4>
-                        <div class="card-purpose">
-                            ماذا رأيت أو سمعت تحديداً؟ صياغة وقائع مجردة من الانطباعات والصفات الذاتية.
+                        <div class="card-purpose">ماذا رأيت أو سمعت تحديداً؟ تصفية الانطباعات.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح تفاصيل الخطوة
                         </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">الخطوة 4</div>
+                    <div class="result-card" onclick="openCardModal('card3')">
+                        <div class="card-num"><span>الخطوة 4</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">معلومات السياق (ABC)</h4>
-                        <div class="card-purpose">
-                            ما حدث قبل السلوك مباشرة، وما حدث بعده، وتكراره، ومدته، وأثره على بيئة التعلم.
+                        <div class="card-purpose">ما قبل السلوك وما بعده وتكراره ومدته بدقة.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح تفاصيل الخطوة
                         </div>
                     </div>
-                    <div class="result-card" style="border-color: var(--danger-red);">
-                        <div class="card-num" style="color: var(--danger-red);">الخطوة 5 (الحاسمة)</div>
+                    <div class="result-card" style="border-color: var(--danger-red);"
+                        onclick="openCardModal('safetyModal')">
+                        <div class="card-num" style="color: var(--danger-red);"><span>الخطوة 5</span><i
+                                class="fa-solid fa-triangle-exclamation"></i></div>
                         <h4 class="card-title">فحص السلامة الإلزامي</h4>
-                        <div class="card-purpose">
-                            الإجابة عن 5 أسئلة حرجة. ظهور أي إشارة خطر يوقف مسار التحليل فوراً ويُفعّل بروتوكول الطوارئ.
-                        </div>
+                        <div class="card-purpose">الإجابة عن 5 أسئلة حرجة وتفعيل بروتوكول الطوارئ.</div>
+                        <div class="card-click-hint" style="color: var(--danger-red);"><i
+                                class="fa-solid fa-hand-pointer"></i> اضغط لفتح بوابة الأمان</div>
                     </div>
                 </div>
             </section>
 
-            <!-- الفصل 5: نموذج ABC+ لفهم السياق -->
+            <!-- الفصل 5: مختبر ABC+ التفاعلي (NEW & FULLY INTERACTIVE) -->
             <section class="section-card" id="abc">
                 <div class="section-header">
                     <div class="section-num">05</div>
                     <div>
-                        <h2 class="section-title">نموذج ABC+ لفهم السياق السلوكي</h2>
-                        <div class="section-subtitle">إطار وصفي تحليلي لترتيب ما قبل السلوك وأثناءه وما بعده</div>
+                        <h2 class="section-title">مختبر ABC+ التحليلي التفاعلي</h2>
+                        <div class="section-subtitle">اضغط على أي ركن من أركان النموذج الأربعة لفحص الغاية وسؤالها
+                            والمثال الميداني</div>
                     </div>
                 </div>
 
-                <p>
-                    لا يحدث السلوك في فراغ، بل هو استجابة لمثيرات بيئية تسبقه، وتثبته أو تُضعفه عواقب تلحقه. نموذج <strong>ABC+</strong> هو إطار وصفي لتنظيم الوقائع دون ادعاء حتمية السببية أو إطلاق تشخيص:
-                </p>
+                <div class="cards-grid">
+                    <div class="result-card" onclick="openCardModal('abc_a')">
+                        <div class="card-num" style="color: var(--accent-gold);"><span>A — ما قبل السلوك</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">Antecedents (السوابق والمثيرات)</h4>
+                        <div class="card-purpose">المثير أو نوع المهمة أو الانتقال الصفي الذي سبق الواقعة بـ 30 ثانية.
+                        </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
+                    </div>
 
-                <div class="table-responsive">
-                    <table class="custom-table">
-                        <thead>
-                            <tr>
-                                <th>رمز العنصر</th>
-                                <th>الاسم الدلالي</th>
-                                <th>المعنى الإجرائي</th>
-                                <th>السؤال العملي الذي نطرحه</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong style="color: var(--accent-gold);">A</strong></td>
-                                <td>ما قبل السلوك (Antecedents)</td>
-                                <td>المثير، أو نوع المهمة، أو الطلب، أو الانتقال الصفي الذي سبق السلوك مباشرة.</td>
-                                <td>ماذا كان يجري في الفصل قبل حدوث الموقف مباشرة؟</td>
-                            </tr>
-                            <tr>
-                                <td><strong style="color: var(--accent-cyan);">B</strong></td>
-                                <td>السلوك الملاحظ (Behavior)</td>
-                                <td>الفعل الحركي أو القول اللفظي المحدد القابل للرؤية بالعين أو السماع بالأذن.</td>
-                                <td>ماذا فعل أو قال الطالب تحديداً دون زيادة أو نقصان؟</td>
-                            </tr>
-                            <tr>
-                                <td><strong style="color: var(--success-green);">C</strong></td>
-                                <td>ما بعد السلوك (Consequences)</td>
-                                <td>رد فعل المحيطين (المعلم، الأقران) أو النتيجة المباشرة التي أعقبت السلوك في البيئة.</td>
-                                <td>ما الذي حدث في الغرفة مباشرة بعد صدور هذا الفعل؟</td>
-                            </tr>
-                            <tr>
-                                <td><strong style="color: #c084fc);">F</strong></td>
-                                <td>الفرضية الوظيفية (Function)</td>
-                                <td>فرضية مؤقتة عن الغرض المحتمل: (لفت انتباه، تجنب مهمة شاقة، حاجة حسية أو حركية).</td>
-                                <td>ما الوظيفة المؤقتة التي يحتمل أن السلوك يحققها للطالب؟</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="result-card" onclick="openCardModal('abc_b')">
+                        <div class="card-num" style="color: var(--accent-cyan);"><span>B — السلوك المحدد</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">Behavior (الفعل الحركي/اللفظي)</h4>
+                        <div class="card-purpose">الفعل أو القول المرئي والمسموع بدقة دون تخمين النوايا.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
+                    </div>
+
+                    <div class="result-card" onclick="openCardModal('abc_c')">
+                        <div class="card-num" style="color: var(--success-green);"><span>C — ما بعد السلوك</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">Consequences (اللواحق والنتائج)</h4>
+                        <div class="card-purpose">رد فعل المحيطين وما حدث في الغرفة مباشرة وثبت السلوك.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
+                    </div>
+
+                    <div class="result-card" onclick="openCardModal('abc_f')">
+                        <div class="card-num" style="color: #c084fc;"><span>F — الفرضية الوظيفية</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">Function (غرض ووظيفة السلوك)</h4>
+                        <div class="card-purpose">فرضية مؤقتة: هل السلوك للحصول على انتباه، أم تجنب مهمة، أم حاجة حسية؟
+                        </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
+                    </div>
                 </div>
             </section>
 
-            <!-- الفصل 6: فحص السلامة ومسار التوقف الإلزامي -->
+            <!-- الفصل 6: محاكي بوابة السلامة -->
             <section class="section-card" id="safety">
                 <div class="section-header">
                     <div class="section-num">06</div>
                     <div>
                         <h2 class="section-title">فحص السلامة ومسار التوقف الإلزامي (Safety Gate)</h2>
-                        <div class="section-subtitle">عند وجود أي مؤشر خطر، تكون الأولوية المطلقة للحماية وليس للتحليل</div>
+                        <div class="section-subtitle">اضغط على أي مؤشر لتفقد الإجراءات القانونية والميدانية المتبعة
+                            فوراً</div>
                     </div>
                 </div>
 
                 <div class="safety-gate-box">
                     <div class="safety-gate-header">
                         <i class="fa-solid fa-triangle-exclamation"></i>
-                        <span>الأسئلة الخمسة لفحص السلامة الفوري:</span>
+                        <span>الأسئلة الخمسة لفحص السلامة الفوري (انقر على أي سؤال لفتح الإجراء):</span>
                     </div>
                     <ul class="safety-checklist">
-                        <li><i class="fa-solid fa-circle-exclamation"></i> 1. هل يوجد حديث أو تلميح عن إيذاء النفس أو الانتحار أو الموت؟</li>
-                        <li><i class="fa-solid fa-circle-exclamation"></i> 2. هل يوجد تهديد جدي وصريح بإيذاء جسدي لشخص آخر؟</li>
-                        <li><i class="fa-solid fa-circle-exclamation"></i> 3. هل توجد حيازة لسلاح أو أداة حادة أو مادة شديدة الخطورة؟</li>
-                        <li><i class="fa-solid fa-circle-exclamation"></i> 4. هل يوجد اشتباه أو إفصاح عن إساءة أو اعتداء أو استغلال للطفل؟</li>
-                        <li><i class="fa-solid fa-circle-exclamation"></i> 5. هل توجد إصابة جسدية بليغة أو حالة ذعر وخطر عاجل لا يمكن احتواؤه صفياً؟</li>
+                        <li onclick="openCardModal('safety1')">
+                            <span><i class="fa-solid fa-circle-exclamation text-danger-red"></i> 1. هل يوجد حديث أو
+                                تلميح عن إيذاء النفس أو الانتحار أو الموت؟</span>
+                            <span class="card-click-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> إجراء
+                                الطوارئ</span>
+                        </li>
+                        <li onclick="openCardModal('safety2')">
+                            <span><i class="fa-solid fa-circle-exclamation text-danger-red"></i> 2. هل يوجد تهديد جدي
+                                وصريح بإيذاء جسدي لشخص آخر؟</span>
+                            <span class="card-click-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> إجراء
+                                الطوارئ</span>
+                        </li>
+                        <li onclick="openCardModal('safety3')">
+                            <span><i class="fa-solid fa-circle-exclamation text-danger-red"></i> 3. هل توجد حيازة لسلاح
+                                أو أداة حادة أو مادة شديدة الخطورة؟</span>
+                            <span class="card-click-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> إجراء
+                                الطوارئ</span>
+                        </li>
+                        <li onclick="openCardModal('safety4')">
+                            <span><i class="fa-solid fa-circle-exclamation text-danger-red"></i> 4. هل يوجد اشتباه أو
+                                إفصاح عن إساءة أو اعتداء أو استغلال للطفل؟</span>
+                            <span class="card-click-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> إجراء
+                                الطوارئ</span>
+                        </li>
+                        <li onclick="openCardModal('safety5')">
+                            <span><i class="fa-solid fa-circle-exclamation text-danger-red"></i> 5. هل توجد إصابة جسدية
+                                بليغة أو حالة ذعر وخطر عاجل لا يمكن احتواؤه؟</span>
+                            <span class="card-click-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> إجراء
+                                الطوارئ</span>
+                        </li>
                     </ul>
-                    
-                    <div class="safety-alert-msg">
+
+                    <div class="safety-alert-msg" onclick="openCardModal('safetyModal')">
                         <i class="fa-solid fa-ban"></i> إذا كانت الإجابة (نعم) على أي من هذه الأسئلة:<br>
-                        «يتوقف المسار التربوي العادي فوراً! الأولوية الآن لحماية الأشخاص واحتواء الخطر وفق بروتوكول الطوارئ المعتمد في مدرستك وبلدك، والتواصل فوراً مع الجهات الرسمية وفريق الحماية المؤهل».
+                        «يتوقف المسار العادي فوراً! انقر هنا لمعاينة بروتوكول الحماية والطوارئ المعتمد».
                     </div>
                 </div>
             </section>
 
-            <!-- الفصل 7: لغة المعلم: حد ودعم واحترام -->
+            <!-- الفصل 7: استوديو لغة المعلم التفاعلي (NEW & FULLY INTERACTIVE) -->
             <section class="section-card" id="teacher-language">
                 <div class="section-header">
                     <div class="section-num">07</div>
                     <div>
-                        <h2 class="section-title">لغة المعلم: حد ودعم واحترام</h2>
-                        <div class="section-subtitle">جملة قصيرة ومحددة أفضل من محاضرة وعظية طويلة وقت التصعيد</div>
+                        <h2 class="section-title">استوديو لغة المعلم: حد ودعم واحترام</h2>
+                        <div class="section-subtitle">انقر على أي موقف صفي لمعاينة الجملة النموذجية والغاية والهدف من
+                            صياغتها</div>
                     </div>
                 </div>
 
-                <div class="callout" style="border-right-color: var(--accent-gold);">
-                    <i class="fa-solid fa-puzzle-piece callout-icon"></i>
-                    <div class="callout-text">
-                        <strong>معادلة الجملة التربوية المتوازنة:</strong><br>
-                        [ملاحظة محايدة للفعل] + [الحد الصفي المطلوب بدقة] + [خيار دعم أو مساعدة] + [نقطة متابعة زمنية محددة].
+                <div class="cards-grid">
+                    <div class="result-card" onclick="openCardModal('tl_seat')">
+                        <div class="card-num"><span style="color: var(--accent-cyan);">موقف صفي</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">مغادرة المقعد المتكررة</h4>
+                        <div class="card-purpose">صياغة تجمع بين وضوح البقاء في المقعد وتقديم خيار المساعدة.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح نص العبارة
+                            والغاية والمثال</div>
+                    </div>
+
+                    <div class="result-card" onclick="openCardModal('tl_interrupt')">
+                        <div class="card-num"><span style="color: var(--accent-cyan);">موقف صفي</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">مقاطعة الزملاء ورفع الصوت</h4>
+                        <div class="card-purpose">حفظ حق الزميل في الحديث مع حجز دور رسمي للطالب لاحقاً.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح نص العبارة
+                            والغاية والمثال</div>
+                    </div>
+
+                    <div class="result-card" onclick="openCardModal('tl_refuse')">
+                        <div class="card-num"><span style="color: var(--accent-cyan);">موقف صفي</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">رفض بدء ورقة العمل أو المهمة</h4>
+                        <div class="card-purpose">تقديم خيار البدء المنفرد أو المشترك مع حتمية البداية دون جدال.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح نص العبارة
+                            والغاية والمثال</div>
+                    </div>
+
+                    <div class="result-card" onclick="openCardModal('tl_person')">
+                        <div class="card-num"><span style="color: var(--accent-cyan);">موقف صفي</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">فصل الشخص عن السلوك</h4>
+                        <div class="card-purpose">إرسال رسالة أمان: «أنا أضع حداً للفعل، ولست أصدر حكماً على قيمتك».
+                        </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح نص العبارة
+                            والغاية والمثال</div>
                     </div>
                 </div>
 
-                <!-- قالب ماذا أفعل الآن -->
-                <div class="worksheet-box" style="border-color: var(--accent-cyan);">
+                <!-- قالب ماذا أفعل الآن التفاعلي -->
+                <div class="worksheet-box" style="border-color: var(--accent-cyan); cursor: pointer;"
+                    onclick="openCardModal('what_to_do_now')">
                     <div class="worksheet-title">
-                        <span><i class="fa-solid fa-stopwatch text-accent-cyan"></i> قالب التدخل اللحظي: «ماذا أفعل الآن؟» في مواقف التصعيد</span>
+                        <span><i class="fa-solid fa-stopwatch text-accent-cyan"></i> قالب التدخل اللحظي التفاعلي: «ماذا
+                            أفعل الآن؟» في مواقف التصعيد</span>
+                        <span class="card-click-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> اضغط لفتح
+                            السيناريو المتكامل</span>
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
                         <div style="background: var(--bg-card); padding: 12px; border-radius: 8px;">
-                            <strong style="color: var(--accent-gold); display: block; margin-bottom: 5px;">1. الآن:</strong>
-                            قف بهدوء، اخفض نبرة صوتك، تراجع خطوة للوراء، وتجنب التحديق الهجومي.
+                            <strong style="color: var(--accent-gold); display: block; margin-bottom: 5px;">1.
+                                الآن:</strong>
+                            قف بهدوء، اخفض نبرة صوتك، تراجع خطوة للوراء، وتجنب التحديق.
                         </div>
                         <div style="background: var(--bg-card); padding: 12px; border-radius: 8px;">
-                            <strong style="color: var(--accent-cyan); display: block; margin-bottom: 5px;">2. قل:</strong>
+                            <strong style="color: var(--accent-cyan); display: block; margin-bottom: 5px;">2.
+                                قل:</strong>
                             «أنا هنا لمساعدتك. نحتاج دقيقة هدوء، ثم نقرر معاً الخطوة المناسبة».
                         </div>
                         <div style="background: var(--bg-card); padding: 12px; border-radius: 8px;">
-                            <strong style="color: var(--danger-red); display: block; margin-bottom: 5px;">3. لا تفعل:</strong>
-                            لا تجادل أمام الطلاب، لا تستعرض سلطتك، ولا تسخر أو تطلق تهديدات عاجزة.
+                            <strong style="color: var(--danger-red); display: block; margin-bottom: 5px;">3. لا
+                                تفعل:</strong>
+                            لا تجادل أمام الطلاب، لا تستعرض سلطتك، ولا تسخر أو تهدد.
                         </div>
                         <div style="background: var(--bg-card); padding: 12px; border-radius: 8px;">
-                            <strong style="color: var(--success-green); display: block; margin-bottom: 5px;">4. بعد الحصة:</strong>
-                            اجلس مع الطالب على انفراد لدقيقة واحدة: راجع ما حدث بهدوء، وأعد بناء العلاقة.
+                            <strong style="color: var(--success-green); display: block; margin-bottom: 5px;">4. بعد
+                                الحصة:</strong>
+                            اجلس مع الطالب انفرادياً لدقيقة: راجع ما حدث بهدوء، وأعد بناء العلاقة.
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- الفصل 8: مسار دعم فرط الحركة وتشتت الانتباه (ADHD) والتنظيم التنفيذي -->
+            <!-- الفصل 8: مسار دعم فرط الحركة وتشتت الانتباه (ADHD) التفاعلي -->
             <section class="section-card adhd-card page-break-before" id="adhd-track">
                 <div class="section-header">
                     <div class="section-num section-num-adhd">08</div>
                     <div>
                         <h2 class="section-title" style="color: #f3e8ff;">
-                            <i class="fa-solid fa-brain" style="color: var(--purple-adhd);"></i> مسار دعم فرط الحركة وتشتت الانتباه (ADHD)
+                            <i class="fa-solid fa-brain" style="color: var(--purple-adhd);"></i> مسار دعم فرط الحركة
+                            وتشتت الانتباه (ADHD) التفاعلي
                         </h2>
-                        <div class="section-subtitle" style="color: #d8b4fe;">التيسيرات البيئية، التفريغ الحركي الهادف، وإدارة الوظائف التنفيذية دون وصم</div>
+                        <div class="section-subtitle" style="color: #d8b4fe;">انقر على أي تيسير صفي لتفقد الغاية وسؤالها
+                            المركزي ومثالها الميداني</div>
                     </div>
                 </div>
 
-                <p>
-                    يعاني طلاب صعوبات التنظيم الذاتي وفرط الحركة وتشتت الانتباه من تحديات في <strong>الوظائف التنفيذية (Executive Functions)</strong> مثل: تنظيم الوقت، كبح الاندفاع، والبدء في المهام. لا ينبغي للمعلم أن يمارس دور الطبيب لتشخيص ADHD، ولكن <strong>واجبه التربوي يقتضي هندسة البيئة الصفية</strong> لتلبية الاحتياجات الحسية والحركية وتمكين الطالب من التعلم.
-                </p>
-
-                <div class="callout callout-adhd">
-                    <i class="fa-solid fa-atom callout-icon" style="color: var(--purple-adhd);"></i>
-                    <div class="callout-text">
-                        <strong>القاعدة الذهبية لمسار ADHD:</strong><br>
-                        «الحركة عند طالب فرط الحركة ليست قلة احترام أو عناداً، بل هي آلية دماغية لا إرادية لتحفيز اليقظة والتركيز. لا تقمع الحركة تماماً، بل نظّمها ووجّهها بهدوء».
-                    </div>
-                </div>
-
-                <!-- ركائز الدعم الأربع لـ ADHD -->
-                <h3 style="font-family: var(--font-heading); color: var(--accent-gold); margin: 1.5rem 0 0.8rem;">
-                    الركائز الأربع للتيسيرات الصفية (Tier 1 & Tier 2)
-                </h3>
                 <div class="cards-grid">
-                    <div class="result-card card-adhd">
-                        <div class="card-num" style="color: #d8b4fe;">1. هندسة المكان (Seating)</div>
+                    <div class="result-card card-adhd" onclick="openCardModal('adhd1')">
+                        <div class="card-num" style="color: #d8b4fe;">
+                            <span>1. هندسة المكان (Seating)</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
                         <h4 class="card-title">المقعد الاستراتيجي الهادئ</h4>
-                        <div class="card-purpose">
-                            إجلاس الطالب في الصفوف الأولى بالقرب من المعلم لسهولة التواصل البصري والإشارة الخفية، وبعيداً عن الأبواب والنوافذ ومصادر التشتيت، وبجوار زميل متعاون يوفر قدوة هادئة.
+                        <div class="card-purpose">إجلاس الطالب بالقرب من المعلم لسهولة التواصل البصري والإشارة الخفية.
                         </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
                     </div>
-                    <div class="result-card card-adhd">
-                        <div class="card-num" style="color: #d8b4fe;">2. تجزئة المهام (Chunking)</div>
+                    <div class="result-card card-adhd" onclick="openCardModal('adhd2')">
+                        <div class="card-num" style="color: #d8b4fe;">
+                            <span>2. تجزئة المهام (Chunking)</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
                         <h4 class="card-title">علاج «عمى الوقت»</h4>
-                        <div class="card-purpose">
-                            تقسيم ورقة العمل الطويلة إلى أجزاء صغيرة (3 أسئلة في كل جزء). استخدام مؤقتات بصرية (Visual Timers) أو ساعات رملية تمكن الطالب من "رؤية" الوقت المتبقي.
-                        </div>
+                        <div class="card-purpose">تقسيم ورقة العمل الطويلة إلى أجزاء صغيرة واستخدام مؤقتات بصرية.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
                     </div>
-                    <div class="result-card card-adhd">
-                        <div class="card-num" style="color: #d8b4fe;">3. تفريغ حركي هادف (Movement)</div>
+                    <div class="result-card card-adhd" onclick="openCardModal('adhd3')">
+                        <div class="card-num" style="color: #d8b4fe;">
+                            <span>3. تفريغ حركي هادف</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
                         <h4 class="card-title">الحركة المصرح بها والمبرمجة</h4>
-                        <div class="card-purpose">
-                            تكليف الطالب بمهام حركية إيجابية: (مسح السبورة، توزيع الكراسات، إحضار أدوات)، أو وضع شريط مطاطي مقاوم حول أرجل مقعده لتحريك قدميه بهدوء دون إزعاج.
+                        <div class="card-purpose">تكليف الطالب بمهام حركية إيجابية ووضع أربطة مطاطية حول أرجل مقعده.
                         </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
                     </div>
-                    <div class="result-card card-adhd">
-                        <div class="card-num" style="color: #d8b4fe;">4. التواصل الخفي (Secret Signals)</div>
+                    <div class="result-card card-adhd" onclick="openCardModal('adhd4')">
+                        <div class="card-num" style="color: #d8b4fe;">
+                            <span>4. التواصل الخفي (Signals)</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
                         <h4 class="card-title">الاتفاق المسبق بدون إحراج</h4>
-                        <div class="card-purpose">
-                            الاتفاق على إشارة يد سرية بين المعلم والطالب (مثل لمس حافة المكتب) لإنذاره بتشتت ذهنه أو حاجته للتوقف، وتجنب توبيخه أو لفت أنظار الفصل إليه.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- جدول التدخلات السلوكية لـ ADHD -->
-                <h3 style="font-family: var(--font-heading); color: var(--accent-gold); margin: 1.8rem 0 0.8rem;">
-                    جدول التدخلات الميدانية لمؤشرات فرط الحركة والاندفاعية
-                </h3>
-                <div class="table-responsive">
-                    <table class="custom-table">
-                        <thead>
-                            <tr>
-                                <th class="th-adhd">السلوك الملحوظ (العرض الصفي)</th>
-                                <th class="th-adhd">التفسير الوظيفي المحتمل</th>
-                                <th class="th-adhd">التيسير والتدخل التربوي الفوري</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>الاندفاع ومقاطعة الشرح بالإجابة قبل اكتمال السؤال</strong></td>
-                                <td>صعوبة في كبح الاستجابة (Poor Impulse Control) وخوف من نسيان الفكرة.</td>
-                                <td>توفير ورقة بيضاء صغيرة على مكتبه («ورقة التوقف») يكتب أو يرسم عليها إجابته فوراً، ثم ينتظر إشارته بالحديث.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>التململ المستمر وترك المقعد والتجول في الغرفة</strong></td>
-                                <td>حاجة جسدية ملحة لتنشيط الدورة الدموية والجهاز العصبي.</td>
-                                <td>السماح له بالوقوف بجوار مكتبه أثناء الاستماع، أو منحه استراحة حركة (Brain Break) لمدة 60 ثانية بعد إنجاز جزء من المهمة.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>التحديق بالفراغ وعدم البدء في الكتابة بعد 10 دقائق</strong></td>
-                                <td>صدمة من كثافة المهمة وعجز في المبادأة (Executive Dysfunction).</td>
-                                <td>الاقتراب الهادئ وتقديم «توجيه الخطوة الواحدة»: <em>«اقرأ السؤال الأول فقط الآن، وسأعود لك بعد دقيقة واحدة لنرى الإجابة»</em>.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>فقدان متكرر للأدوات المدرسية والكتب ونسيان التعليمات</strong></td>
-                                <td>ضعف في الذاكرة العاملة (Working Memory).</td>
-                                <td>قائمة مرئية مصورة ملصقة على طرف الطاولة تضم الأدوات المطلوبة لكل حصة، واستخدام ألوان مخصصة لكل مادة.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- ورقة عمل تيسيرات ADHD -->
-                <div class="worksheet-box adhd-box">
-                    <div class="worksheet-title">
-                        <span style="color: #e9d5ff;"><i class="fa-solid fa-clipboard-list text-accent-cyan"></i> بطاقة تيسيرات صفية لحالات صعوبات الانتباه والحركة (ADHD Accommodation Card)</span>
-                        <span class="badge-adhd">أداة ميدانية</span>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div class="form-group">
-                            <label class="form-label">الاسم المستعار للطالب:</label>
-                            <input type="text" class="form-control" placeholder="طالب (م) - الصف الرابع الابتدائي">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">موقع المقعد المعتمد:</label>
-                            <input type="text" class="form-control" placeholder="الصف الأول - يمين المعلم - بعيداً عن النافذة">
-                        </div>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div class="form-group">
-                            <label class="form-label">التفريغ الحركي المبرمج المتفق عليه:</label>
-                            <input type="text" class="form-control" placeholder="موزع أوراق النشاط + فترات وقوف لدقيقة كل 15 دقيقة">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">الأداة البصرية لتنظيم الوقت والمهام:</label>
-                            <input type="text" class="form-control" placeholder="مؤقت بصري ملون 10 دقائق + بطاقة فحص إنجاز">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">الإشارة السرية المتفق عليها لإعادة التركيز:</label>
-                        <input type="text" class="form-control" placeholder="نقر خفيف للمعلم على حافة المكتب عند المرور بجانبه">
+                        <div class="card-purpose">الاتفاق على إشارة يد سرية بين المعلم والطالب لإنذاره بتشتت ذهنه.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
                     </div>
                 </div>
             </section>
 
-            <!-- الفصل 9: بطاقات النتيجة الـ 11 -->
+            <!-- الفصل 9: بطاقات النتيجة الـ 11 التفاعلية -->
             <section class="section-card" id="cards">
                 <div class="section-header">
                     <div class="section-num">09</div>
                     <div>
-                        <h2 class="section-title">بطاقات النتيجة الأولية الـ 11</h2>
-                        <div class="section-subtitle">إطار التحليل المتكامل عند اجتياز فحص السلامة بنجاح</div>
+                        <h2 class="section-title">بطاقات النتيجة الأولية الـ 11 (انقر لفتح أي بطاقة)</h2>
+                        <div class="section-subtitle">عرض الغاية والهدف والسؤال المركزي والنموذج التطبيقي لكل بطاقة
+                        </div>
                     </div>
                 </div>
 
                 <div class="cards-grid">
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 01</div>
+                    <div class="result-card" onclick="openCardModal('card1')">
+                        <div class="card-num"><span>بطاقة 01</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">ملخص الموقف</h4>
                         <div class="card-purpose">فقرة مركزة تجمع الدور والمرحلة والسلوك والأثر.</div>
                         <div class="card-question">هل يفهم القارئ الجديد الواقعة في أقل من دقيقة؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 02</div>
+
+                    <div class="result-card" onclick="openCardModal('card2')">
+                        <div class="card-num"><span>بطاقة 02</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">السلوك القابل للملاحظة</h4>
                         <div class="card-purpose">تنقية الوصف تماماً من النوايا والأحكام العامة.</div>
                         <div class="card-question">ما الفعل أو القول المشاهد بدقة؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 03</div>
+
+                    <div class="result-card" onclick="openCardModal('card3')">
+                        <div class="card-num"><span>بطاقة 03</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">سياق ABC</h4>
                         <div class="card-purpose">ترتيب ما قبل السلوك، وفعله، وما أعقبه في البيئة.</div>
                         <div class="card-question">ما التسلسل الزمني المؤكد للواقعة؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 04</div>
+
+                    <div class="result-card" onclick="openCardModal('card4')">
+                        <div class="card-num"><span>بطاقة 04</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">ما نعرفه</h4>
                         <div class="card-purpose">حصر الحقائق الثابتة والبيانات الملموسة المتاحة.</div>
                         <div class="card-question">ما المعلومات التي نثق في حدوثها يقيناً؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 05</div>
+
+                    <div class="result-card" onclick="openCardModal('card5')">
+                        <div class="card-num"><span>بطاقة 05</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">ما نحتاج معرفته</h4>
                         <div class="card-purpose">تحديد فجوات المعلومات بدلاً من ملئها بالتخمين.</div>
                         <div class="card-question">ما السؤال الذي يغير فهمنا للموقف إذا عرفناه؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 06</div>
+
+                    <div class="result-card" onclick="openCardModal('card6')">
+                        <div class="card-num"><span>بطاقة 06</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">الحد المناسب</h4>
                         <div class="card-purpose">تحديد التوقع الصفي الحازم لحماية التعلم والسلامة.</div>
                         <div class="card-question">ما السلوك المطلوب إجراؤه في هذه اللحظة؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 07</div>
+
+                    <div class="result-card" onclick="openCardModal('card7')">
+                        <div class="card-num"><span>بطاقة 07</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">الدعم الممكن</h4>
                         <div class="card-purpose">اقتراح تيسيرات تربوية ذكية تساعد على النجاح.</div>
                         <div class="card-question">ما الذي يجعل إنجاز المطلوب أسهل دون كسر الحد؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 08</div>
+
+                    <div class="result-card" onclick="openCardModal('card8')">
+                        <div class="card-num"><span>بطاقة 08</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">السلوك البديل</h4>
                         <div class="card-purpose">فعل إيجابي مقبول وظيفياً يمكن نمذجته وممارسته.</div>
                         <div class="card-question">ماذا نريد من الطالب أن يفعل بدلاً من السلوك الحالي؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 09</div>
+
+                    <div class="result-card" onclick="openCardModal('card9')">
+                        <div class="card-num"><span>بطاقة 09</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">ماذا يقول المعلم؟</h4>
                         <div class="card-purpose">صياغة جملة قصيرة محايدة تجمع الوصف والحد والدعم.</div>
                         <div class="card-question">كيف نقول المطلوب باحترام وهدوء دون جدال؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 10</div>
+
+                    <div class="result-card" onclick="openCardModal('card10')">
+                        <div class="card-num"><span>بطاقة 10</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">ماذا نقيس؟</h4>
                         <div class="card-purpose">اختيار مؤشر بسيط وملموس (تكرار، مدة، بدء المهمة).</div>
                         <div class="card-question">ما الرقم أو العلامة التي ستدلنا على حدوث تحسن؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
-                    <div class="result-card">
-                        <div class="card-num">بطاقة 11</div>
+
+                    <div class="result-card" onclick="openCardModal('card11')">
+                        <div class="card-num"><span>بطاقة 11</span><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <h4 class="card-title">متى نراجع أو نحيل؟</h4>
                         <div class="card-purpose">تحديد موعد زمني لإعادة التقييم وشروط الإحالة.</div>
                         <div class="card-question">متى نراجع الأثر، ومتى نستدعي تدخل المختصين؟</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح البطاقة وتطبيقها
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- الفصل 10: دراسة حالة الطالب «ن» -->
+            <!-- الفصل 10: دراسة حالة الطالب «ن» التفاعلية -->
             <section class="section-card" id="case-study">
                 <div class="section-header">
                     <div class="section-num">10</div>
                     <div>
                         <h2 class="section-title">دراسة حالة تطبيقية متكاملة: الطالب «ن»</h2>
-                        <div class="section-subtitle">مثال افتراضي يجسد تشغيل مسار البطاقات الـ 11 دون تشخيص</div>
+                        <div class="section-subtitle">انقر على أي جزء من أجزاء خطة الطالب «ن» لمعاينة كواليس التحليل
+                        </div>
                     </div>
                 </div>
 
-                <div class="worksheet-box" style="border-color: var(--accent-cyan);">
+                <div class="worksheet-box" style="border-color: var(--accent-cyan); cursor: pointer;"
+                    onclick="openCardModal('case_student_n')">
                     <div class="worksheet-title">
-                        <span><i class="fa-solid fa-folder-open text-accent-cyan"></i> بيانات الحالة المدخلة (افتراضية - اسم مستعار)</span>
-                        <span style="font-size: 0.85rem; color: var(--text-muted);">الصف: الثاني الإعدادي | الدور: معلم</span>
+                        <span><i class="fa-solid fa-folder-open text-accent-cyan"></i> ملف الطالب «ن» (دراسة حالة
+                            معيارية متكاملة)</span>
+                        <span class="card-click-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> اضغط لفتح
+                            الملف الكامل</span>
                     </div>
                     <p style="font-size: 0.95rem; line-height: 1.8;">
-                        <strong>السلوك الملاحظ:</strong> أثناء نشاط فردي كتابي مدته 20 دقيقة، غادر الطالب «ن» مقعده 4 مرات، وتحدث بصوت مرتفع مرتين، فتوقف طالبان مجاوران عن متابعة حل ورقة العمل.<br>
-                        <strong>ما قبل السلوك (A):</strong> طلب المعلم بدء حل ورقة عمل مكثفة تضم 15 سؤالاً بعد شرح نظري جماعي.<br>
-                        <strong>ما بعد السلوك (C):</strong> كرر المعلم التنبيه اللفظي، واقترب من مقعد الطالب، واستأنف زملاؤه العمل ببطء.<br>
-                        <strong>فحص السلامة:</strong> (لا) على كافة الأسئلة الخمسة (لا خطر طارئ).
+                        <strong>السلوك الملاحظ:</strong> أثناء نشاط فردي كتابي مدته 20 دقيقة، غادر الطالب «ن» مقعده 4
+                        مرات، وتحدث بصوت مرتفع مرتين، فتوقف طالبان مجاوران عن متابعة ورقة العمل.<br>
+                        <strong>الحد والدعم المطبق:</strong> أُعلن الحد بالبقاء في المقعد بصوت منخفض، وقُدم الدعم بتجزئة
+                        ورقة العمل إلى 3 أسئلة فقط مع إعطائه دور موزع الأوراق لتفريغ طاقته الحركية.
                     </p>
-                </div>
-
-                <h3 style="font-family: var(--font-heading); color: var(--accent-gold); margin: 1.5rem 0 0.8rem;">المخرجات العملية للبطاقات في حالة الطالب «ن»:</h3>
-                <div class="table-responsive">
-                    <table class="custom-table">
-                        <thead>
-                            <tr>
-                                <th>البطاقة</th>
-                                <th>المخرج التربوي الإجرائي المقترح</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>1. ملخص الموقف</strong></td>
-                                <td>في حصة للمرحلة الإعدادية وأثناء نشاط فردي، غادر الطالب مقعده 4 مرات وتحدث بصوت مرتفع، مما أخر بدء مهمته وانتباه زميلين له.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>2. السلوك القابل للملاحظة</strong></td>
-                                <td>مغادرة المقعد 4 مرات، والحديث بصوت مرتفع مرتين خلال 20 دقيقة.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>3. سياق ABC</strong></td>
-                                <td><strong>قبل:</strong> بدء ورقة عمل من 15 سؤالاً. <strong>السلوك:</strong> ترك المقعد والتحدث. <strong>بعد:</strong> تكرار التوجيه واقتراب المعلم.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>4. الفرضية المؤقتة</strong></td>
-                                <td>قد يرتبط السلوك بالرغبة في تجنب مهمة كتابية تبدو طويلة أو لفت انتباه المعلم للدعم، أو صعوبة في الجلوس الطويل دون تفريغ حركي.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>5. الحد والدعم</strong></td>
-                                <td><strong>الحد:</strong> البقاء في المقعد بصوت هادئ. <strong>الدعم:</strong> تجزئة المهمة (حل أول 3 أسئلة فقط ثم مراجعتها) ومنحه دور موزع الأوراق.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>6. ماذا يقول المعلم؟</strong></td>
-                                <td>«رأيت أنك قمت من مقعدك 4 مرات. المطلوب الآن البقاء في مكانك وحل أول 3 أسئلة فقط. إذا احتجت مساعدة ارفع بطاقة المساعدة وسآتي إليك فوراً».</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </section>
 
-            <!-- الفصل 11: القياس والمراجعة والإحالة -->
+            <!-- الفصل 11: استوديو القياس والمتابعة التفاعلي -->
             <section class="section-card" id="monitoring">
                 <div class="section-header">
                     <div class="section-num">11</div>
                     <div>
-                        <h2 class="section-title">القياس والمراجعة واتخاذ قرار الإحالة</h2>
-                        <div class="section-subtitle">اختر مؤشراً بسيطاً وملموساً، وابتعد عن التقدير الانطباعي</div>
+                        <h2 class="section-title">استوديو القياس والمراجعة والإحالة</h2>
+                        <div class="section-subtitle">انقر على أي مؤشر لمعاينة طريقة حسابه الدقيقة وأدوات التسجيل الصفية
+                        </div>
                     </div>
                 </div>
 
-                <div class="table-responsive">
-                    <table class="custom-table">
-                        <thead>
-                            <tr>
-                                <th>نوع المؤشر</th>
-                                <th>مثال تطبيقي للقياس الصفي</th>
-                                <th>طريقة التسجيل المبسطة</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>التكرار (Frequency)</strong></td>
-                                <td>كم مرة غادر الطالب مقعده أثناء الحصة؟</td>
-                                <td>وضع علامة (/) في جدول الملاحظة لكل مرة حدوث.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>المدة (Duration)</strong></td>
-                                <td>إجمالي الدقائق المستغرقة خارج أداء المهمة التعليمية.</td>
-                                <td>استخدام ساعة إيقاف بسيطة لحساب دقائق الانقطاع.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>زمن البدء (Latency)</strong></td>
-                                <td>الزمن بالدقائق بين إصدار التعليمات وبدء الطالب كتابة أول إجابة.</td>
-                                <td>تسجيل الفارق الزمني (مثال: بدأ بعد 7 دقائق).</td>
-                            </tr>
-                            <tr>
-                                <td><strong>استخدام السلوك البديل</strong></td>
-                                <td>كم مرة استخدم الطالب بطاقة طلب المساعدة بدلاً من السلوك غير المرغوب؟</td>
-                                <td>عد مرات استخدام الأداة البديلة الإيجابية.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="cards-grid">
+                    <div class="result-card" onclick="openCardModal('metric_freq')">
+                        <div class="card-num"><span style="color: var(--accent-cyan);">مؤشر كمي</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">مؤشر التكرار (Frequency)</h4>
+                        <div class="card-purpose">عد المرات التي يقع فيها السلوك في الحصة أو اليوم الدراسي.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
+                    </div>
+
+                    <div class="result-card" onclick="openCardModal('metric_dur')">
+                        <div class="card-num"><span style="color: var(--accent-cyan);">مؤشر زمني</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">مؤشر المدة (Duration)</h4>
+                        <div class="card-purpose">إجمالي الدقائق المستغرقة خارج أداء المهمة التعليمية.</div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
+                    </div>
+
+                    <div class="result-card" onclick="openCardModal('metric_lat')">
+                        <div class="card-num"><span style="color: var(--accent-cyan);">مؤشر استجابة</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">زمن بدء المهمة (Latency)</h4>
+                        <div class="card-purpose">حساب الفارق الزمني بين إعطاء التعليمات وبدء الطالب كتابة أول كلمة.
+                        </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لفتح الغاية والمثال
+                            الحي</div>
+                    </div>
+
+                    <div class="result-card" onclick="openCardModal('metric_referral')">
+                        <div class="card-num" style="color: var(--danger-red);"><span>قرار مهني</span> <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                        <h4 class="card-title">ضوابط قرار الإحالة الرسمية</h4>
+                        <div class="card-purpose">متى نتوقف عن التدخل الصفي ونحيل الطالب للأخصائي أو الفريق المختص؟
+                        </div>
+                        <div class="card-click-hint"><i class="fa-solid fa-hand-pointer"></i> اضغط لمعاينة شروط الإحالة
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- الفصل 12: الخصوصية والأخلاقيات والترميز الآمن -->
-            <section class="section-card" id="privacy">
+            <!-- الفصل 12: مصمم النماذج التفاعلي (Interactive Worksheets & Generator) -->
+            <section class="section-card page-break-before" id="worksheets">
                 <div class="section-header">
                     <div class="section-num">12</div>
                     <div>
-                        <h2 class="section-title">ميثاق الخصوصية والأخلاقيات المهنية</h2>
-                        <div class="section-subtitle">اجمع أقل قدر لازم من البيانات، واحمِ هوية الطالب وكرامته دائماً</div>
+                        <h2 class="section-title">مصمم النماذج وأوراق العمل التفاعلي</h2>
+                        <div class="section-subtitle">اكتب بيانات حالتك واضغط «توليد وطباعة النموذج» لإنشاء تقرير فوري
+                        </div>
                     </div>
                 </div>
 
-                <div class="table-responsive">
-                    <table class="custom-table">
-                        <thead>
-                            <tr>
-                                <th>ما يُمنع تدوينه أو إدخاله نهائياً</th>
-                                <th>البديل الآمن المعتمد مهنياً</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>الاسم الثلاثي أو الكامل للطالب أو ولي أمره.</td>
-                                <td>اسم مستعار أو حرف رمزي (مثال: الطالب «أ» أو الطالب «ن»).</td>
-                            </tr>
-                            <tr>
-                                <td>رقم الهوية الوطنية، أو جواز السفر، أو رقم القيد المدرسي.</td>
-                                <td>رمز تعريفي داخلي مشفر لا يكشف هوية الشخص للغرباء.</td>
-                            </tr>
-                            <tr>
-                                <td>بيانات طبية سرية أو سجلات علاجية نفسية مفصلة.</td>
-                                <td>وصف السلوك الصفي الملاحظ المشاهد فقط دون تسمية تشخيصات.</td>
-                            </tr>
-                            <tr>
-                                <td>أسرار أسرية أو خلفيات خاصة لا شأن للموقف الصفي بها.</td>
-                                <td>المعلومة السياقية التربوية الضرورية فقط (مثل: تغير وقت النوم أو الانتقال).</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- الفصل 13: نماذج العمل القابلة للطباعة والتعبئة -->
-            <section class="section-card page-break-before" id="worksheets">
-                <div class="section-header">
-                    <div class="section-num">13</div>
-                    <div>
-                        <h2 class="section-title">الحقيبة الإجرائية: نماذج وأوراق عمل جاهزة</h2>
-                        <div class="section-subtitle">استمارات قابلة للتعبئة المباشرة والطباعة الورقية الفورية</div>
-                    </div>
-                </div>
-
-                <!-- استمارة إدخال الموقف -->
                 <div class="worksheet-box">
                     <div class="worksheet-title">
-                        <span><i class="fa-solid fa-file-signature text-accent-cyan"></i> نموذج (1): استمارة رصد وتوثيق الموقف السلوكي الميداني</span>
+                        <span><i class="fa-solid fa-file-pen text-accent-cyan"></i> نموذج رصد الموقف وتوليد بطاقة
+                            التحليل الصفي</span>
+                        <button class="btn-copy" onclick="generateInteractiveReport()"><i
+                                class="fa-solid fa-wand-magic-sparkles"></i> معاينة التقرير المنظم</button>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div class="form-group">
                             <label class="form-label">المرحلة / الصف الدراسي:</label>
-                            <input type="text" class="form-control" placeholder="مثال: الثاني الإعدادي">
+                            <input type="text" id="live_grade" class="form-control" value="الصف الأول الإعدادي">
                         </div>
                         <div class="form-group">
                             <label class="form-label">الاسم المستعار للطالب:</label>
-                            <input type="text" class="form-control" placeholder="مثال: طالب (س)">
+                            <input type="text" id="live_name" class="form-control" value="الطالب (س)">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">ماذا رأيت أو سمعت تحديداً؟ (فعل مشاهد بدون أحكام):</label>
-                        <textarea class="form-control" placeholder="اكتب السلوك القابل للملاحظة بدقة..."></textarea>
+                        <textarea id="live_behavior"
+                            class="form-control">ترك مقعده مرتين وتحدث بصوت مرتفع أثناء حل النشاط الفردي، فتأخر عن حل أول سؤال 7 دقائق.</textarea>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div class="form-group">
                             <label class="form-label">ماذا حدث قبل السلوك مباشرة (A)؟</label>
-                            <input type="text" class="form-control" placeholder="مثال: طلب الانتقال لنشاط جديد">
+                            <input type="text" id="live_a" class="form-control"
+                                value="توزيع ورقة عمل تتضمن 10 مسائل كتابية">
                         </div>
                         <div class="form-group">
                             <label class="form-label">ماذا حدث بعد السلوك مباشرة (C)؟</label>
-                            <input type="text" class="form-control" placeholder="مثال: ضحك بعض الزملاء وتوقف الحصة">
+                            <input type="text" id="live_c" class="form-control"
+                                value="اقتراب المعلم وتكرار التوجيه مرتين">
                         </div>
                     </div>
-                </div>
-
-                <!-- نموذج خطة إدارة صفية لأسبوعين -->
-                <div class="worksheet-box" style="border-color: var(--accent-gold);">
-                    <div class="worksheet-title">
-                        <span><i class="fa-solid fa-calendar-check text-accent-gold"></i> نموذج (2): قالب خطة الإدارة الصفية لأسبوعين (Classroom Plan)</span>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div class="form-group">
-                            <label class="form-label">السلوك المستهدف تحسينه:</label>
-                            <input type="text" class="form-control" placeholder="مثال: فوضى الانتقال بين حصتين">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">الروتين الصفي المطلوب تعليمه:</label>
-                            <input type="text" class="form-control" placeholder="مثال: تجهيز الكتاب خلال 60 ثانية">
-                        </div>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                        <div class="form-group">
-                            <label class="form-label">طريقة النمذجة والتدريب:</label>
-                            <input type="text" class="form-control" placeholder="تطبيق تجريبي مشترك في بداية الأسبوع">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">نظام التعزيز الإيجابي:</label>
-                            <input type="text" class="form-control" placeholder="نقطة للمجموعة التي تستعد أولاً">
-                        </div>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <button class="btn-primary" onclick="generateInteractiveReport()"
+                            style="width: 100%; justify-content: center;">
+                            <i class="fa-solid fa-eye"></i> توليد وعرض بطاقة التحليل التفاعلية للحالة فوراً
+                        </button>
                     </div>
                 </div>
             </section>
 
-            <!-- الفصل 14: الملحق التقني لمهندسي الأوامر والـ Gem -->
+            <!-- الفصل 13: الملحق التقني لمهندسي الأوامر والـ Gem -->
             <section class="section-card page-break-before" id="tech-appendix">
                 <div class="section-header">
-                    <div class="section-num">14</div>
+                    <div class="section-num">13</div>
                     <div>
                         <h2 class="section-title">الملحق التقني: بنية وتشغيل EduBehavior Gem</h2>
-                        <div class="section-subtitle">دليل هندسة الأوامر (System Prompt) وقواعد المعرفة لبناء المساعد الذكي</div>
+                        <div class="section-subtitle">دليل هندسة الأوامر (System Prompt) وقواعد المعرفة لبناء المساعد
+                            الذكي</div>
                     </div>
                 </div>
 
                 <div class="code-container">
                     <div class="code-header">
-                        <span class="code-title"><i class="fa-solid fa-terminal"></i> EduBehavior_Gem_Instructions_RC1.txt</span>
-                        <button class="btn-copy" onclick="copyCode('code-instructions')"><i class="fa-regular fa-copy"></i> نسخ التعليمات</button>
+                        <span class="code-title"><i class="fa-solid fa-terminal"></i>
+                            EduBehavior_Gem_Instructions_RC1.txt</span>
+                        <button class="btn-copy" onclick="copyCode('code-instructions')"><i
+                                class="fa-regular fa-copy"></i> نسخ التعليمات</button>
                     </div>
                     <pre id="code-instructions"># EduBehavior Gem — Instructions RC1
-الإصدار: RC1 — محوّل إلى Gemini Gem (متضمناً مسار ADHD)
+الإصدار: RC1 — محوّل إلى Gemini Gem (متضمناً مسار ADHD التفاعلي)
 
 ## الهوية
 أنت "EduBehavior — المساعد المدرسي للسلوك والإدارة الصفية"، مساعد تربوي يدعم العاملين بالمدرسة في:
@@ -1963,11 +2289,13 @@
                     <img src="compass_logo.png" alt="AI Navigators Compass">
                     <div>
                         <div class="footer-title">EduBehavior | بوصلة السلوك</div>
-                        <div style="font-size: 0.88rem; color: var(--accent-cyan);">الدليل التربوي العملي للإدارة الصفية وفهم السلوك ودعم ADHD</div>
+                        <div style="font-size: 0.88rem; color: var(--accent-cyan);">المنصة التربوية التفاعلية الميدانية
+                        </div>
                     </div>
                 </div>
                 <p class="footer-text">
-                    مشروع تربوي مستقل صُمم لدعم المعلمين والكوادر التربوية في فهم السلوك المدرسي وضبط الإدارة الصفية ودعم حالات تشتت الانتباه برؤية إنسانية رصينة تصون كرامة الطالب وتعزز أثر المعلم.
+                    مشروع تربوي مستقل صُمم لدعم المعلمين والكوادر التربوية في فهم السلوك المدرسي وضبط الإدارة الصفية
+                    ودعم حالات تشتت الانتباه برؤية إنسانية رصينة تصون كرامة الطالب وتعزز أثر المعلم.
                 </p>
                 <div style="margin-top: 1.2rem; font-weight: 700; color: var(--accent-gold);">
                     إعداد وتقديم: Abo Aisel (أبو أيسل) — مبادرة AI NAVIGATORS
@@ -1981,19 +2309,21 @@
                 <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
                     يسعدنا استقبال استفساراتكم التربوية ومقترحاتكم لتطوير الإصدارات القادمة:
                 </p>
-                
+
                 <div class="footer-buttons-grid">
                     <a href="https://wa.me/201037489146" target="_blank" class="btn-footer-contact btn-footer-whatsapp">
                         <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
                         <span>مراسلة عبر واتساب (01037489146)</span>
                     </a>
 
-                    <a href="https://t.me/+L695Phe56ecxZjc8" target="_blank" class="btn-footer-contact btn-footer-telegram">
+                    <a href="https://t.me/+L695Phe56ecxZjc8" target="_blank"
+                        class="btn-footer-contact btn-footer-telegram">
                         <i class="fa-brands fa-telegram" style="font-size: 1.3rem;"></i>
                         <span>الانضمام لمجتمع التيليجرام التربوي</span>
                     </a>
 
-                    <a href="https://www.facebook.com/abo.aisel.elmasry" target="_blank" class="btn-footer-contact btn-footer-facebook">
+                    <a href="https://www.facebook.com/abo.aisel.elmasry" target="_blank"
+                        class="btn-footer-contact btn-footer-facebook">
                         <i class="fa-brands fa-facebook-f" style="font-size: 1.2rem;"></i>
                         <span>متابعة الحساب الرسمي على فيسبوك</span>
                     </a>
@@ -2013,12 +2343,529 @@
         </div>
     </footer>
 
-    <!-- Interactive Copy Script -->
+    <!-- Universal Interactive Modal Dialog -->
+    <div class="modal-overlay" id="cardModal" onclick="closeModalOnOverlay(event)">
+        <div class="modal-container" id="modalContainer">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-badge" id="modalBadge">بطاقة تفاعلية</span>
+                    <h3 class="modal-title" id="modalTitle">عنوان البطاقة</h3>
+                </div>
+                <button class="modal-close-btn" onclick="closeCardModal()" title="إغلاق النافذة">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Injected via JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-copy" onclick="copyModalContent()"><i class="fa-regular fa-copy"></i> نسخ محتوى
+                    البطاقة</button>
+                <button class="btn-print" onclick="closeCardModal()" style="padding: 6px 14px; font-size: 0.85rem;">تم
+                    وفهمت</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive JavaScript Engine with Full Data Store -->
     <script>
+        // Master Interactive Data Repository (All Modules)
+        const cardsData = {
+            // Core Principle
+            core_principle: {
+                badge: "المنهج التربوي",
+                title: "المبدأ الجامع: افهم السلوك، ضع الحد، قدم الدعم، تابع الأثر",
+                purpose: "تحويل التدخل الصفي من رد فعل انفعالي متسرع إلى منظومة مهنية متوازنة تحمي كرامة الطالب وتعلم الجميع.",
+                question: "هل استجابتك للموقف تجمع بين الحزم التربوي (الحد) والتمكين العملي (الدعم) والتحقق بالقياس؟",
+                example: "«عندما قاطع الطالب شرح المعلم: لم يطرده المعلم ولم يتجاهله؛ بل قال بهدوء: استمع لزميلك أولاً (حد)، وإذا أردت تسجيل فكرتك استخدم ورقة المسودة (دعم)، وسأمنحك دقيقتك بعد انتهاء الفقرة (متابعة الأثر)».",
+                action: "طبق الرباعية في كل موقف: 1. فهم الوظيفة، 2. إعلان التوقع الحازم، 3. تيسير البديل، 4. رصد التحسن."
+            },
+
+            // Observation Transformers
+            obs_lazy: {
+                badge: "محول الملاحظة — تفكيك حكم «كسول»",
+                title: "تحويل حكم (كسول) إلى سلوك قابل للملاحظة والقياس",
+                purpose: "عزل تهمة الكسل الأخلاقية وتحديد الفارق الزمني ونوع المهمة التي يتعطل فيها الطالب.",
+                question: "ماذا فعل الطالب تحديداً بالثواني والدقائق بدلاً من اتهامه بضعف الهمة؟",
+                example: "«القول الخاطئ: الطالب كسول ومهمل ولا يريد التعلم.<br>الصياغة المعتمدة: لم يفتح الطالب كراسة النشاط خلال 10 دقائق بعد توجيه التعليمات مرتين، وبقي يقلب قلمه على الطاولة».",
+                action: "سجل: [زمن التأخر بالدقائق] + [التعليمات المعطاة] + [السلوك الحركي البديل المشاهد]."
+            },
+            obs_stubborn: {
+                badge: "محول الملاحظة — تفكيك حكم «عنيد»",
+                title: "تحويل حكم (عنيد) إلى استجابة حركية محايدة",
+                purpose: "منع تثبيت صفة المقاومة والتحدي في شخصية الطالب وتحويلها إلى وصف لمدى الامتثال اللفظي.",
+                question: "ما الذي حدث عندما وجهت له الأمر وما المدة التي قضاها دون استجابة؟",
+                example: "«القول الخاطئ: الطالب عنيد ويتحداني عمداً.<br>الصياغة المعتمدة: رفض الطالب الانتقال إلى مقعده بعد توجيهين لفظيين هادئين، وبقي واقفاً بجوار زميله لمدة دقيقتين و30 ثانية».",
+                action: "احذف كلمة عنيد، واذكر عدد التوجيهات التي أعطيتها له والدقائق التي استغرقها قبل الاستجابة."
+            },
+            obs_bad: {
+                badge: "محول الملاحظة — تفكيك حكم «سيئ ومشاغب»",
+                title: "تحويل حكم (مشاغب) إلى فعل فيزيائي مشاهد",
+                purpose: "حصر الفعل الحركي الدقيق القابل للتعديل بدلاً من الوصم الأخلاقي الشامل.",
+                question: "ما الحركة أو الفعل الجسدي الذي رآه زملاؤه في الصف؟",
+                example: "«القول الخاطئ: الطالب مشاغب وسيء السلوك.<br>الصياغة المعتمدة: أثناء الاصطفاف لدخول المختبر، دفع الطالب زميله بيده مرتين وحاول تجاوزه في الصف».",
+                action: "صف الحركة كأنك تشاهدها في كاميرا فيديو صامتة: دفع باليد، رمي أداة، مغادرة المكان."
+            },
+            obs_disrespect: {
+                badge: "محول الملاحظة — تفكيك حكم «غير محترم»",
+                title: "تحويل حكم (غير محترم) إلى عدد المقاطعات وشدة الصوت",
+                purpose: "تجنب أخذ الموقف كإهانة شخصية للمعلم، وجعله خرقاً لنظام الحصة القابل للقياس.",
+                question: "كم مرة تكلم دون إذن، وبأي نبرة صوت تحدث؟",
+                example: "«القول الخاطئ: الطالب لا يحترمني إطلاقاً أمام زملائه.<br>الصياغة المعتمدة: قاطع المعلم 4 مرات أثناء الشرح ورفع صوته قائلاً: هذا الدرس ممل جداً».",
+                action: "سجل الكلمات اللفظية بنصها الصريح بين علامتي تنصيص مع تكرار المقاطعة."
+            },
+
+            // ABC Components
+            abc_a: {
+                badge: "نموذج ABC+ — الركن الأول (A)",
+                title: "ما قبل السلوك (Antecedents & Triggers)",
+                purpose: "رصد المثير البيئي أو الطلب أو التحول الصفي الذي فجر السلوك مباشرة لمعرفة المحفزات الوقائية.",
+                question: "ماذا كان يجري في الفصل في الـ 30 ثانية السابقة لظهور السلوك مباشرة؟",
+                example: "«المعايير الميدانية: طلب المعلم الانتقال من العمل الجماعي الصاخب إلى اختبار فردي صامت فجأة دون تذكير مسبق».",
+                action: "راقب: نوع المهمة، صعوبتها، الانتقالات، نبرة التعليمات، وموقع جلوس الطالب."
+            },
+            abc_b: {
+                badge: "نموذج ABC+ — الركن الثاني (B)",
+                title: "السلوك الملاحظ المحدد (Behavior)",
+                purpose: "توثيق الفعل أو القول المجرد بالعين والأذن تمهيداً لقياسه.",
+                question: "ماذا فعل أو قال الطالب تحديداً دون تخمين لنواياه؟",
+                example: "«قام من مقعده ورمى ورقة الامتحان على الأرض وتوجه نحو سلة المهملات».",
+                action: "تأكد أن الوصف يجيب عن: ماذا؟ كم مرة؟ كم استمر؟"
+            },
+            abc_c: {
+                badge: "نموذج ABC+ — الركن الثالث (C)",
+                title: "ما بعد السلوك واللواحق (Consequences)",
+                purpose: "اكتشاف العاقبة التي تلت السلوك في البيئة وجعلت الطالب يكرره (التعزيز غير المقصود).",
+                question: "ما الذي كسبه الطالب أو تجنبه مباشرة بعد ارتكاب هذا الفعل؟",
+                example: "«ضحك زملاؤه، وتوقف المعلم عن الشرح وجلس بجواره 5 دقائق لإقناعه (حصل على انتباه وتجنب الامتحان)».",
+                action: "راقب رد فعل الأقران، رد فعل المعلم، وهل أتم الطالب المهمة أم أفلت منها."
+            },
+            abc_f: {
+                badge: "نموذج ABC+ — الركن الرابع (F)",
+                title: "الفرضية الوظيفية المؤقتة (Function)",
+                purpose: "فهم الغرض النفسي أو البيئي من السلوك (السلوك وسيلة تواصل لتلبية احتياج غير ملبى).",
+                question: "ما الغرض المؤقت الذي حققه هذا السلوك للطالب؟",
+                example: "«فرضية قابلة للاختبار: السلوك يهدف لتجنب مهمة كتابية تفوق قدرته الحالية على القراءة، أو لفت انتباه الأقران لتعويض الإحباط».",
+                action: "صغ الفرضية باحتمالية: «يبدو أن الطالب يلجأ لكذا بهدف كذا»، واختبر تعديل المثير المسبق."
+            },
+
+            // PBIS Tiers
+            tier1: {
+                badge: "منظومة PBIS — المستوى 1",
+                title: "الوقاية الصفية الشاملة (Tier 1)",
+                purpose: "بناء بيئة تعلم إيجابية متوقعة ومنظمة لجميع الطلاب داخل المدرسة (تغطي 80-90% من الطلاب بنجاح).",
+                question: "هل توجد قواعد واضحة وروتين يومي ثابت معزز باستمرار؟",
+                example: "«تحديد 3 إلى 5 توقعات إيجابية (مثال: نحترم دور الحديث، نحافظ على النظام)، وتكثيف عبارات الثناء المحددة 4 مرات مقابل كل تصحيح».",
+                action: "اجعل الروتين الصفي واضحاً: طريقة الدخول، بدء الحصة، طلب المساعدة، والانتقال بين الأنشطة."
+            },
+            tier2: {
+                badge: "منظومة PBIS — المستوى 2",
+                title: "التدخل الموجه للمجموعات (Tier 2)",
+                purpose: "دعم إضافي منظم ومبكر للطلاب الذين يظهرون صعوبات مستمرة رغم وجود بيئة صفية جيدة (يمثلون 10-15%).",
+                question: "ما التدخل الجماعي الموجه الذي يلبي حاجة هذه المجموعة الصغيرة؟",
+                example: "«تطبيق نظام المتابعة اليومي الصباحي والمسائي (Check-in / Check-out)، وتدريب مجموعات المهارات الاجتماعية وضبط الغضب».",
+                action: "اجعل أهداف Tier 2 قصيرة المدى (4-6 أسابيع) مع متابعة أسبوعية مع الأخصائي."
+            },
+            tier3: {
+                badge: "منظومة PBIS — المستوى 3",
+                title: "الدعم المكثف الفردي (Tier 3)",
+                purpose: "تدخل فردي تخصصي عميق للطلاب ذوي التحديات السلوكية الحادة أو المعقدة (يمثلون 1-5% من الطلاب).",
+                question: "كيف يبني الفريق متعدد التخصصات خطة دعم وظيفية متكاملة؟",
+                example: "«إجراء تقييم وظيفي شامل للسلوك (FBA)، وبناء خطة دعم سلوكي فردية (BIP) تشارك فيها الأسرة وفريق المدرسة».",
+                action: "لا يمكن للمعلم وحده تطبيق Tier 3، بل يقوده فريق مؤهل بناءً على سجل بيانات دقيق."
+            },
+
+            // Teacher Language Scripts
+            tl_seat: {
+                badge: "استوديو لغة المعلم — موقف 01",
+                title: "عبارة التعامل مع مغادرة المقعد المتكررة",
+                purpose: "وضع حد واضح لحركة الطالب داخل الحصة، مع توفير طريقة بديلة ومقبولة لطلب المساعدة.",
+                question: "كيف أوقف حركة الطالب دون الدخول في صراخ أو تهديد؟",
+                example: "«قل بصوت هادئ ومنخفض: رأيت أنك تركت مكانك مرتين. المطلوب الآن البقاء في المقعد حتى ننهي قراءة الفقرة الأولى. إذا احتجت مساعدة ارفع بطاقتك وسآتي إليك فوراً»."
+            },
+            tl_interrupt: {
+                badge: "استوديو لغة المعلم — موقف 02",
+                title: "عبارة التعامل مع مقاطعة الشرح ورفع الصوت",
+                purpose: "حفظ حق الزملاء في إكمال فكرتهم دون إشعار الطالب بالمصادرة الدائمة لصوته.",
+                question: "كيف أحمي هدوء المناقشة مع إعطاء الطالب أملاً في أخذ دوره؟",
+                example: "«قل بحزم واحترام: سمعت مقاطعتك لزميلك. سنستمع إليه بهدوء حتى ينهي إجابته، وسيكون دورك التالي في المشاركة وفق النظام المتفق عليه»."
+            },
+            tl_refuse: {
+                badge: "استوديو لغة المعلم — موقف 03",
+                title: "عبارة التعامل مع رفض بدء المهمة والتمرد الصامت",
+                purpose: "كسر حاجز العجز في المبادأة عبر تقديم خيارات مصغرة دون التراجع عن مبدأ العمل.",
+                question: "كيف أحفز الطالب على البدء دون إشعاره بالإجبار القهري؟",
+                example: "«قل بجواره بانفراد: يمكنك الاختيار بين حل السؤال الأول بمفردك أو قراءته معي بصوت منخفض، لكن المطلوب أن نبدأ الآن وسأراجع معك بعد 3 دقائق»."
+            },
+            tl_person: {
+                badge: "استوديو لغة المعلم — موقف 04",
+                title: "عبارة فصل الشخص عن السلوك المعطل",
+                purpose: "طمأنة الطالب بأن المعلم يحترمه ويقدر قيمته كإنسان، والرفض موجه فقط للفعل الصفي.",
+                question: "كيف أضمن ألا يشعر الطالب بالعداء الشخصي تجاهي؟",
+                example: "«قل بنبرة صادقة: أنا أضع حداً واضحاً لهذا التصرف حمايةً لنظام الفصل، ولست أضع حكماً عليك كشخص؛ وأنت قادر على تعديل ذلك في الحصة القادمة»."
+            },
+
+            // What to do now (Instant Toolkit)
+            what_to_do_now: {
+                badge: "بروتوكول التدخل اللحظي",
+                title: "سيناريو التدخل اللحظي وقت احتدام التصعيد الصفي",
+                purpose: "توفير خريطة طوارئ للمعلم لمنع انفجار الموقف داخل الغرفة الصفية وإدارته باحترافية.",
+                question: "ما الخطوات الأربع الإلزامية في الدقيقة الأولى من التصعيد؟",
+                example: "«1. الآن: قف بهدوء، تراجع خطوة للوراء، اخفض نبرة صوتك.<br>2. قل: نحتاج دقيقة صمت لنقرر الخطوة التالية بإنصاف.<br>3. لا تفعل: لا تجادل، لا تسخر، ولا تهدد بالفصل أمام زملائه.<br>4. بعد الحصة: اجلس معه دقيقة على انفراد لمراجعة ما جرى بهدوء».",
+                action: "اطبع هذا القالب واجعله على مكتبك لاستحضاره تلقائياً عند التوتر."
+            },
+
+            // ADHD Accommodations
+            adhd1: {
+                badge: "مسار ADHD — ركيزة 1",
+                title: "المقعد الاستراتيجي الهادئ",
+                purpose: "هندسة موقع جلوس الطالب ذو تشتت الانتباه وفرط الحركة لتقليل المشتتات البصرية والسمعية دون عزله أو إحراجه.",
+                question: "أين يجلس الطالب بالنسبة للمعلم وبالنسبة لمصادر الإلهاء؟",
+                example: "«إجلاس الطالب في الصف الثاني جهة اليمين، بالقرب من مسار حركة المعلم، بعيداً تماماً عن النافذة أو الباب، وبجوار طالب هادئ ومتعاون».",
+                action: "تجنب وضع الطالب في المقاعد الخلفية، وتجنب عزله في ركن منفرداً حتى لا يشعر بالوصم."
+            },
+            adhd2: {
+                badge: "مسار ADHD — ركيزة 2",
+                title: "تجزئة المهام وعلاج «عمى الوقت»",
+                purpose: "مساعدة الطالب الذي يعاني من ضعف الإحساس بالزمن عبر تقديم مؤقتات مرئية وتفتيت الواجبات الكبيرة إلى محطات إنجاز صغيرة.",
+                question: "كيف نساعد الطالب على رؤية الوقت وتخفيف عبء الورقة الكاملة؟",
+                example: "«طي ورقة العمل لنصفين بحيث يرى الطالب 3 أسئلة فقط، ووضع ساعة رملية صغيرة لمدة 5 دقائق لإنهاء الجزء الأول».",
+                action: "امدح إنهاء كل جزء فوراً: «أحسنت! أنهيت الجزء الأول في 4 دقائق، خذ استراحة نفس عميق لنبدأ الثاني»."
+            },
+            adhd3: {
+                badge: "مسار ADHD — ركيزة 3",
+                title: "التفريغ الحركي الهادف والمبرمج",
+                purpose: "الاعتراف بالحاجة الحركية كضرورة فسيولوجية لتنشيط الجهاز العصبي، وتوجيهها في أنشطة مقبولة صفيّاً.",
+                question: "كيف نفرغ الطاقة الحركية دون أن يعم الشغب أرجاء الفصل؟",
+                example: "«تكليف الطالب بمهمة موزع الأوراق والممحاة، وضع شريط مطاطي عريض حول أرجل الكرسي ليضغط عليه بقدميه بصمت».",
+                action: "برمج فترات حركة منتظمة (Brain Breaks) لمدة 60 ثانية كل 15 دقيقة لكامل الفصل ليستفيد الجميع."
+            },
+            adhd4: {
+                badge: "مسار ADHD — ركيزة 4",
+                title: "التواصل الخفي والإشارة السرية",
+                purpose: "بناء اتفاق خفي ولطيف بين المعلم والطالب لتنبيهه عند شرود ذهنه أو اندفاعه دون لفت أنظار زملائه أو إحراجه.",
+                question: "ما الرمز المشترك الذي ينبه الطالب بلطف ليعود للتركيز؟",
+                example: "«الاتفاق على وضع يد المعلم على زاوية مكتب الطالب بهدوء عند المرور بجانبه، كإشارة متفق عليها تعني: خذ نفساً وركز معي».",
+                action: "اشرح للطالب الإشارة على انفراد: «هذه شفرتنا السرية لأساعدك على النجاح دون أن يقاطعنا أحد»."
+            },
+
+            // Safety Protocols Individual
+            safety1: {
+                badge: "فحص السلامة — مؤشر 1",
+                title: "الحديث عن إيذاء النفس أو الانتحار أو الموت",
+                purpose: "التدخل الفوري لحماية حياة الطالب ومنع تفاقم الأفكار الانتحارية.",
+                question: "هل صدر من الطالب أي تصريح أو رسم أو كتابة تشير للرغبة في الموت أو إيذاء الجسد؟",
+                example: "«الإجراء الفوري: إيقاف الحصة العادية بهدوء، عدم ترك الطالب بمفرده نهائياً، تسليمه يداً بيد للمرشد النفسي المعتمد وإخطار الإدارة والأسرة فوراً وفق اللائحة».",
+                action: "لا تعد بالسرية، ولا تناقش الأسباب الدقيقة أمام الطلاب؛ بل احمِ الشخص أولاً."
+            },
+            safety2: {
+                badge: "فحص السلامة — مؤشر 2",
+                title: "تهديد جدي وصريح بإيذاء الآخرين",
+                purpose: "احتواء العنف الموجه وحماية سلامة بقية الطلاب والمعلمين.",
+                question: "هل حدد الطالب شخصاً بعينه وتوعده بالضرب أو القتل أو الانتقام الجسدي الصريح؟",
+                example: "«الإجراء الفوري: الفصل المكاني الآمن بين الطالب والطرف المهدد، إشراك مسؤول الأمن المدرسي أو الإدارة لضبط الموقف، وتوثيق الكلمات المنطوقة حرفياً دون تفسير».",
+                action: "خفض التصعيد بالتراجع ونزع الجمهور (إبعاد الطلاب الفضوليين)."
+            },
+            safety3: {
+                badge: "فحص السلامة — مؤشر 3",
+                title: "حيازة سلاح أو أداة حادة أو مادة خطرة",
+                purpose: "نزع الخطر المادي ومنع وقوع كارثة في البيئة المدرسية.",
+                question: "هل توجد أداة حادة، أو مادة كيميائية، أو وسيلة قادرة على إحداث جروح بليغة؟",
+                example: "«الإجراء الفوري: لا تهاجم الطالب جسدياً لانتزاع الأداة إن لم تكن مدرباً، اطلب إخلاء المسافة القريبة، واستدعِ الإدارة وفريق الطوارئ المعتمد فوراً».",
+                action: "الأولوية لسلامة الأرواح وتفريغ النطاق المحيط بالخطر."
+            },
+            safety4: {
+                badge: "فحص السلامة — مؤشر 4",
+                title: "اشتباه أو إفصاح عن إساءة أو استغلال للطفل",
+                purpose: "حماية القُصّر والالتزام بالقانون الإلزامي للإبلاغ عن العنف الأسري أو الاستغلال.",
+                question: "هل ذكر الطالب أو ظهرت عليه علامات اعتداء جسدي أو نفسي أو استغلال صريح؟",
+                example: "«الإجراء الفوري: استمع بهدوء ودون إلحاح في التفاصيل المحرجة، لا تحقق بنفسك، ولا تواجه الأسرة منفرداً؛ بل ارفع تقريراً فورياً لخط نجدة الطفل ولجنة الحماية المدرسية».",
+                action: "وثق المشاهدات الجسدية المحايدة فقط دون اتهام مباشر."
+            },
+            safety5: {
+                badge: "فحص السلامة — مؤشر 5",
+                title: "إصابة جسدية بليغة أو حالة ذعر جماعي",
+                purpose: "تقديم الرعاية الطبية والإسعافية العاجلة قبل أي تقييم تربوي.",
+                question: "هل توجد جروح نازفة، أو إغماء، أو نوبة هلع حادة تستدعي تدخلاً طبياً؟",
+                example: "«الإجراء الفوري: استدعاء الزائرة الصحية أو الإسعاف فوراً، تهدئة روع الطلاب، وتأمين المكان».",
+                action: "الطب والسلامة الجسدية تسبق أي تحليل سلوكي دائماً."
+            },
+            safetyModal: {
+                badge: "بروتوكول الطوارئ الشامل",
+                title: "بوابة فحص السلامة (Safety Gate)",
+                purpose: "إيقاف مسار التحليل النظري فوراً عند ظهور أي خطر وشيك وتفعيل خط الحماية.",
+                question: "هل توجد أي إشارة لخطر جسدي أو نفسي يهدد حياة أو سلامة الطالب أو المحيطين؟",
+                example: "«إذا كانت الإجابة نعم على أي سؤال: نوقف التحليل فوراً، نؤمن سلامة الطالب، ونخطر فريق الحماية والإدارة وفق القانون المحلي ولائحة المدرسة».",
+                action: "لا تعد بالسرية المطلقة، ولا تحقق بمفردك، واتبع بروتوكول حماية الطفل المعتمد في بلدك."
+            },
+
+            // 11 Outcome Cards
+            card1: {
+                badge: "بطاقة النتيجة 01",
+                title: "ملخص الموقف الصفي",
+                purpose: "صياغة ملخص وصفي مركز في 3 أسطر يجمع بين الدور، المرحلة الدراسية، السلوك المشاهد بدقة، والأثر التعليمي أو الإجرائي المترتب عليه.",
+                question: "هل يفهم القارئ الجديد (أخصائي أو إدارة) حقيقة ما حدث في أقل من دقيقة دون استيضاح إضافي؟",
+                example: "«في حصة العلوم للمرحلة الإعدادية وأثناء العمل المخبري الجماعي، غادر الطالب مقعده 3 مرات ورفع صوته محتجاً، مما أدى إلى توقف مجموعته لـ 5 دقائق وتأخر بدء التجربة العملية».",
+                action: "اكتب: [الدور والمرحلة] + [نوع النشاط الصفي] + [الفعل الملاحظ بدقة والمدة] + [الأثر الواقعي على التعلم]."
+            },
+            card2: {
+                badge: "بطاقة النتيجة 02",
+                title: "السلوك القابل للملاحظة",
+                purpose: "تجريد المشهد من كافة التخمينات والأوصاف الانطباعية (كسول، عنيد، غير محترم)، وتثبيت الوقائع التي رآها المعلم بعينه أو سمعها بأذنه فقط.",
+                question: "ما الفعل أو القول الذي سجله شخص آخر محايد في الغرفة دون زيادة أو تفسير؟",
+                example: "بدلاً من قول: «الطالب مستفز ويرفض التعاون»، نكتب: «وضع الطالب رأسه على الطاولة لمدة 8 دقائق، ولم يستجب لطلب فتح الكتاب مرتين متتاليتين».",
+                action: "استخدم الصيغة: [فعل أو قول محدد] + [التوقيت] + [عدد المرات أو الدقائق] بعيداً عن نوايا الطالب الخفية."
+            },
+            card3: {
+                badge: "بطاقة النتيجة 03",
+                title: "سياق ABC المتسلسل",
+                purpose: "ترتيب المشهد في تسلسل زمني دقيق: ما سبق السلوك (A)، السلوك المشاهد (B)، وما أعقبه مباشرة في البيئة الصفية (C).",
+                question: "ما التسلسل البيئي المباشر الذي صاحب صدور هذا التصرف؟",
+                example: "A (ما قبل): وزع المعلم ورقة عمل تتضمن 15 مسألة رياضية طويلة.<br>B (السلوك): رمى الطالب القلم على الأرض وصرخ «لن أحل شيئاً».<br>C (ما بعد): اقترب المعلم ونبهه بحزم وتوقفت الحصة دقيقة واحدة.",
+                action: "حدد المحفز المباشر (A)، ثم سجل الفعل (B)، ثم راقب هل حصل الطالب على انتباه أو تجنب المهمة كعاقبة (C)."
+            },
+            card4: {
+                badge: "بطاقة النتيجة 04",
+                title: "ما نعرفه (الحقائق الصلبة)",
+                purpose: "حصر المعلومات المؤكدة التي يملك المعلم أو الأخصائي دليلاً مادياً قاطعاً عليها، واستبعاد الظنون والأقاويل.",
+                question: "ما المعلومات التي نثق يقيناً في صحتها داخل هذا الموقف؟",
+                example: "«نعرف أن الطالب أتم الجزء الأول من ورقة العمل بنجاح، وأن السلوك بدأ عند الانتقال للجزء الكتابي الصعب، وأن الطالب كان يجلس بجوار زميل يشتت انتباهه».",
+                action: "افصل بين ما هو واقعة حدثت بالفعل، وبين ما هو افتراض أو توقع شخصي."
+            },
+            card5: {
+                badge: "بطاقة النتيجة 05",
+                title: "ما نحتاج معرفته (فجوات البيانات)",
+                purpose: "تحديد الأسئلة المفتوحة التي ستغير مسار الفهم التربوي لو عرفنا إجابتها بدقة، بدلاً من التخمين المتسرع.",
+                question: "ما السؤال الذي يغير فهمنا للموقف وجدوى التدخل إذا عرفنا إجابته؟",
+                example: "«هل يتكرر هذا السلوك في حصص أخرى ذات طابع حركي كالتربية البدنية؟ هل يعاني الطالب من صعوبة في القراءة وفك الرموز؟ هل تناول وجبة الإفطار اليوم؟»",
+                action: "اطرح 2 إلى 3 أسئلة استكشافية وناقشها بهدوء مع المرشد الطلابي أو ولي الأمر."
+            },
+            card6: {
+                badge: "بطاقة النتيجة 06",
+                title: "الحد المناسب (Boundary)",
+                purpose: "إعلان توقع سلوكي واضح، حازم، وهادئ يحمي بيئة الفصل والتعلم والسلامة دون تهديد أو عدوانية.",
+                question: "ما السلوك غير القابل للتفاوض المطلوب من الطالب تنفيذه في هذه اللحظة؟",
+                example: "«أثناء الشرح، نحافظ على هدوء الصف ونبقى في المقاعد حتى ينتهي وقت التوجيهات».",
+                action: "أعلن الحد بصوت منخفض، تواصل بصرياً، وتجنب استخدام نبرة التحدي أو التهديد العاجز."
+            },
+            card7: {
+                badge: "بطاقة النتيجة 07",
+                title: "الدعم الممكن (Support)",
+                purpose: "تقديم تيسيرات تربوية ومساعدات ذكية تمكّن الطالب من أداء السلوك المطلوب دون التنازل عن الحد الصفي.",
+                question: "ما التيسير الصغير الذي يجعل النجاح سهلاً وممكناً للطالب الآن؟",
+                example: "«تجزئة ورقة العمل إلى 3 أسئلة فقط، توفير أداة حسية صامتة، أو السماح له بقراءة السؤال الأول مع المعلم».",
+                action: "ادمج الدعم مع الحد: «المطلوب إكمال السؤال الأول (حد)، ويمكنك استخدام ورقة المسودة المساعدة (دعم)».",
+            },
+            card8: {
+                badge: "بطاقة النتيجة 08",
+                title: "السلوك البديل المقبول",
+                purpose: "تعليم ونمذجة فعل إيجابي مقبول اجتماعياً يؤدي نفس وظيفة السلوك القديم (مثل طلب المساعدة أو أخذ استراحة قصيرة).",
+                question: "ماذا نريد من الطالب أن يفعل كبديل عندما يشعر بالصعوبة أو التوتر؟",
+                example: "«رفع بطاقة خضراء لطلب إيضاح السؤال، بدلاً من مقاطعة الشرح أو ترك المقعد والتجول».",
+                action: "درب الطالب على السلوك البديل في وقت الهدوء، وليس في لحظة احتدام الغضب."
+            },
+            card9: {
+                badge: "بطاقة النتيجة 09",
+                title: "ماذا يقول المعلم؟",
+                purpose: "صياغة جملة تربوية جاهزة تجمع بين الملاحظة المحايدة، إعلان الحد، تقديم الدعم، ونقطة المتابعة.",
+                question: "كيف نقول المطلوب باحترام وحزم ودون الدخول في صراع سلطوي؟",
+                example: "«رأيت أنك لم تبدأ حل المسألة بعد. المطلوب أن نبدأ الآن ونحل أول نقطة فقط، وإذا احتجت مساعدة سأكون بجوارك وسأراجع معك بعد 3 دقائق».",
+                action: "طبق النموذج الرباعي: [ملاحظة محايدة] + [الحد المطلوب] + [خيار دعم] + [توقيت المتابعة]."
+            },
+            card10: {
+                badge: "بطاقة النتيجة 10",
+                title: "ماذا نقيس؟ (المؤشر)",
+                purpose: "اختيار مؤشر بسيط وملموس لمتابعة أثر التدخل (مثل: عدد مرات ترك المقعد، أو زمن بدء أول سؤال).",
+                question: "ما الرقم أو العلامة المرئية التي ستدلنا على حدوث تحسن حقيقي؟",
+                example: "«المؤشر: انخفاض مرات مقاطعة الزملاء من 4 مرات في الحصة إلى مرة واحدة أو صفر خلال الأسبوعين القادمين».",
+                action: "اختر مؤشراً واحداً فقط يسهل تسجيله في جدول جانبي دون أن يعطل المعلم عن الشرح."
+            },
+            card11: {
+                badge: "بطاقة النتيجة 11",
+                title: "متى نراجع أو نحيل؟",
+                purpose: "تحديد سقف زمني لتقييم جدوى الخطة، ومعايير واضحة للتصعيد أو الإحالة الرسمية للأخصائي أو الفريق المختص.",
+                question: "متى نعيد التقييم، وما العلامات التي تعني ضرورة إشراك جهات الدعم الخارجية؟",
+                example: "«مراجعة الخطة بعد 6 حصص متقاربة (أسبوعين). وتتم الإحالة للأخصائي الاجتماعي إذا استمر التعطل على التعلم بنسبة تتجاوز 50%».",
+                action: "لا تجعل الإحالة عقوبة؛ بل وثق البيانات وسلمها لفريق الدعم كشريك في بناء الحل."
+            },
+
+            // Study Case Student N
+            case_student_n: {
+                badge: "دراسة حالة معيارية",
+                title: "ملف دراسة حالة الطالب «ن» — الصف الثاني الإعدادي",
+                purpose: "تطبيق عملي متكامل يوضح كيف تنتقل البوصلة من رصد مغادرة المقعد إلى بناء خطة تدخل هادئة دون تشخيص.",
+                question: "كيف تم تفكيك الموقف وصياغة بطاقات النتيجة للطالب «ن»؟",
+                example: "«الموقف: غادر المقعد 4 مرات وتحدث بصوت مرتفع مرتين في 20 دقيقة.<br>السوابق: ورقة عمل طويلة من 15 سؤالاً.<br>الفرضية: تجنب مهمة تبدو شاقة + حاجة للحركة.<br>الحد: البقاء في المقعد بصوت هادئ.<br>الدعم: تجزئة الورقة لـ 3 أسئلة + منحه دور موزع الأوراق.<br>النتيجة: انخفضت المغادرة لمرة واحدة في الحصة التالية».",
+                action: "استخدم هذا المثال كنموذج تدريبي لمعلمي مدرستك في ورش العمل."
+            },
+
+            // Monitoring Metrics
+            metric_freq: {
+                badge: "مؤشرات المتابعة — التكرار",
+                title: "مؤشر التكرار العددي (Frequency Count)",
+                purpose: "حساب عدد المرات التي يقع فيها السلوك الصريح خلال زمن محدد لمعرفة معدل الحدوث بدقة.",
+                question: "كم مرة حدث السلوك في الحصة أو النشاط؟",
+                example: "«تسجيل علامة (/) في بطاقة صغيرة ملصقة على دفتر المعلم في كل مرة يقاطع فيها الطالب الشرح، ومقارنة إجمالي الحصة الأولى بالحصة الخامسة».",
+                action: "مناسب للسلوكيات ذات البداية والنهاية الواضحة (مقاطعة، ترك مقعد، رفع يد)."
+            },
+            metric_dur: {
+                badge: "مؤشرات المتابعة — المدة",
+                title: "مؤشر المدة الزمنية (Duration)",
+                purpose: "حساب إجمالي الدقائق التي يقضيها الطالب منقطعاً عن التعلم أو متورطاً في نوبة غضب.",
+                question: "كم استمر الموقف من بدايته حتى عودة الطالب للهدوء والمهمة؟",
+                example: "«استغرق الطالب 8 دقائق رافضاً فتح الكتاب في بداية الأسبوع، وانخفضت المدة إلى دقيقتين فقط بنهاية الأسبوع بعد تطبيق الدعم».",
+                action: "مناسب لحالات وضع الرأس على الطاولة، نوبات الغضب، أو الشرود الذهني."
+            },
+            metric_lat: {
+                badge: "مؤشرات المتابعة — زمن الاستجابة",
+                title: "مؤشر زمن المبادأة والبدء (Latency)",
+                purpose: "قياس الفترة الزمنية بين إعطاء المعلم للتعليمات وبدء الطالب كتابة أول إجابة.",
+                question: "كم دقيقة استغرق الطالب للبدء بعد سماع التعليمات؟",
+                example: "«بدأ الطالب حل أول سؤال بعد 7 دقائق في خط الأساس، وانخفض زمن البدء إلى 90 ثانية بعد استخدام التوجيه الفردي المصغر».",
+                action: "أفضل مؤشر لحالات تشتت الانتباه وصعوبات الوظائف التنفيذية."
+            },
+            metric_referral: {
+                badge: "مؤشرات المتابعة — الإحالة",
+                title: "المعايير المعتمدة للإحالة الرسمية للفريق المختص",
+                purpose: "وضع خط فاصل بين ما يمكن معالجته داخل الفصل (Tier 1 & 2) وما يتطلب دعماً فردياً خارجياً (Tier 3).",
+                question: "هل استنفد المعلم كافة التدخلات الصفية الموثقة دون تحسن كافٍ؟",
+                example: "«شروط الإحالة: 1. استمرار الأثر المعطل لأكثر من 3 أسابيع، 2. وجود سجل متابعة يضم 6 ملاحظات موثقة على الأقل، 3. احتياج الطالب لتقييم صعوبات تعلم نطق أو نفسي متخصص، 4. أو ظهور أي مؤشر سلامة حرج فوراً».",
+                action: "سلّم للأخصائي استمارة ABC+ وسجل القياس ليكون التدخل مبنياً على أدلة وليس على شكوى عامة."
+            },
+
+            // Steps
+            step1: {
+                badge: "رحلة المسار — الخطوة 1",
+                title: "تحديد زاوية دور المستخدم",
+                purpose: "تحديد الإطار المهني للتدخل وفق الصلاحيات الرسمية (معلم صف، أخصائي نفسي/اجتماعي، إدارة، مرشد).",
+                question: "من أي زاوية تتدخل لمعالجة هذا الموقف؟",
+                example: "«المعلم يركز على إدارة التعلم والحد الصفي والدعم اللحظي، بينما الأخصائي يجمع خيوط الحالة ويبحث السياق الأسري والنمائي».",
+                action: "اختر دورك بدقة لضمان بقاء التدخل في حدود اختصاصك المهني."
+            },
+            step2: {
+                badge: "رحلة المسار — الخطوة 2",
+                title: "مراعاة الخصائص النمائية للمرحلة",
+                purpose: "تفسير السلوك وفق المرحلة العمرية (ابتدائي: يحتاج لروتين وحركة، إعدادي: حساسية مفرطة تجاه الأقران والكرامة، ثانوي: صوت الطالب والاستقلالية).",
+                question: "هل يتناسب هذا التصرف أو التدخل مع العمر النمائي للطالب؟",
+                example: "«في المرحلة الإعدادية، تجنب توبيخ الطالب أمام أقرانه إطلاقاً لأن ذلك يدفعه للتمرد الدفاعي لحماية مكانته بين زملائه».",
+                action: "استخدم لغة الحوار الفردي في الإعدادي والثانوي، وعزز النمذجة والممارسة العملية في الابتدائي."
+            }
+        };
+
+        // Open Universal Modal Function
+        function openCardModal(cardKey) {
+            const data = cardsData[cardKey];
+            if (!data) return;
+
+            document.getElementById('modalBadge').innerText = data.badge;
+            document.getElementById('modalTitle').innerText = data.title;
+
+            let bodyHtml = `
+                <div class="modal-section">
+                    <div class="modal-section-title"><i class="fa-solid fa-bullseye"></i> الغاية والهدف الأساسي:</div>
+                    <div class="modal-box-highlight">${data.purpose}</div>
+                </div>
+                <div class="modal-section">
+                    <div class="modal-section-title"><i class="fa-solid fa-circle-question text-accent-cyan"></i> السؤال المركزي الموجه للمربي:</div>
+                    <p style="font-weight:600; color:#e2e8f0; font-size:0.95rem;">${data.question}</p>
+                </div>
+                <div class="modal-section">
+                    <div class="modal-section-title"><i class="fa-solid fa-chalkboard-user text-accent-gold"></i> مثال تطبيقي حي من واقع الفصل:</div>
+                    <div class="modal-example-box">${data.example}</div>
+                </div>
+                ${data.action ? `
+                <div class="modal-section" style="margin-bottom:0;">
+                    <div class="modal-section-title"><i class="fa-solid fa-list-check" style="color:var(--success-green);"></i> طريقة الصياغة والتطبيق العملي:</div>
+                    <p style="font-size:0.92rem; color:var(--text-muted); line-height:1.7;">${data.action}</p>
+                </div>` : ''}
+            `;
+
+            document.getElementById('modalBody').innerHTML = bodyHtml;
+            document.getElementById('cardModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal Function
+        function closeCardModal() {
+            document.getElementById('cardModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on clicking overlay
+        function closeModalOnOverlay(e) {
+            if (e.target.id === 'cardModal') {
+                closeCardModal();
+            }
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeCardModal();
+            }
+        });
+
+        // Copy Modal Content
+        function copyModalContent() {
+            const title = document.getElementById('modalTitle').innerText;
+            const body = document.getElementById('modalBody').innerText;
+            const fullText = "=== " + title + " ===\n\n" + body;
+            navigator.clipboard.writeText(fullText).then(() => {
+                alert('تم نسخ محتوى وتفاصيل البطاقة إلى الحافظة بنجاح!');
+            }).catch(err => {
+                console.error('فشل النسخ: ', err);
+            });
+        }
+
+        // Interactive Live Report Generator
+        function generateInteractiveReport() {
+            const grade = document.getElementById('live_grade').value || 'الصف الدراسي';
+            const name = document.getElementById('live_name').value || 'الطالب (س)';
+            const behavior = document.getElementById('live_behavior').value || 'السلوك الملاحظ';
+            const a = document.getElementById('live_a').value || 'غير محدد';
+            const c = document.getElementById('live_c').value || 'غير محدد';
+
+            document.getElementById('modalBadge').innerText = "تقرير تربوي منظم فوري";
+            document.getElementById('modalTitle').innerText = "بطاقة التحليل السلوكي للحالة: " + name;
+
+            let reportHtml = `
+                <div class="modal-section">
+                    <div class="modal-section-title"><i class="fa-solid fa-id-card-clip"></i> بطاقة ملخص الموقف (البطاقة 01):</div>
+                    <div class="modal-box-highlight">في مرحلة (${grade})، وُثق للـ (${name}) السلوك التالي: ${behavior}.</div>
+                </div>
+                <div class="modal-section">
+                    <div class="modal-section-title"><i class="fa-solid fa-code-fork text-accent-cyan"></i> تحليل سياق ABC الميداني (البطاقة 03):</div>
+                    <div class="modal-example-box">
+                        <strong>A (السوابق):</strong> ${a}<br>
+                        <strong>B (السلوك الملحوظ):</strong> ${behavior}<br>
+                        <strong>C (اللواحق في الفصل):</strong> ${c}
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <div class="modal-section-title"><i class="fa-solid fa-shield-halved text-accent-gold"></i> الحد المقترح والدعم الممكن (البطاقات 06 & 07):</div>
+                    <p style="font-size:0.92rem; color:#e2e8f0; line-height:1.7;">
+                        • <strong>الحد الصفي:</strong> البقاء في مكان التعلم وإنجاز الجزء المطلوب بصوت هادئ.<br>
+                        • <strong>الدعم الممكن:</strong> تجزئة النشاط، والتحقق من الفهم في أول 90 ثانية، واستخدام مؤشر مرئي.
+                    </p>
+                </div>
+                <div class="modal-section" style="margin-bottom:0;">
+                    <div class="modal-section-title"><i class="fa-solid fa-comment-dots" style="color:var(--success-green);"></i> ماذا يقول المعلم للطالب الآن (البطاقة 09):</div>
+                    <div class="modal-box-highlight" style="border-right-color:var(--success-green); background:rgba(16,185,129,0.12);">
+                        «رأيت أنك توقفت عن العمل. المطلوب إكمال السؤال الأول فقط الآن، وإذا احتجت مساعدة ارفع يدك وسأراجع معك بعد 3 دقائق».
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('modalBody').innerHTML = reportHtml;
+            document.getElementById('cardModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Copy Code Blocks
         function copyCode(elementId) {
             const text = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(text).then(() => {
-                alert('تم نسخ التعليمات بنجاح إلى الحافظة!');
+                alert('تم نسخ التعليمات البرمجية بنجاح إلى الحافظة!');
             }).catch(err => {
                 console.error('فشل النسخ: ', err);
             });
@@ -2046,4 +2893,5 @@
         });
     </script>
 </body>
+
 </html>
