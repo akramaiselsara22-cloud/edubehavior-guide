@@ -1849,6 +1849,51 @@
         .toast-notify.show {
             transform: translateX(-50%) translateY(0);
         }
+
+        /* Tool Info Pill & Explanatory Buttons */
+        .toc-info-pill {
+            margin-right: auto;
+            font-size: 0.7rem;
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid rgba(0, 210, 255, 0.35);
+            color: var(--accent-cyan);
+            padding: 2px 7px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .toc-link:hover .toc-info-pill {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: #060a17;
+            font-weight: 700;
+        }
+
+        .btn-explain-tool {
+            background: rgba(229, 185, 95, 0.12);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-right: 12px;
+            vertical-align: middle;
+            transition: all 0.2s ease;
+        }
+
+        .btn-explain-tool:hover {
+            background: var(--accent-gold);
+            color: #060a17;
+            transform: translateY(-1px);
+        }
 </style>
 </head>
 <body>
@@ -1875,7 +1920,7 @@
                 <li><a href="#super-prompts" class="nav-link"><i class="fa-solid fa-code"></i> أوامر AI الذكية</a></li>
                 <li><a href="#ai-consultant" class="nav-link highlight-adhd"><i class="fa-solid fa-robot"></i> المستشار السلوكي</a></li>
                 <li><a href="#challenges" class="nav-link"><i class="fa-solid fa-book-open"></i> المشكلات الـ 9</a></li>
-                <li><a href="#adhd" class="nav-link highlight-adhd"><i class="fa-solid fa-brain"></i> مسار ADHD</a></li>
+                <li><a href="#adhd" class="nav-link highlight-adhd" onclick="openToolExplanationModal('adhd'); return false;"><i class="fa-solid fa-brain"></i> مسار ADHD</a></li>
                 <li><a href="#cards" class="nav-link"><i class="fa-solid fa-id-card"></i> البطاقات الـ 11</a></li>
                 <li><a href="#worksheets" class="nav-link"><i class="fa-solid fa-folder-open"></i> الحقيبة الإجرائية</a></li>
             </ul>
@@ -1977,20 +2022,20 @@
             <div class="sidebar-heading">
                 <i class="fa-solid fa-bars-staggered"></i> فهرس المنصة الشامل
             </div>
-                        <ul class="toc-list">
+                                    <ul class="toc-list">
                 <li><a href="#persona-selector" class="toc-link"><i class="fa-solid fa-users-gear text-accent-cyan"></i> تخصيص الهوية (الأدوار)</a></li>
                 <li><a href="#book-package" class="toc-link" style="color:var(--accent-gold); font-weight:800;"><i class="fa-solid fa-crown text-accent-gold"></i> الحزمة الاحترافية (399 بدلاً من 699)</a></li>
                 <li><a href="#super-prompts" class="toc-link"><i class="fa-solid fa-code text-accent-cyan"></i> أوامر الذكاء الاصطناعي (Mega-Prompts)</a></li>
                 <li><a href="#circles" class="toc-link"><i class="fa-solid fa-compass"></i> الدوائر الأربع الحاكمة</a></li>
                 <li><a href="#ai-consultant" class="toc-link"><i class="fa-solid fa-robot text-accent-gold"></i> المستشار السلوكي الذكي</a></li>
                 <li><a href="#challenges" class="toc-link"><i class="fa-solid fa-book-open"></i> المشكلات السلوكية الـ 9</a></li>
-                <li><a href="#stages" class="toc-link"><i class="fa-solid fa-graduation-cap"></i> خريطة المراحل العمرية</a></li>
-                <li><a href="#adhd" class="toc-link"><i class="fa-solid fa-brain"></i> مسار ADHD المتكامل</a></li>
+                <li><a href="#stages" class="toc-link" onclick="openToolExplanationModal('stages'); return false;"><i class="fa-solid fa-graduation-cap"></i> خريطة المراحل العمرية <span class="toc-info-pill"><i class="fa-solid fa-circle-info"></i> شرح</span></a></li>
+                <li><a href="#adhd" class="toc-link" onclick="openToolExplanationModal('adhd'); return false;"><i class="fa-solid fa-brain"></i> مسار ADHD المتكامل <span class="toc-info-pill"><i class="fa-solid fa-circle-info"></i> شرح</span></a></li>
                 <li><a href="#cards" class="toc-link"><i class="fa-solid fa-id-card"></i> البطاقات الإجرائية الـ 11</a></li>
-                <li><a href="#crisis" class="toc-link"><i class="fa-solid fa-triangle-exclamation text-danger-red"></i> مصفوفة علامات الخطر</a></li>
+                <li><a href="#crisis" class="toc-link" onclick="openToolExplanationModal('crisis'); return false;"><i class="fa-solid fa-triangle-exclamation text-danger-red"></i> مصفوفة علامات الخطر <span class="toc-info-pill"><i class="fa-solid fa-circle-info"></i> شرح</span></a></li>
                 <li><a href="#worksheets" class="toc-link"><i class="fa-solid fa-folder-open text-accent-cyan"></i> الحقيبة الإجرائية للنماذج</a></li>
-                <li><a href="#glossary" class="toc-link"><i class="fa-solid fa-spell-check"></i> قاموس المصطلحات</a></li>
-                <li><a href="#references" class="toc-link"><i class="fa-solid fa-building-columns"></i> المراجع المعتمدة</a></li>
+                <li><a href="#glossary" class="toc-link" onclick="openToolExplanationModal('glossary'); return false;"><i class="fa-solid fa-spell-check"></i> قاموس المفاهيم السلوكية <span class="toc-info-pill"><i class="fa-solid fa-circle-info"></i> شرح</span></a></li>
+                <li><a href="#references" class="toc-link" onclick="openToolExplanationModal('references'); return false;"><i class="fa-solid fa-building-columns"></i> المراجع والمعايير المعتمدة <span class="toc-info-pill"><i class="fa-solid fa-circle-info"></i> شرح</span></a></li>
             </ul>
         </aside>
 
@@ -2631,7 +2676,7 @@
                 <div class="section-header">
                     <div>
                         <div class="section-tag"><i class="fa-solid fa-graduation-cap"></i> القسم الثاني • الفصول 5 إلى 7</div>
-                        <h2 class="section-title"><i class="fa-solid fa-children"></i> خريطة المراحل العمرية وتطور الوظائف التنفيذية</h2>
+                        <h2 class="section-title"><i class="fa-solid fa-children"></i> خريطة المراحل العمرية وتطور الوظائف التنفيذية <button class="btn-explain-tool" onclick="openToolExplanationModal('stages')"><i class="fa-solid fa-circle-info"></i> شرح وظيفة وأهمية الأداة</button></h2>
                     </div>
                 </div>
 
@@ -2688,7 +2733,7 @@
                 <div class="section-header">
                     <div>
                         <div class="section-tag"><i class="fa-solid fa-brain"></i> القسم الخامس من الكتاب • الفصول 18 و 19 و 20</div>
-                        <h2 class="section-title"><i class="fa-solid fa-bolt" style="color:var(--accent-purple);"></i> مسار ADHD المتكامل والتيسيرات الصفية</h2>
+                        <h2 class="section-title"><i class="fa-solid fa-bolt" style="color:var(--accent-purple);"></i> مسار ADHD المتكامل والتيسيرات الصفية <button class="btn-explain-tool" onclick="openToolExplanationModal('adhd')"><i class="fa-solid fa-circle-info"></i> شرح وظيفة وأهمية الأداة</button></h2>
                     </div>
                 </div>
 
@@ -2760,7 +2805,7 @@
                 <div class="section-header">
                     <div>
                         <div class="section-tag" style="color:var(--danger-red);"><i class="fa-solid fa-triangle-exclamation"></i> القسم السادس • الفصل 21</div>
-                        <h2 class="section-title"><i class="fa-solid fa-shield-halved text-danger-red"></i> مصفوفة علامات الخطر ومتى يصبح الانتظار خطأً</h2>
+                        <h2 class="section-title"><i class="fa-solid fa-shield-halved text-danger-red"></i> مصفوفة علامات الخطر ومتى يصبح الانتظار خطأً <button class="btn-explain-tool" onclick="openToolExplanationModal('crisis')"><i class="fa-solid fa-circle-info"></i> شرح وظيفة وأهمية الأداة</button></h2>
                     </div>
                 </div>
 
@@ -3077,7 +3122,7 @@
                 <div class="section-header">
                     <div>
                         <div class="section-tag"><i class="fa-solid fa-spell-check"></i> قاموس البوصلة • المصطلحات السلوكية</div>
-                        <h2 class="section-title"><i class="fa-solid fa-book"></i> قاموس المفاهيم السلوكية والإدارة الصفية</h2>
+                        <h2 class="section-title"><i class="fa-solid fa-book"></i> قاموس المفاهيم السلوكية والإدارة الصفية <button class="btn-explain-tool" onclick="openToolExplanationModal('glossary')"><i class="fa-solid fa-circle-info"></i> شرح وظيفة وأهمية الأداة</button></h2>
                     </div>
                 </div>
 
@@ -3121,7 +3166,7 @@
                 <div class="section-header">
                     <div>
                         <div class="section-tag"><i class="fa-solid fa-scale-balanced"></i> التأصيل العلمي • المراجع الدولية</div>
-                        <h2 class="section-title"><i class="fa-solid fa-building-columns"></i> المراجع والمعايير القائمة على الأدلة (10 مراجع)</h2>
+                        <h2 class="section-title"><i class="fa-solid fa-building-columns"></i> المراجع والمعايير القائمة على الأدلة (10 مراجع) <button class="btn-explain-tool" onclick="openToolExplanationModal('references')"><i class="fa-solid fa-circle-info"></i> شرح وظيفة وأهمية الأداة</button></h2>
                     </div>
                 </div>
 
@@ -4034,6 +4079,125 @@
         document.addEventListener('DOMContentLoaded', function() {
             renderPreviewPage(1);
         });
+
+
+
+        /* ===================================================
+           TOOL EXPLANATION MODAL LOGIC (5 SPECIFIED BUTTONS)
+           =================================================== */
+        const toolsExplanationData = {
+            stages: {
+                badge: "خريطة المراحل النمائية والوظائف التنفيذية",
+                title: "خريطة المراحل العمرية (الابتدائي - الإعدادي - الثانوي)",
+                icon: "fa-children",
+                color: "var(--accent-cyan)",
+                overview: "دليل نمائي مرجعي يفكك الفوارق البيولوجية والعصبية للطفل والمراهق عبر ثلاث مراحل تعليمية أساسية (الابتدائي: 5-11 سنة، الإعدادي: 12-14 سنة، الثانوي: 15-18 سنة).",
+                functionality: "تحديد مدى ملاءمة السلوك للمرحلة العمرية، وتوجيه المعلم وولي الأمر لاختيار استراتيجيات التعديل المناسبة لدرجة نضج القشرة الجبهية الحجاجية (Prefrontal Cortex) المسؤولة عن كبح الاندفاع والتنظيم الذاتي.",
+                importance: "تمنع المربي من الوقوع في فخ «معاملة المراهق كطفل صغير» أو «مطالبة طفل الابتدائي بنضج إدراكي يفوق طاقته»، مما يخفض الصدامات الصفية بنسبة تتجاوز 60% ويضمن اتساق التوقعات السلوكية.",
+                target: "المعلمون، أولياء الأمور، وإخصائيو التوجيه الطلابي.",
+                targetSection: "#stages"
+            },
+            adhd: {
+                badge: "المسار الإكلينيكي والمدرسي المتكامل",
+                title: "مسار اضطراب فرط الحركة وتشتت الانتباه (ADHD)",
+                icon: "fa-bolt",
+                color: "var(--accent-purple)",
+                overview: "مسار علمي وتطبيقي شامل يفكك الجذور العصبية لاضطراب ADHD طبقاً لأحدث أبحاث Lancet 2025 ومعايير DSM-5-TR، مدعوماً بخطة الـ 30 يوماً وتيسيرات البيئة المدرسية.",
+                functionality: "التفرقة القاطعة بين نقص الدوبامين وضعف الذاكرة العاملة وبين «سوء التربية أو الشغب المتعمد»، وتوفير بروتوكول تيسيرات IEP و504 (الحركة الوظيفية، أدوات التململ، تجزئة التعليمات، والتعزيز الفوري).",
+                importance: "حماية الطفل من التسميات السلبية والوصم بالعجز، وتمكين المعلم من إدارة اندفاعيته دون صراخ أو تعطيل لزملائه، مما يحول طاقته الحركية إلى إنجاز أكاديمي منتظم.",
+                target: "معلمو الفصول، إخصائيو الدمج، وأسر أطفال فرط الحركة وتشتت الانتباه.",
+                targetSection: "#adhd"
+            },
+            crisis: {
+                badge: "بروتوكول السلامة والتدخل العاجل",
+                title: "مصفوفة علامات الخطر ومتى يصبح الانتظار خطأً",
+                icon: "fa-shield-halved",
+                color: "var(--danger-red)",
+                overview: "شبكة أمان وخط أحمر يحدد السلوكيات والمؤشرات النفسية والجسدية التي تتجاوز صلاحيات الإدارة الصفية العادية وتتطلب تدخلاً فورياً لحماية الطالب والمدرسة.",
+                functionality: "فرز المواقف الطارئة (التهديد بالعنف، إيذاء الذات، التغير المفاجئ الحاد في المزاج، نوبات الهلع والانسحاب الصامت) وتقديم إجراءات الحماية اللحظية وبروتوكول الإحالة الرسمية المعتمدة.",
+                importance: "حماية الأرواح وتوفير مظلة أمان مهنية وقانونية للمدرسة والمعلم تضمن عدم التردد أو التأخر في إنقاذ الطالب، وتفعيل الشراكة السريعة مع الجهات الطبية والنفسية المختصة.",
+                target: "إدارات المدارس، لجان الحماية والسلامة، والمعلمون في كافة المراحل.",
+                targetSection: "#crisis"
+            },
+            glossary: {
+                badge: "قاموس المصطلحات والمفاهيم المهنية",
+                title: "قاموس المفاهيم السلوكية والإدارة الصفية",
+                icon: "fa-spell-check",
+                color: "var(--accent-gold)",
+                overview: "معجم تربوي وإكلينيكي موثق يجمع ويشرح أهم المصطلحات العلمية في تعديل السلوك وعلم النفس الصفي بلغة مهنية مبسطة وسهلة الفهم.",
+                functionality: "توحيد اللغة التربوية بين فريق المدرسة والأسرة، وشرح مفاهيم مثل: السوابق A، اللواحق C، التحليل الوظيفي FBA، التعزيز التفاضلي (DRI/DRA)، الاقتصاد الرمزي (Token Economy)، وتكلفة الاستجابة.",
+                importance: "منع الخلط وسوء التفسير في تقارير المتابعة السلوكية، وتزويد المعلم بالمرجعية المفاهيمية الصحيحة لصياغة خطط التدخل والتواصل العلمي الرصين مع أولياء الأمور.",
+                target: "الباحثون، الأخصائيون النفسيون، المعلمون الجدد، والإدارات التعليمية.",
+                targetSection: "#glossary"
+            },
+            references: {
+                badge: "التأصيل العلمي والمنظمات العالمية",
+                title: "المراجع والمعايير القائمة على الأدلة (10 مراجع)",
+                icon: "fa-building-columns",
+                color: "var(--accent-cyan)",
+                overview: "سجل التوثيق الأكاديمي والعيادي المعتمد الذي ترتكز عليه أدوات بوصلة السلوك، مستمداً من كبرى الهيئات الدولية والجامعات ومراجع الطب النفسي.",
+                functionality: "استعراض الأدلة والبراهين المستندة إلى منظمات: CDC، PBIS، NIMH، منظمة الصحة العالمية WHO، StopBullying، ومرجع «العلاج السلوكي للطفل والمراهق» لأ.د عبد الستار إبراهيم.",
+                importance: "تأكيد أن جميع نماذج واستراتيجيات المنصة ليست اجتهادات عفوية أو نصائح فردية، بل بروتوكولات علمية مقننة عالمياً ومجربة إكلينيكياً، مما يمنح المدرسة الثقة التامة في التطبيق.",
+                target: "المشرفون التربويون، إدارات الجودة والتطوير المدرسي، والمحكمون الأكاديميون.",
+                targetSection: "#references"
+            }
+        };
+
+        function openToolExplanationModal(toolKey) {
+            const data = toolsExplanationData[toolKey];
+            if (!data) return;
+
+            document.getElementById('modalBadge').innerHTML = `<i class="fa-solid ${data.icon}"></i> ${data.badge}`;
+            document.getElementById('modalTitle').innerHTML = data.title;
+
+            const htmlContent = `
+                <div class="modal-section" style="border-right-color:${data.color}; background:rgba(255,255,255,0.02);">
+                    <div class="modal-section-title" style="color:${data.color};"><i class="fa-solid fa-circle-info"></i> نبذة وشرح مبسط:</div>
+                    <p style="font-size:0.94rem; line-height:1.7; color:#e2e8f0;">${data.overview}</p>
+                </div>
+
+                <div class="modal-section" style="border-right-color:var(--accent-gold);">
+                    <div class="modal-section-title" style="color:var(--accent-gold);"><i class="fa-solid fa-gears"></i> الوظيفة الأساسية للأداة (ماذا تقدم؟):</div>
+                    <p style="font-size:0.92rem; line-height:1.7; color:#cbd5e1;">${data.functionality}</p>
+                </div>
+
+                <div class="modal-section" style="border-right-color:var(--success-green); background:rgba(16,185,129,0.06);">
+                    <div class="modal-section-title" style="color:var(--success-green);"><i class="fa-solid fa-chart-line"></i> الأهمية والفائدة الميدانية (لماذا تستخدمها؟):</div>
+                    <p style="font-size:0.92rem; line-height:1.7; color:#a7f3d0; font-weight:600;">${data.importance}</p>
+                </div>
+
+                <div class="modal-section" style="border-right-color:var(--accent-cyan);">
+                    <div class="modal-section-title" style="color:var(--accent-cyan);"><i class="fa-solid fa-users"></i> الفئات الأكثر استفادة:</div>
+                    <p style="font-size:0.9rem; color:#e0f2fe;">${data.target}</p>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:1.5rem; flex-wrap:wrap;">
+                    <button class="btn-main btn-gold" onclick="goToSectionAndCloseModal('${data.targetSection}')" style="flex:1; justify-content:center; padding:12px 24px; font-size:0.98rem;">
+                        <i class="fa-solid fa-arrow-down-long"></i> تصفح القسم بالكامل الآن في الموقع
+                    </button>
+                    <button class="btn-main btn-purple" onclick="closeInteractiveModal()" style="padding:12px 24px; font-size:0.95rem;">
+                        <i class="fa-solid fa-xmark"></i> إغلاق النافذة
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('modalBody').innerHTML = htmlContent;
+            const modal = document.getElementById('interactiveModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function goToSectionAndCloseModal(targetId) {
+            closeInteractiveModal();
+            setTimeout(() => {
+                const el = document.querySelector(targetId);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 200);
+        }
 
 </script>
 
