@@ -1265,7 +1265,591 @@
             -ms-user-select: text !important;
             user-select: text !important;
         }
-    </style>
+    
+        /* ===================================================
+           NEW STYLES: PERSONA SELECTOR, PRO BOOK PACKAGE, 
+           LOCKED READER & SUPER MEGA-PROMPTS
+           =================================================== */
+
+        /* 1. Persona Selector */
+        .persona-section {
+            background: linear-gradient(135deg, rgba(16, 28, 61, 0.95), rgba(9, 18, 36, 0.98));
+            border: 2px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(229, 185, 95, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .persona-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .persona-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(229, 185, 95, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 30px;
+            margin-bottom: 0.6rem;
+        }
+
+        .persona-title {
+            font-family: var(--font-heading);
+            font-size: 1.45rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .persona-sub {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .persona-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(0, 210, 255, 0.2);
+            border-radius: 16px;
+            padding: 1.1rem 0.9rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .persona-btn:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+            background: rgba(0, 210, 255, 0.08);
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.15);
+        }
+
+        .persona-btn.active {
+            border-color: var(--accent-gold);
+            background: linear-gradient(145deg, rgba(229, 185, 95, 0.2), rgba(16, 28, 61, 0.9));
+            box-shadow: 0 10px 25px rgba(229, 185, 95, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .persona-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(0, 210, 255, 0.12);
+            border: 1px solid var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            color: var(--accent-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .persona-btn.active .persona-icon {
+            background: rgba(229, 185, 95, 0.2);
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .persona-label {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .persona-desc {
+            font-size: 0.76rem;
+            color: #94a3b8;
+        }
+
+        .persona-dynamic-banner {
+            background: rgba(6, 10, 23, 0.85);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 14px;
+            padding: 1.1rem 1.3rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* 2. Pro Book Package Section */
+        .book-package-section {
+            background: linear-gradient(135deg, rgba(16, 28, 61, 0.98), rgba(6, 10, 23, 0.99));
+            border: 2px solid var(--accent-gold);
+            border-radius: 24px;
+            padding: 2.2rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 35px rgba(229, 185, 95, 0.2);
+            position: relative;
+        }
+
+        .package-card-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 1.8rem;
+            align-items: start;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 992px) {
+            .package-card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .package-details-card {
+            background: rgba(11, 19, 41, 0.7);
+            border: 1px solid rgba(229, 185, 95, 0.3);
+            border-radius: 20px;
+            padding: 1.6rem;
+        }
+
+        .package-price-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(229, 185, 95, 0.12);
+            border: 2px solid var(--accent-gold);
+            padding: 8px 16px;
+            border-radius: 40px;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .package-price-badge .old-price {
+            text-decoration: line-through;
+            color: #ef4444;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .package-price-badge .new-price {
+            color: var(--accent-gold);
+            font-size: 1.55rem;
+            font-weight: 900;
+            font-family: var(--font-heading);
+        }
+
+        .package-price-badge .discount-pill {
+            background: #10b981;
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .package-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+            line-height: 1.35;
+        }
+
+        .package-sub {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 1.4rem;
+        }
+
+        .package-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .package-features-list li {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        .package-features-list li i {
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .self-contained-badge {
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px dashed var(--accent-cyan);
+            border-radius: 12px;
+            padding: 0.9rem 1.1rem;
+            margin-bottom: 1.4rem;
+            font-size: 0.86rem;
+            color: #e0f2fe;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1.5;
+        }
+
+        /* 3. Interactive Book Reader Preview & Locked Paywall */
+        .book-reader-card {
+            background: #080f24;
+            border: 2px solid var(--accent-cyan);
+            border-radius: 20px;
+            padding: 1.3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 210, 255, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .reader-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.25);
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .reader-toolbar-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--accent-cyan);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reader-page-indicator {
+            background: rgba(0, 210, 255, 0.12);
+            border: 1px solid var(--accent-cyan);
+            color: #ffffff;
+            font-size: 0.78rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .reader-page-display {
+            background: #0b1329;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 1.3rem;
+            min-height: 420px;
+            max-height: 460px;
+            overflow-y: auto;
+            position: relative;
+            margin-bottom: 1.1rem;
+        }
+
+        /* Locked Page Overlay */
+        .locked-page-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(9, 18, 36, 0.92);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.8rem;
+            border-radius: 14px;
+            z-index: 10;
+        }
+
+        .locked-icon-badge {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(229, 185, 95, 0.15);
+            border: 2px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(229, 185, 95, 0.3); transform: scale(1); }
+            50% { box-shadow: 0 0 30px rgba(229, 185, 95, 0.6); transform: scale(1.05); }
+        }
+
+        .locked-page-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .locked-page-sub {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            margin-bottom: 1.2rem;
+            max-width: 380px;
+            line-height: 1.6;
+        }
+
+        .reader-nav-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .reader-nav-btns-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reader-nav-btn {
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: #ffffff;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .reader-nav-btn:hover {
+            background: var(--accent-cyan);
+            color: #060a17;
+        }
+
+        .reader-quick-jump {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .reader-jump-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #94a3b8;
+            font-size: 0.74rem;
+            padding: 4px 9px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .reader-jump-pill:hover, .reader-jump-pill.active {
+            background: rgba(0, 210, 255, 0.2);
+            border-color: var(--accent-cyan);
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .reader-jump-pill.locked-pill {
+            border-color: rgba(229, 185, 95, 0.5);
+            color: var(--accent-gold);
+            background: rgba(229, 185, 95, 0.1);
+        }
+
+        /* 4. Super AI Mega-Prompts */
+        .super-prompts-section {
+            background: linear-gradient(135deg, rgba(11, 19, 41, 0.95), rgba(6, 10, 23, 0.98));
+            border: 2px solid rgba(0, 210, 255, 0.3);
+            border-radius: 24px;
+            padding: 2.2rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .prompts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1.3rem;
+        }
+
+        .prompt-card {
+            background: rgba(16, 28, 61, 0.85);
+            border: 1px solid rgba(0, 210, 255, 0.25);
+            border-radius: 18px;
+            padding: 1.3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .prompt-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(229, 185, 95, 0.15);
+        }
+
+        .prompt-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .prompt-badge {
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 20px;
+        }
+
+        .prompt-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .prompt-card-desc {
+            font-size: 0.84rem;
+            color: #94a3b8;
+            margin-bottom: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .prompt-code-box {
+            background: #060a17;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.8rem;
+            font-family: monospace;
+            font-size: 0.78rem;
+            color: #a5f3fc;
+            line-height: 1.5;
+            max-height: 110px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            direction: ltr;
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-copy-btn {
+            background: linear-gradient(135deg, rgba(229, 185, 95, 0.2), rgba(16, 28, 61, 0.9));
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-size: 0.86rem;
+            font-weight: 700;
+            padding: 9px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .prompt-copy-btn:hover {
+            background: var(--accent-gold);
+            color: #060a17;
+        }
+
+        /* 5. Dual-Mode Consultant Toggle */
+        .ai-mode-toggle-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1.3rem;
+            flex-wrap: wrap;
+        }
+
+        .ai-mode-btn {
+            flex: 1;
+            min-width: 220px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid rgba(0, 210, 255, 0.25);
+            color: #cbd5e1;
+            padding: 11px 16px;
+            border-radius: 14px;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .ai-mode-btn:hover {
+            background: rgba(0, 210, 255, 0.08);
+            border-color: var(--accent-cyan);
+            color: #ffffff;
+        }
+
+        .ai-mode-btn.active {
+            background: linear-gradient(145deg, rgba(0, 210, 255, 0.15), rgba(16, 28, 61, 0.9));
+            border-color: var(--accent-cyan);
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2);
+        }
+
+        /* Toast notification */
+        .toast-notify {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #10b981;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            z-index: 99999;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast-notify.show {
+            transform: translateX(-50%) translateY(0);
+        }
+</style>
 </head>
 <body>
 
@@ -1287,7 +1871,13 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
                 <li><a href="#circles" class="nav-link"><i class="fa-solid fa-compass"></i> الأصول الحاكمة</a></li>
-                <li><a href="#ai-consultant" class="nav-link highlight-ai"><i class="fa-solid fa-robot"></i> المستشار الذكي المباشر</a></li>
+                <li><a href="#persona-selector" class="nav-link"><i class="fa-solid fa-users-gear"></i> تخصيص الهوية</a></li>
+                <li><a href="#book-package" class="nav-link highlight-ai" style="color:var(--accent-gold); border:1px solid rgba(229,185,95,0.4);"><i class="fa-solid fa-crown"></i> الحزمة الاحترافية (399)</a></li>
+                <li><a href="#super-prompts" class="nav-link"><i class="fa-solid fa-code"></i> أوامر AI الذكية</a></li>
+                <li><a href="#persona-selector" class="sidebar-link"><i class="fa-solid fa-users-gear"></i> تخصيص الهوية (معلم/ولي أمر/طالب)</a></li>
+                <li><a href="#book-package" class="sidebar-link" style="color:var(--accent-gold); font-weight:800;"><i class="fa-solid fa-crown"></i> الحزمة الاحترافية للكتاب (399 بدلاً من 699)</a></li>
+                <li><a href="#super-prompts" class="sidebar-link"><i class="fa-solid fa-code"></i> أوامر الذكاء الاصطناعي (Mega-Prompts)</a></li>
+                <li><a href="#ai-consultant" class="sidebar-link active"><i class="fa-solid fa-robot"></i> المستشار السلوكي التفاعلي</a></li>
                 <li><a href="#challenges" class="nav-link"><i class="fa-solid fa-book-open"></i> المشكلات الـ 9</a></li>
                 <li><a href="#stages" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> المراحل العمرية</a></li>
                 <li><a href="#adhd" class="nav-link highlight-adhd"><i class="fa-solid fa-brain"></i> مسار ADHD</a></li>
@@ -1410,6 +2000,59 @@
 
         <!-- Main Body -->
         <main>
+            <!-- 0. User Persona Selector -->
+            <section id="persona-selector" class="persona-section">
+                <div class="persona-header">
+                    <span class="persona-tag"><i class="fa-solid fa-users-gear"></i> تخصيص التجربة الذكية</span>
+                    <h2 class="persona-title">حدد دورك للوصول إلى أدواتك المخصصة فوراً:</h2>
+                    <p class="persona-sub">اختر صفتك لنقوم بتوجيهك تلقائياً إلى الفصول الأكثر أهمية في الكتاب المدمج، والأوامر الذكية، والتيسيرات الميدانية المناسبة لك</p>
+                </div>
+
+                <div class="persona-grid">
+                    <button class="persona-btn active" id="btnPersonaTeacher" onclick="selectPersona('teacher')">
+                        <div class="persona-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <div class="persona-label">معلم / معلمة</div>
+                        <div class="persona-desc">إدارة الصف والسيطرة وحفظ النظام اليومي</div>
+                    </button>
+                    <button class="persona-btn" id="btnPersonaParent" onclick="selectPersona('parent')">
+                        <div class="persona-icon"><i class="fa-solid fa-house-chimney-user"></i></div>
+                        <div class="persona-label">ولي أمر</div>
+                        <div class="persona-desc">التعامل المنزلي ودعم ADHD دون صراخ</div>
+                    </button>
+                    <button class="persona-btn" id="btnPersonaStudent" onclick="selectPersona('student')">
+                        <div class="persona-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="persona-label">طالب / يافع</div>
+                        <div class="persona-desc">تنظيم التركيز ومقاومة التشتت والمماطلة</div>
+                    </button>
+                    <button class="persona-btn" id="btnPersonaSpecialist" onclick="selectPersona('specialist')">
+                        <div class="persona-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                        <div class="persona-label">إخصائي / موجه</div>
+                        <div class="persona-desc">خطط BIP والتحليل السريري والإحالات المعتمدة</div>
+                    </button>
+                </div>
+
+                <!-- Dynamic Guidance Box -->
+                <div id="personaDynamicBanner" class="persona-dynamic-banner">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <div id="personaBannerIcon" style="width:42px; height:42px; border-radius:10px; background:rgba(229,185,95,0.15); border:1px solid var(--accent-gold); display:flex; align-items:center; justify-content:center; color:var(--accent-gold); font-size:1.25rem;">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <div>
+                            <div id="personaBannerTitle" style="font-family:var(--font-heading); color:#ffffff; font-weight:800; font-size:1.05rem;">
+                                مسار المعلم: إدارة الفصل الفعالة والسيطرة الهادئة
+                            </div>
+                            <div id="personaBannerDesc" style="font-size:0.86rem; color:#cbd5e1;">
+                                مسارك الأنسب: قراءة الفصول 1-4 والقواعد العشر + أطلس المشكلات الـ 11 + استخدام أمر التحليل الوظيفي السريع.
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <a href="#ai-consultant" class="btn-main btn-gold" style="padding:8px 16px; font-size:0.85rem;"><i class="fa-solid fa-robot"></i> استشارة صفيّة</a>
+                        <a href="#book-package" class="btn-main btn-purple" style="padding:8px 16px; font-size:0.85rem;"><i class="fa-solid fa-book-open"></i> تصفح عينة الكتاب</a>
+                    </div>
+                </div>
+            </section>
+
             <!-- 1. The 4 Governing Circles -->
             <section id="circles">
                 <div class="section-header">
@@ -1481,34 +2124,56 @@
                         </div>
                     </div>
 
-                    <!-- Input Controls -->
+                    <!-- Dual Mode Toggle -->
+                    <div class="ai-mode-toggle-group">
+                        <button type="button" id="btnModeCustom" class="ai-mode-btn active" onclick="switchAiConsultMode('custom')">
+                            <i class="fa-solid fa-pen-fancy"></i> 1. كتابة حالة حرة ومخصصة (اكتب ما يحدث معك بالتفصيل)
+                        </button>
+                        <button type="button" id="btnModePreset" class="ai-mode-btn" onclick="switchAiConsultMode('preset')">
+                            <i class="fa-solid fa-layer-group"></i> 2. أو اختر من النماذج الشائعة المجهزة مسبقاً
+                        </button>
+                    </div>
+
+                    <!-- Preset Dropdown Row (Toggleable) -->
+                    <div id="aiPresetContainer" style="display:none; margin-bottom:1.2rem; background:rgba(0,210,255,0.06); border:1px solid rgba(0,210,255,0.25); padding:1rem; border-radius:14px;">
+                        <label class="ai-field-label"><i class="fa-solid fa-folder-tree"></i> اختر نموذجاً جاهزاً لتعبئة التفاصيل وتعديلها:</label>
+                        <select id="ai_preset_select" class="ai-custom-textarea" style="min-height:auto; height:46px;" onchange="loadPresetCase()">
+                            <option value="custom">-- اختر نموذجاً شائعاً لتجربته فوراً --</option>
+                            <option value="defiance_laugh">طالب يرفض فتح الدفتر ويبدأ في الضحك والسخرية عند مطالبة المعلم له بالحل</option>
+                            <option value="adhd_restless">تلميذ في الصف الثالث يعاني من تشتت مستمر وينهض من مقعده كل 5 دقائق ويعطل زملائه</option>
+                            <option value="anger_explode">طالب إعدادي ينفجر غضباً ويرمي الأدوات عند انتقاد إجابته أو لومه</option>
+                            <option value="bullying_mock">طالب يمارس استقواء وسخرية متكررة من زميله أثناء العمل الجماعي</option>
+                            <option value="silent_withdraw">طالب كان متفوقاً انطوى فجأة ويرفض المشاركة ويبدو عليه قلق حاد</option>
+                            <option value="screen_phone">صراع دائم على استخدام الهاتف داخل الفصل وإطلاق تعليقات مستفزة</option>
+                        </select>
+                    </div>
+
                     <div class="ai-input-grid">
                         <div>
-                            <label class="ai-field-label"><i class="fa-solid fa-folder-tree"></i> اختر حالة صفية شائعة مجهزة مسبقاً:</label>
-                            <select id="ai_preset_select" class="ai-custom-textarea" style="min-height:auto; height:46px;" onchange="loadPresetCase()">
-                                <option value="custom">-- اكتب حالتك المخصصة بالأسفل، أو اختر نموذجاً جاهزاً --</option>
-                                <option value="defiance_laugh">طالب يرفض فتح الدفتر ويبدأ في الضحك والسخرية عند مطالبة المعلم له بالحل</option>
-                                <option value="adhd_restless">تلميذ في الصف الثالث يعاني من تشتت مستمر وينهض من مقعده كل 5 دقائق ويعطل زملائه</option>
-                                <option value="anger_explode">طالب إعدادي ينفجر غضباً ويرمي الأدوات عند انتقاد إجابته أو لومه</option>
-                                <option value="bullying_mock">طالب يمارس استقواء وسخرية متكررة من زميله أثناء العمل الجماعي</option>
-                                <option value="silent_withdraw">طالب كان متفوقاً انطوى فجأة ويرفض المشاركة ويبدو عليه قلق حاد</option>
-                                <option value="screen_phone">صراع دائم على استخدام الهاتف داخل الفصل وإطلاق تعليقات مستفزة</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label class="ai-field-label"><i class="fa-solid fa-graduation-cap"></i> المرحلة التعليمية:</label>
+                            <label class="ai-field-label"><i class="fa-solid fa-graduation-cap"></i> المرحلة التعليمية / عمر الطالب:</label>
                             <select id="ai_stage_select" class="ai-custom-textarea" style="min-height:auto; height:46px;">
                                 <option value="primary">المرحلة الابتدائية (5 - 11 سنة)</option>
                                 <option value="prep">المرحلة الإعدادية / المتوسطة (12 - 14 سنة)</option>
                                 <option value="sec">المرحلة الثانوية (15 - 18 سنة)</option>
                             </select>
                         </div>
+                        <div>
+                            <label class="ai-field-label"><i class="fa-solid fa-user-check"></i> منظور الاستشارة المطلوب:</label>
+                            <select id="ai_role_context" class="ai-custom-textarea" style="min-height:auto; height:46px;">
+                                <option value="teacher">منظور المعلم (إدارة الصف والتدخلات المباشرة)</option>
+                                <option value="parent">منظور ولي الأمر (التعامل المنزلي والدعم الأسري)</option>
+                                <option value="student">منظور الطالب (التهدئة الذاتية وتنظيم التركيز)</option>
+                                <option value="specialist">منظور الإخصائي (التحليل السريري والإحالات المعتمدة)</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div>
-                        <label class="ai-field-label"><i class="fa-solid fa-comment-dots"></i> تفاصيل الموقف السلوكي الملاحظ في الفصل:</label>
-                        <textarea id="ai_case_input" class="ai-custom-textarea" placeholder="صف هنا ما حدث بالتفصيل: ما قاله الطالب أو فعله، ما سبق الموقف، وكيف كان رد فعل الصف أو المعلم..."></textarea>
+                    <div style="margin-top:1rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                            <label class="ai-field-label" style="margin-bottom:0;"><i class="fa-solid fa-comment-dots"></i> <span id="caseInputLabel">اكتب تفاصيل الموقف السلوكي بالتفصيل:</span></label>
+                            <span style="font-size:0.78rem; color:var(--accent-cyan);"><i class="fa-solid fa-check"></i> يمكنك كتابة أي وصف بحرية تامة</span>
+                        </div>
+                        <textarea id="ai_case_input" class="ai-custom-textarea" rows="4" placeholder="✍️ اكتب هنا بالتفصيل ما حدث: ما الذي قاله الطالب أو طفلك أو فعله؟ متى حدث الموقف؟ ما الذي سبق السلوك؟ كيف تصرفت معه؟ وما التحدي الذي يقلقك تحديداً؟"></textarea>
                     </div>
 
                     <div style="margin-top:1.2rem; text-align:center;">
@@ -1540,7 +2205,268 @@
             </section>
 
             <!-- 3. The 9 Core Behavioral Challenges (Chapters 8 to 16) -->
-            <section id="challenges">
+            
+            <!-- 1.5 Pro Master Book Package & Interactive Reader -->
+            <section id="book-package" class="book-package-section">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag"><i class="fa-solid fa-crown text-accent-gold"></i> الحزمة الاحترافية المعتمدة 2026 • إصدار رقمي مكتفٍ ذاتياً</div>
+                        <h2 class="section-title"><i class="fa-solid fa-book-journal-whills text-accent-gold"></i> الموسوعة الشاملة: بوصلة السلوك ومسار ADHD</h2>
+                    </div>
+                </div>
+
+                <div class="package-card-grid">
+                    <!-- Right Column: Package Details & Pricing 399 -->
+                    <div class="package-details-card">
+                        <div class="package-price-badge">
+                            <span class="old-price">699 ج.م</span>
+                            <span class="new-price">399 ج.م / ر.س فقط</span>
+                            <span class="discount-pill">خصم أكثر من 40% لفترة محدودة</span>
+                        </div>
+
+                        <h3 class="package-title">الموسوعة الرقمية المدمجة الكاملة (أكثر من 350 صفحة)</h3>
+                        <p class="package-sub">
+                            المرجع العربي الأكثر شمولاً الذي يدمج <strong>بوصلة السلوك الميدانية المدرسية</strong> مع <strong>مسار ADHD وخطة الـ 30 يوماً</strong>، وموثق بأرقام الصفحات الدقيقة من المرجع الإكلينيكي الرصين <strong>«العلاج السلوكي للطفل والمراهق»</strong> لأ.د. عبد الستار إبراهيم.
+                        </p>
+
+                        <!-- Self-contained confirmation -->
+                        <div class="self-contained-badge">
+                            <i class="fa-solid fa-shield-halved" style="color:var(--accent-cyan); font-size:1.3rem;"></i>
+                            <div>
+                                <strong>منتج رقمي مكتفٍ ذاتياً بالكامل:</strong><br>
+                                مصمم ليوفر لك جميع الأدلة التحريرية، والبطاقات التنفيذية، والأوامر الذكية خطوة بخطوة؛ لتباشر التطبيق فوراً <strong>دون الحاجة لأي استشارات خاصة أو تواصل شخصي</strong>.
+                            </div>
+                        </div>
+
+                        <ul class="package-features-list">
+                            <li>
+                                <i class="fa-solid fa-circle-check text-accent-gold"></i>
+                                <div><strong>الموسوعة الكاملة المدمجة (8 أبواب و25 فصلاً):</strong> نسخة PDF فاخرة مجهزة للقراءة والطباعة بحجم A4/A5 فائق الجودة.</div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check text-accent-gold"></i>
+                                <div><strong>مسار ADHD وخطة الـ 30 يوماً:</strong> تشريح كيمياء الدوبامين، عمى الوقت للكبار، تيسيرات IEP و504 في المدرسة.</div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check text-accent-gold"></i>
+                                <div><strong>توثيق علمي مرقم بالصفحات:</strong> إحالات معتمدة لفنيات التعزيز (ص 75)، الاقتصاد الرمزي (ص 88)، التعاقد السلوكي (ص 94 وص 248)، وإدارة العناد (ص 233).</div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check text-accent-gold"></i>
+                                <div><strong>حزمة الأوامر البرمجية الذكية (Mega-Prompts):</strong> 6 أوامر كبرى احترافية جاهزة للاستخدام مع ChatGPT و Claude و Gemini.</div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-circle-check text-accent-gold"></i>
+                                <div><strong>الحقيبة الإجرائية للنماذج (35 نموذجاً):</strong> استمارات ملاحظة وسجلات متابعة قابلة للتعديل والطباعة المباشرة.</div>
+                            </li>
+                        </ul>
+
+                        <div style="margin-top:1.5rem;">
+                            <a href="https://wa.me/201037489146?text=%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%AD%D8%B2%D9%85%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20%D9%84%D9%84%D9%85%D9%88%D8%B3%D9%88%D8%B9%D8%A9%20(399%20%D9%81%D9%82%D8%B7)" target="_blank" class="btn-main btn-gold" style="padding:15px 30px; font-size:1.08rem; width:100%; justify-content:center; box-shadow: 0 10px 25px rgba(229,185,95,0.35);">
+                                <i class="fa-solid fa-bolt"></i> احصل على الحزمة الاحترافية الكاملة الآن (399 فقط بدلاً من 699)
+                            </a>
+                            <div style="text-align:center; font-size:0.78rem; color:#94a3b8; margin-top:8px;">
+                                <i class="fa-solid fa-lock"></i> تحميل رقمي فوري ومباشر • ترخيص دائم للاستخدام الشخصي والمدرسي
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left Column: Interactive Book Reader Preview with Unlocked and Locked Pages -->
+                    <div class="book-reader-card">
+                        <div class="reader-toolbar">
+                            <div class="reader-toolbar-title">
+                                <i class="fa-solid fa-book-open-reader text-accent-cyan"></i> قارئ عينة الكتاب التفاعلي
+                            </div>
+                            <div class="reader-page-indicator" id="readerPageIndicator">
+                                صفحة <span id="currentPreviewPageNum">1</span> من 350+
+                            </div>
+                        </div>
+
+                        <!-- Reader Display Area -->
+                        <div class="reader-page-display" id="readerPageDisplay">
+                            <!-- Dynamic Page Content injected by JS -->
+                        </div>
+
+                        <!-- Reader Navigation Controls -->
+                        <div class="reader-nav-controls">
+                            <div class="reader-nav-btns-row">
+                                <button class="reader-nav-btn" onclick="prevPreviewPage()"><i class="fa-solid fa-arrow-right"></i> الصفحة السابقة</button>
+                                <button class="reader-nav-btn" onclick="nextPreviewPage()">الصفحة التالية <i class="fa-solid fa-arrow-left"></i></button>
+                            </div>
+
+                            <div class="reader-quick-jump">
+                                <button class="reader-jump-pill active" id="jumpPill1" onclick="jumpToPreviewPage(1)">1. الغلاف والبيانات</button>
+                                <button class="reader-jump-pill" id="jumpPill2" onclick="jumpToPreviewPage(2)">2. الفهرس الشامل</button>
+                                <button class="reader-jump-pill" id="jumpPill3" onclick="jumpToPreviewPage(3)">3. القواعد الذهبية</button>
+                                <button class="reader-jump-pill" id="jumpPill4" onclick="jumpToPreviewPage(4)">4. مسار ADHD</button>
+                                <button class="reader-jump-pill" id="jumpPill5" onclick="jumpToPreviewPage(5)">5. العلاج السلوكي (ص 88)</button>
+                                <button class="reader-jump-pill locked-pill" id="jumpPill6" onclick="jumpToPreviewPage(6)"><i class="fa-solid fa-lock"></i> باقي الفصول (مقفل)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- 1.6 Super AI Mega-Prompts Section -->
+            <section id="super-prompts" class="super-prompts-section">
+                <div class="section-header">
+                    <div>
+                        <div class="section-tag"><i class="fa-solid fa-terminal text-accent-cyan"></i> هدية الحزمة الاحترافية • هندسة الأوامر المعتمدة</div>
+                        <h2 class="section-title"><i class="fa-solid fa-code text-accent-gold"></i> أوامر الذكاء الاصطناعي الاحترافية (Mega-Prompts) المرافقـة للكتاب</h2>
+                    </div>
+                </div>
+                <p style="color:#cbd5e1; margin-bottom:1.6rem; font-size:0.95rem; line-height:1.6;">
+                    أوامر هندسية متقدمة مبنية طبقاً لقواعد <strong>AI NAVIGATORS</strong> وفصول الموسوعة المدمجة؛ انسخ أي أمر بنقرة واحدة وضعه في (ChatGPT أو Claude أو Gemini) لتحصل على استجابة إكلينيكية وتربوية فائقة الدقة:
+                </p>
+
+                <div class="prompts-grid">
+                    <!-- Prompt 1: FBA Analyzer -->
+                    <div class="prompt-card">
+                        <div>
+                            <div class="prompt-card-header">
+                                <span class="prompt-badge"><i class="fa-solid fa-chalkboard-user"></i> للمعلمين والإخصائيين</span>
+                                <span style="font-size:0.75rem; color:var(--accent-gold); font-weight:700;">ص 50-62 بالمرجع</span>
+                            </div>
+                            <h4 class="prompt-card-title">1. أمر التحليل الوظيفي السلوكي المتقدم (FBA Analyzer)</h4>
+                            <p class="prompt-card-desc">يحلل سوابق الموقف الصفي A وسلوكه B ولواحقه C ويستخرج الدافع الحقيقي والبديل السلوكي المقترح.</p>
+                            <div class="prompt-code-box" id="promptText1">أنت خبير إكلينيكي وتربوي مرجعي متخصص في إدارة السلوك المدرسي وتحليل السلوك الوظيفي (FBA) المستند إلى كتاب بوصلة السلوك ومرجع العلاج السلوكي للطفل (أ.د عبد الستار إبراهيم، ص 50-62).
+مهمتك: سأصف لك موقفاً سلوكياً حدث في الفصل أو المدرسة، وعليك تفكيكه بدقة إلى:
+1) فحص السلامة الفوري (Safety Check).
+2) التحليل الوظيفي الدقيق لسياق A-B-C (المثيرات السابقة، السلوك الإجرائي، العواقب المعززة).
+3) تحديد الدافع الخفي للسلوك (الهروب من مهمة، لفت الانتباه، الإشباع الحسي، استعادة السيطرة).
+4) اقتراح سلوك بديل وظيفي مناسب لعمر الطالب.
+5) صياغة استجابة المعلم الفورية المكونة من: (لغة الجسد + العبارة الحرفية ذات الخيارين).
+إليك تفاصيل الموقف: [اكتب هنا ما حدث بالضبط مع الطالب والمرحلة الدراسية]</div>
+                        </div>
+                        <button class="prompt-copy-btn" onclick="copyPrompt('promptText1', 'أمر التحليل الوظيفي FBA')">
+                            <i class="fa-solid fa-copy"></i> نسخ الأمر بنقرة واحدة
+                        </button>
+                    </div>
+
+                    <!-- Prompt 2: BIP Generator -->
+                    <div class="prompt-card">
+                        <div>
+                            <div class="prompt-card-header">
+                                <span class="prompt-badge"><i class="fa-solid fa-file-signature"></i> خطة BIP الفردية</span>
+                                <span style="font-size:0.75rem; color:var(--accent-gold); font-weight:700;">ص 147-160 بالمرجع</span>
+                            </div>
+                            <h4 class="prompt-card-title">2. أمر صياغة خطة التدخل السلوكي الفردية (BIP Generator)</h4>
+                            <p class="prompt-card-desc">يولد خطة تدخل مكتوبة ومعتمدة تشمل استراتيجيات الوقاية وجداول التعزيز التفاضلي ومؤشرات النجاح.</p>
+                            <div class="prompt-code-box" id="promptText2">بصفتك أخصائياً نفسياً وسلوكياً معتمداً، قم بصياغة "خطة تدخل سلوكي فردية" (Behavior Intervention Plan - BIP) مقننة وفق الخطوات الست للعلاج السلوكي (مرجع د. عبد الستار إبراهيم، ص 147-160) للحالة التالية:
+- اسم الطالب (رمزي): [اسم أو رمز الطالب]
+- المرحلة التعليمية: [ابتدائي / إعدادي / ثانوي]
+- السلوك المستهدف بالخفض: [وصف السلوك بدقة]
+المطلوب صياغة الخطة في جدول منظم يحتوي على:
+1. التعريف الإجرائي للسلوك وتردده المتوقع.
+2. استراتيجيات التعديل البيئي والوقاية الصفية (Antecedent Strategies).
+3. السلوك البديل الإيجابي وطريقة تدريب الطالب عليه.
+4. جدول التعزيز التفاضلي للسلوك البديل (DRA/DRI) والمكافآت الرمزية.
+5. بروتوكول استجابة المعلمين عند تكرار السلوك دون تصعيد.
+6. معايير قياس تقدم الخطة خلال 14 يوماً.</div>
+                        </div>
+                        <button class="prompt-copy-btn" onclick="copyPrompt('promptText2', 'أمر خطة التدخل BIP')">
+                            <i class="fa-solid fa-copy"></i> نسخ الأمر بنقرة واحدة
+                        </button>
+                    </div>
+
+                    <!-- Prompt 3: Behavioral Contract -->
+                    <div class="prompt-card">
+                        <div>
+                            <div class="prompt-card-header">
+                                <span class="prompt-badge"><i class="fa-solid fa-handshake"></i> تعاقد مدرسي وأسري</span>
+                                <span style="font-size:0.75rem; color:var(--accent-gold); font-weight:700;">ص 94-97 بالمرجع</span>
+                            </div>
+                            <h4 class="prompt-card-title">3. أمر صانع ميثاق التعاقد السلوكي (Contingency Contract)</h4>
+                            <p class="prompt-card-desc">يكتب عقداً سلوكياً ودياً وواضحاً وموقعاً بين الطالب والمعلم/الأسرة مستوحى من دراسات الحالة المعتمدة.</p>
+                            <div class="prompt-code-box" id="promptText3">قم بصياغة "عقد سلوكي مكتوب" (Contingency Contract) ملزم ومحفز للطفل/المراهق، وفق الأسس الفنية لصياغة العقود السلوكية (مرجع العلاج السلوكي للطفل والمراهق، ص 94-97 وص 248).
+بيانات الحالة:
+- عمر الطالب واهتماماته المفضلة: [اذكر العمر وهواياته]
+- الهدف المطلوب تحقيقه: [مثال: تسليم الواجبات في موعدها / الجلوس الهادئ / خفض الألفاظ]
+المطلوب صياغة العقد بلغة دافئة ومباشرة تشمل:
+1) ديباجة العقد الودية وتأكيد الثقة في قدرة الطالب.
+2) التزامات الطالب بوضوح وتحديد زمني دقيق.
+3) التزامات المعلم أو الأسرة (المكافآت والامتيازات المستحقة عند الالتزام).
+4) عواقب الإخلال الملطفة الخالية من الإهانة أو العقاب البدني.
+5) خانات توقيع الطالب والمعلم والوالدين وتاريخ المراجعة الأسبوعية.</div>
+                        </div>
+                        <button class="prompt-copy-btn" onclick="copyPrompt('promptText3', 'أمر التعاقد السلوكي')">
+                            <i class="fa-solid fa-copy"></i> نسخ الأمر بنقرة واحدة
+                        </button>
+                    </div>
+
+                    <!-- Prompt 4: 5-Minute De-escalation -->
+                    <div class="prompt-card">
+                        <div>
+                            <div class="prompt-card-header">
+                                <span class="prompt-badge"><i class="fa-solid fa-fire-extinguisher"></i> طوارئ الغضب والعناد</span>
+                                <span style="font-size:0.75rem; color:var(--accent-gold); font-weight:700;">ص 129-134 بالمرجع</span>
+                            </div>
+                            <h4 class="prompt-card-title">4. أمر نزع فتيل الأزمة والعناد في 5 دقائق (De-escalation)</h4>
+                            <p class="prompt-card-desc">يوفر نصاً حوارياً لحظياً للمعلم أو ولي الأمر يهدئ نوبات الغضب الشديد دون صدام أو فقدان هيبة.</p>
+                            <div class="prompt-code-box" id="promptText4">بصفتك مستشاراً للأزمات السلوكية المدرسية والتربوية، زودني فوراً بـ "سيناريو تفكيك الأزمة اللحظي" (5-Minute De-escalation Script) للتعامل مع طالب في نوبة [غضب شديد / عناد ورفض تعليمات / صراخ ورمي أدوات].
+يرجى تقديم التوجيه مقسماً زمنياً بدقة:
+• الدقيقة 0-1: لغة الجسد، المسافة الفيزيقية الآمنة، وما يجب الامتناع عن قوله قطعياً.
+• الدقيقة 2-3: العبارة اللفظية المحددة لخفض استثارة الجهاز العصبي (المؤازرة الوجدانية، ص 129).
+• الدقيقة 4: تقديم خيارين محترمين يمنحان الطالب شعوراً بالسيطرة دون كسر قواعد المكان.
+• الدقيقة 5: إنهاء الموقف واستئناف النشاط بهدوء وحفظ ماء وجه الطالب أمام زملائه.</div>
+                        </div>
+                        <button class="prompt-copy-btn" onclick="copyPrompt('promptText4', 'أمر تهدئة الغضب والعناد')">
+                            <i class="fa-solid fa-copy"></i> نسخ الأمر بنقرة واحدة
+                        </button>
+                    </div>
+
+                    <!-- Prompt 5: ADHD Classroom Architect -->
+                    <div class="prompt-card">
+                        <div>
+                            <div class="prompt-card-header">
+                                <span class="prompt-badge"><i class="fa-solid fa-brain"></i> مسار ADHD التخصصي</span>
+                                <span style="font-size:0.75rem; color:var(--accent-gold); font-weight:700;">ص 165-170 بالمرجع</span>
+                            </div>
+                            <h4 class="prompt-card-title">5. أمر مهندس البيئة الصفية لـ ADHD (Classroom Architect)</h4>
+                            <p class="prompt-card-desc">يقترح مواءمات وتعديلات بيئية حسية فورية تناسب درجة تشتت وانتباه الطالب وتفرغ طاقته الحركية إيجابياً.</p>
+                            <div class="prompt-code-box" id="promptText5">اعمل كمهندس بيئات تعليمية وخبير تكييفات لطلاب اضطراب فرط الحركة وتشتت الانتباه (ADHD)، مستنداً إلى أحدث أبحاث Lancet 2025 وفصل اضطرابات الانتباه (مرجع العلاج السلوكي، ص 165-170).
+بيانات الطالب:
+- الصف الدراسي: [مثال: الصف الرابع الابتدائي]
+- العرض السائد: [فرط حركة واندفاعية / تشتت وسهو ونسيان / مشترك]
+المطلوب إعداد دليل التيسيرات المدرسية متضمناً:
+1) الموضع المثالي لمقعد الطالب بالنسبة للسبورة والمعلم والمشتتات البصرية.
+2) استراتيجية الحركة الوظيفية المسموحة داخل الحصة لتفريغ الطاقة الحركية.
+3) أدوات التململ الحسي الهادئة المقترحة (Fidget tools).
+4) طريقة تقديم التعليمات الشفهية والكتابية المجزأة (Rule of One).
+5) نظام التغذية الراجعة والتعزيز الفوري كل 10-15 دقيقة لمنع الانفصال الذهني.</div>
+                        </div>
+                        <button class="prompt-copy-btn" onclick="copyPrompt('promptText5', 'أمر تيسيرات بيئة ADHD')">
+                            <i class="fa-solid fa-copy"></i> نسخ الأمر بنقرة واحدة
+                        </button>
+                    </div>
+
+                    <!-- Prompt 6: ADHD Micro-Tasking -->
+                    <div class="prompt-card">
+                        <div>
+                            <div class="prompt-card-header">
+                                <span class="prompt-badge"><i class="fa-solid fa-list-check"></i> للأهالي والطلاب</span>
+                                <span style="font-size:0.75rem; color:var(--accent-gold); font-weight:700;">ص 182-193 بالمرجع</span>
+                            </div>
+                            <h4 class="prompt-card-title">6. أمر تجزئة المهام ومقاومة التسويف (Micro-Tasking)</h4>
+                            <p class="prompt-card-desc">يفتت الواجبات الصعبة والمشاريع الكبيرة إلى خطوات زمنية صغيرة بالدقائق تناسب القصور التنفيذي وعمى الوقت.</p>
+                            <div class="prompt-code-box" id="promptText6">أنت مدرب تنفيذي متخصص في مساعدة الطلاب والأفراد المصابين بـ ADHD على تجاوز "عمى الوقت" والشلل التنفيذي والتسويف المزمن (دراسة الحالة ص 182-193 من مرجع العلاج السلوكي للطفل).
+المهمة أو الواجب المطلوب إنجازه: [اكتب الواجب أو المشروع المطلوب، مثلاً: كتابة بحث، حل 20 مسألة، تنظيف الغرفة].
+الوقت المتاح: [اذكر الوقت]
+المطلوب تحويل هذه المهمة الكبيرة إلى "خريطة مهام دقيقة" (Micro-Tasking Steps):
+1) تفكيك المهمة إلى 3-5 خطوات متناهية الصغر لا تزيد مدة كل منها عن 10 دقائق.
+2) تحديد "أصغر خطوة ممكنة للبدء فوراً" لكسر حاجز المقاومة الأول (Start Line).
+3) مؤقت بصري واستراحة نشاط سريعة مدتها دقيقتان بين كل خطوة.
+4) مكافأة فورية محددة تفرز الدوبامين الطبيعي بعد إتمام الخطوات بالكامل.</div>
+                        </div>
+                        <button class="prompt-copy-btn" onclick="copyPrompt('promptText6', 'أمر تجزئة المهام ADHD')">
+                            <i class="fa-solid fa-copy"></i> نسخ الأمر بنقرة واحدة
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+<section id="challenges">
                 <div class="section-header">
                     <div>
                         <div class="section-tag"><i class="fa-solid fa-book-open"></i> القسم الثالث من الكتاب • الفصول 8 إلى 16</div>
@@ -2363,9 +3289,10 @@
         function runInSiteAiConsultation() {
             const rawText = document.getElementById('ai_case_input').value.trim();
             const stage = document.getElementById('ai_stage_select').value;
+            const roleContext = document.getElementById('ai_role_context') ? document.getElementById('ai_role_context').value : 'teacher';
 
             if (!rawText) {
-                alert('يرجى كتابة تفاصيل الموقف السلوكي أو اختيار حالة نموذجية جاهزة لبدء الاستشارة الذكية!');
+                alert('يرجى كتابة تفاصيل الموقف السلوكي في خانة الكتابة الحرة أو اختيار حالة نموذجية جاهزة لبدء الاستشارة الفورية!');
                 return;
             }
 
@@ -2377,68 +3304,113 @@
 
             setTimeout(() => {
                 spinner.style.display = 'none';
-                generateAiResponse(rawText, stage);
+                generateAiResponse(rawText, stage, roleContext);
             }, 750);
         }
 
-        function generateAiResponse(text, stage) {
-            // Intelligent Rule-Based Behavioral Engine synthesizing the 11 Cards
+        function generateAiResponse(text, stage, roleContext) {
+            // Intelligent Rule-Based Behavioral Engine synthesizing the 11 Cards & Clinical References
             let stageName = stage === 'primary' ? 'المرحلة الابتدائية' : (stage === 'prep' ? 'المرحلة الإعدادية' : 'المرحلة الثانوية');
+            roleContext = roleContext || 'teacher';
             
-            // Determine behavior archetype
-            let isAdhd = text.includes('تشتت') || text.includes('حركة') || text.includes('ينهض') || text.includes('مقعد') || text.includes('نسيان');
-            let isAnger = text.includes('غضب') || text.includes('صراخ') || text.includes('رمى') || text.includes('انفجر') || text.includes('كسر');
-            let isBullying = text.includes('تنمر') || text.includes('سخرية') || text.includes('لقب') || text.includes('يضحكوا') || text.includes('استقواء');
-            let isWithdraw = text.includes('انسحاب') || text.includes('صامت') || text.includes('انطوى') || text.includes('طاولة') || text.includes('حزن');
-            let isScreen = text.includes('هاتف') || text.includes('شاشة') || text.includes('ألعاب') || text.includes('موبايل');
+            // Determine behavior archetype from custom text
+            let isAdhd = text.includes('تشتت') || text.includes('حركة') || text.includes('ينهض') || text.includes('مقعد') || text.includes('نسيان') || text.includes('أدوات') || text.includes('دوبامين') || text.includes('تركيز') || text.includes('اندفاع');
+            let isAnger = text.includes('غضب') || text.includes('صراخ') || text.includes('رمى') || text.includes('انفجر') || text.includes('كسر') || text.includes('ضرب') || text.includes('ثورة') || text.includes('بكاء');
+            let isBullying = text.includes('تنمر') || text.includes('سخرية') || text.includes('لقب') || text.includes('يضحكوا') || text.includes('استقواء') || text.includes('يضايق') || text.includes('اعتداء');
+            let isWithdraw = text.includes('انسحاب') || text.includes('صامت') || text.includes('انطوى') || text.includes('طاولة') || text.includes('حزن') || text.includes('خوف') || text.includes('قلق') || text.includes('يبكي');
+            let isScreen = text.includes('هاتف') || text.includes('شاشة') || text.includes('ألعاب') || text.includes('موبايل') || text.includes('يوتيوب');
+            let isDefiance = text.includes('رفض') || text.includes('عناد') || text.includes('لا يريد') || text.includes('جدال') || text.includes('سخرية') || text.includes('يبتسم') || text.includes('يعاند');
 
-            let safety = "✅ فحص السلامة سليم: لا توجد مؤشرات خطر حاد أو إيذاء جسدي يستدعي تدخلاً طارئاً؛ الموقف آمن لتطبيق التدخل الصفي.";
-            let desc = `وُثق في ${stageName} سلوك امتناع أو تعطيل محدد يمكن رصده وقياسه دون إطلاق نعوت شخصية على الطالب.`;
-            let abc = "• <strong>A (السوابق):</strong> توجيه صفي أو مطالبة بالمهمة الأكاديمية أمام الزملاء.<br>• <strong>B (السلوك):</strong> الاستجابة برفض أو تشتت أو تعبير انفعالي.<br>• <strong>C (اللواحق):</strong> تركيز انتباه الفصل على الموقف وتوقف المهمة مؤقتاً.";
+            let safety = "✅ فحص السلامة سليم: لا توجد مؤشرات خطر حاد أو إيذاء جسدي يستدعي تدخلاً طارئاً؛ الموقف آمن لتطبيق التدخل التربوي والسلوكي المتوازن.";
+            let desc = `وُثق في ${stageName} سلوك امتناع أو تعطيل محدد يمكن رصده وقياسه دون إطلاق نعوت شخصية أو وصم لهوية الطالب.`;
+            let abc = "• <strong>A (السوابق):</strong> توجيه صفي أو مطالبة بالمهمة الأكاديمية أمام الزملاء.<br>• <strong>B (السلوك):</strong> الاستجابة برفض أو تشتت أو تعبير انفعالي غير مرغوب.<br>• <strong>C (اللواحق):</strong> تركيز انتباه الحاضرين على الموقف وتوقف المهمة مؤقتاً.";
             let func = "الهروب من مهمة تشعره بالضغط أو الإحراج (Escape)، والبحث عن استعادة السيطرة أو لفت انتباه الأقران.";
             let repl = "تدريب الطالب على طلب استراحة قصيرة مسموحة (بطاقة صفراء) أو التعبير اللفظي الخاص: «أحتاج مساعدة في فهم المطلوب».";
-            let bound = "«البقاء في مساحة التعلم وإنجاز جزء محدد من النشاط؛ قواعد الفصل تسري باحترام على الجميع دون استثناء».";
+            let bound = "«البقاء في مساحة التعلم وإنجاز جزء محدد من النشاط؛ قواعد الفصل والتعامل تسري باحترام على الجميع دون استثناء».";
             let supp = "تجزئة ورقة العمل إلى أجزاء صغيرة (Chunking)، فحص الإنجاز في أول 90 ثانية، واستخدام مؤقت بصري هادئ.";
             let nowAction = "الاقتراب الهادئ دون لغة جسد هجومية، التحدث بنبرة خاصة منخفضة لحفظ ماء وجهه، إعطاء خيارين محددين، ثم الابتعاد (Wait Time).";
             let nowSay = "«أمامك خياران: تبدأ بحل السؤال الأول بمفردك الآن، أو نراجعه معاً بعد دقيقة؛ أيهما تفضل لنبدأ؟»";
             let prog = "متابعة تكرار السلوك لمدة 7 أيام متصلة، والالتزام الصارم بنسبة التعزيز الإيجابي (4 عبارات تقدير مقابل تصحيح واحد).";
             let refer = "إذا استمر التعطيل لأكثر من 14 يوماً رغم تطبيق التيسيرات، تُحال الاستمارة المكتملة إلى الأخصائي المدرسي لدراسة الحالة.";
+            let bookCitation = "مرجع «العلاج السلوكي للطفل والمراهق» (أ.د عبد الستار إبراهيم وآخرون): فنيات التحليل الوظيفي وقياس السلوك الإمبريقي، <strong>ص 50 - ص 62</strong>، وفنية الاقتصاد الرمزي والتعاقد السلوكي، <strong>ص 88 - ص 97</strong>.";
 
             if (isAdhd) {
-                func = "تنظيم حسي ونقص الدوبامين وضعف الذاكرة العاملة وكبح الاندفاع (وليس تعمداً للإهمال).";
+                func = "تنظيم حسي ونقص الدوبامين وضعف الذاكرة العاملة وكبح الاندفاع (وليس تعمداً للإهمال أو الشغب).";
                 repl = "استخدام أدوات التململ الصامتة (Fidget Tools)، والحركة الوظيفية المسؤولة (مسح السبورة، تسليم الدفاتر).";
                 supp = "مقعد أمامي بعيداً عن النوافذ والأبواب، تجزئة التعليمات لأمر واحد فقط، والتغذية الراجعة الفورية كل 10 دقائق.";
                 nowSay = "«المطلوب منك الآن فقط إكمال السطر الأول، وعندما تنتهي ضع علامتك وسأراجعها معك فوراً».";
+                bookCitation = "مرجع «العلاج السلوكي للطفل والمراهق»: خطة التغلب على اضطرابات الانتباه لدى الطفل، <strong>ص 165 - ص 170</strong>، ودراسة حالة الطفلة التي عانت من الصعوبات الدراسية وتشتت الانتباه، <strong>ص 182 - ص 193</strong>.";
             } else if (isAnger) {
                 safety = "⚠️ تنبيه السلامة: إيقاف الموقف، حماية الطلاب، إزالة الجمهور، وعدم الاشتباك بالأيدي أو الاستفزاز.";
                 nowAction = "التزام الصمت التام، منح مساحة أمان فيزيقية، وتأجيل أي حوار أو نقاش حتى تهدأ استثارة الجهاز العصبي تماماً.";
                 nowSay = "«أراك منزعجاً جداً الآن. أنت بأمان هنا، وسنتحدث ونحل الأمر بهدوء عندما تكون مستعداً».";
                 bound = "«الصراخ ورمي الأدوات غير مسموح هنا؛ نحافظ على سلامة بعضنا أولاً ثم نتحدث».";
                 repl = "التوجه إلى ركن التهدئة الهادئ، وتطبيق تمرين التنفس العميق 4-4-4.";
+                bookCitation = "مرجع «العلاج السلوكي للطفل والمراهق»: أسلوب الكف بالنقيض وإزالة الحساسية، <strong>ص 66 - ص 74</strong>، والمؤازرة الوجدانية واللطف، <strong>ص 129 - ص 134</strong>، وحالة السلوك التدميري، <strong>ص 221 - ص 224</strong>.";
             } else if (isBullying) {
                 safety = "🛑 بروتوكول StopBullying: حماية الضحية فوراً وتوثيق الواقعة بالتاريخ والشهود دون تأخير.";
-                bound = "«السخرية والاستقواء ممنوعان قطعياً في مدرستنا؛ هذا السلوك يسمى تنمراً وستترتب عليه إجراءات إدارية حازمة».";
-                nowSay = "للضحية: «أنت في أمان والخطأ ليس خطؤك». للمعتدي: «هذا التصرف مرفوض وسنلتقي بعد الحصة لمتابعة الإجراء الإداري».";
-                nowAction = "فصل الطرفين تماماً، عدم عقد جلسة صلح صورية تضعف الضحية، وتكليف المعتدي بإصلاح الأثر.";
+                bound = "«السخرية والاستقواء ممنوعان قطعياً في مدرستنا؛ نحترم كرامة الجميع دون استثناء».";
+                nowAction = "فصل الأطراف فوراً، استدعاء المعتدي على انفراد، وتفعيل عواقب التنمر المعتمدة.";
+                nowSay = "«هذا الأسلوب في الحديث غير مقبول ولن يستمر؛ تفضل معي إلى المكتب وسنراجع الموقف بهدوء».";
+                bookCitation = "مرجع «العلاج السلوكي للطفل والمراهق»: تدريب المهارات الاجتماعية بالقدوة والنمذجة، <strong>ص 98 - ص 113</strong>، وإجراءات تعديل أخطاء التفكير، <strong>ص 114 - ص 128</strong>.";
             } else if (isWithdraw) {
-                func = "تجنب القلق الاجتماعي الحاد، الخوف من الفشل، أو التعرض لصدمة/ضيق نفسي داخلي صامت.";
-                nowAction = "عدم إحراج الطالب بالمطالبة الصوتية المفاجئة، وبناء جسر تواصل دافئ وفردي في نهاية الحصة.";
-                nowSay = "«أنا سعيد بحضورك معنا اليوم. خذ وقتك بالكامل، وإذا أردت كتابة إجابتك سأكون سعيداً بقراءتها معك».";
-                repl = "المشاركة التدريجية (الكتابة على ورقة أولاً، ثم العمل مع زميل مقرب، ثم المشاركة الصفية).";
-            } else if (isScreen) {
-                bound = "«الاتفاق الصفي المعتمد هو وضع الهاتف في الصندوق المخصص قبل بدء الحصة».";
-                nowSay = "«الاتفاق يحمي وقت الجميع. سأضع الجهاز في الصندوق المخصص وتسترده بنهاية الحصة؛ لنعد لمهمتنا الآن».";
-                nowAction = "تجنب الدخول في صراع على السلطة أو التفتيش المهين، واستخدام الإطفاء السلوكي للتعليقات المستفزة.";
+                func = "الهروب من التقييم الاجتماعي والخوف من الخطأ أو التعرض للنقد أمام الزملاء.";
+                supp = "منح الطالب فرصة الإجابة الكتابية أولاً، أو الاستجابة مع زميل ثنائي مقرب، وعدم مفاجأته بأسئلة عشوائية.";
+                nowSay = "«لا بأس إن لم تشارك شفهياً اليوم؛ اكتب فكرتك في ورقة وسأقرأها معك في نهاية الحصة».";
+                bookCitation = "مرجع «العلاج السلوكي للطفل والمراهق»: خطة سلوكية للتغلب على المخاوف المدرسية، <strong>ص 161 - ص 164</strong>، ودراسة حالة الطفل الخجول المنعزل، <strong>ص 202 - ص 206</strong>.";
+            } else if (isDefiance) {
+                func = "البحث عن الاستقلالية وإثبات الذات أو الهروب من عجز أكاديمي محرج أمام الجمهور الصفي.";
+                nowAction = "الابتعاد عن فخ الجدال؛ قدم خيارين محترمين بصوت منخفض، وابتعد وامنحه 60 ثانية لاتخاذ قراره.";
+                nowSay = "«لك أن تختار: إما إكمال السطرين بمفردك الآن، أو نراجعهما معاً بعد الحصة؛ القرار بيدك».";
+                bookCitation = "مرجع «العلاج السلوكي للطفل والمراهق»: دراسة حالة طفل شديد العناد ملحاح وسهل الاستثارة، <strong>ص 233 - ص 247</strong>، وصياغة العقود السلوكية الأسرية، <strong>ص 248 - ص 262</strong>.";
             }
 
-            // Stage-specific nuances
-            if (stage === 'prep') {
-                nowAction += " [ملاحظة إعدادية: تجنب تماماً التوبيخ أو التهديد أمام الأقران لحفظ كرامة المراهق].";
-            } else if (stage === 'sec') {
-                nowAction += " [ملاحظة ثانوية: تفعيل التعاقد السلوكي والنتائج المنطقية بدل الأسلوب التلقيني].";
+            // Role-specific customized advice
+            let roleBoxHtml = "";
+            if (roleContext === 'parent') {
+                roleBoxHtml = `
+                    <div style="background:linear-gradient(135deg, rgba(229,185,95,0.15), rgba(16,28,61,0.9)); border:2px solid var(--accent-gold); border-radius:14px; padding:1.2rem; margin-bottom:1.2rem; grid-column:span 2;">
+                        <div style="display:flex; align-items:center; gap:10px; font-family:var(--font-heading); color:var(--accent-gold); font-size:1.15rem; font-weight:800; margin-bottom:6px;">
+                            <i class="fa-solid fa-house-chimney-user"></i> مسار ولي الأمر الموصى به في المنزل:
+                        </div>
+                        <div style="font-size:0.88rem; color:#f1f5f9; line-height:1.7;">
+                            • <strong>في المنزل:</strong> تجنب الصراخ أو التهديد بعقوبات غير قابلة للتنفيذ وقت اشتعال الموقف؛ انتظر حتى يهدأ الطفل تماماً ثم ناقش معه ما حدث بنبرة هادئة.<br>
+                            • <strong>التعاقد المنزلي:</strong> حدد بوضوح وقت الشاشات مقابل إنجاز الواجبات عبر ميثاق مكتوب يعلق على الثلاجة (راجع أمر التعاقد السلوكي في صفحة الأوامر الذكية).<br>
+                            • <strong>نسبة التعزيز:</strong> احرص على تشجيع السلوك الإيجابي الصغير 4 مرات مقابل أي تنبيه سلبي.
+                        </div>
+                    </div>
+                `;
+            } else if (roleContext === 'student') {
+                roleBoxHtml = `
+                    <div style="background:linear-gradient(135deg, rgba(0,210,255,0.15), rgba(16,28,61,0.9)); border:2px solid var(--accent-cyan); border-radius:14px; padding:1.2rem; margin-bottom:1.2rem; grid-column:span 2;">
+                        <div style="display:flex; align-items:center; gap:10px; font-family:var(--font-heading); color:var(--accent-cyan); font-size:1.15rem; font-weight:800; margin-bottom:6px;">
+                            <i class="fa-solid fa-graduation-cap"></i> مسار الطالب واليافع للتهدئة الذاتية:
+                        </div>
+                        <div style="font-size:0.88rem; color:#f1f5f9; line-height:1.7;">
+                            • <strong>عندما تشعر بالضغط أو التشتت:</strong> تنفس بعمق (شهيق 4 ثوانٍ، كتم 4، زفير 4)؛ لا تتسرع في الرد أو الانفعال.<br>
+                            • <strong>طلب المساعدة بأمان:</strong> قل لمعلمك أو والدك: «أشعر أنني مشتت وأحتاج دقيقة راحة أو توضيح للخطوة الأولى».<br>
+                            • <strong>تجزئة الواجب:</strong> استخدم قاعدة الـ 10 دقائق: ابدأ بحل مسألة واحدة فقط ثم خذ راحة دقيقتين.
+                        </div>
+                    </div>
+                `;
+            } else if (roleContext === 'specialist') {
+                roleBoxHtml = `
+                    <div style="background:linear-gradient(135deg, rgba(139,92,246,0.15), rgba(16,28,61,0.9)); border:2px solid var(--accent-purple); border-radius:14px; padding:1.2rem; margin-bottom:1.2rem; grid-column:span 2;">
+                        <div style="display:flex; align-items:center; gap:10px; font-family:var(--font-heading); color:var(--accent-purple); font-size:1.15rem; font-weight:800; margin-bottom:6px;">
+                            <i class="fa-solid fa-user-doctor"></i> مسار الإخصائي النفسي والمشرف التربوي:
+                        </div>
+                        <div style="font-size:0.88rem; color:#f1f5f9; line-height:1.7;">
+                            • <strong>التحليل السريري:</strong> قياس خط الأساس (Baseline) للتردد والشدة لمدة 3 أيام باستخدام نموذج الملاحظة المعتمد ABC.<br>
+                            • <strong>صياغة خطة BIP:</strong> اعتماد جداول التعزيز التفاضلي للسلوك البديل (DRA/DRI) وربطها بالبيئة المدرسية والمنزلية بالتنسيق مع الأسرة.<br>
+                            • <strong>التشخيص الفارق:</strong> مراجعة معايير DSM-5-TR للتمييز بين اضطراب ADHD واضطراب العناد الشارد (ODD).
+                        </div>
+                    </div>
+                `;
             }
 
             const html = `
+                ${roleBoxHtml}
+
                 <div class="modal-section" style="border-right-color:var(--success-green); grid-column:span 2;">
                     <div class="modal-section-title" style="color:var(--success-green);"><i class="fa-solid fa-shield-check"></i> 1. فحص السلامة والخطوط الحمراء:</div>
                     <div style="font-size:0.92rem; color:#e2e8f0;">${safety}</div>
@@ -2470,17 +3442,17 @@
                 </div>
 
                 <div class="modal-section">
-                    <div class="modal-section-title"><i class="fa-solid fa-hand-holding-heart text-accent-cyan"></i> 7. الدعم والتيسير الصفي:</div>
+                    <div class="modal-section-title"><i class="fa-solid fa-hand-holding-heart text-accent-cyan"></i> 7. الدعم والتيسير الصفي والبيئي:</div>
                     <div style="font-size:0.88rem; color:#cbd5e1;">${supp}</div>
                 </div>
 
                 <div class="modal-section" style="border-right-color:var(--success-green); background:rgba(16,185,129,0.08); grid-column:span 2;">
-                    <div class="modal-section-title" style="color:var(--success-green);"><i class="fa-solid fa-bolt"></i> 8. ماذا يفعل المعلم في أول 90 ثانية:</div>
+                    <div class="modal-section-title" style="color:var(--success-green);"><i class="fa-solid fa-bolt"></i> 8. ماذا تفعل في أول 90 ثانية:</div>
                     <div style="font-size:0.92rem; color:#a7f3d0; font-weight:600;">${nowAction}</div>
                 </div>
 
                 <div class="modal-section" style="border-right-color:var(--accent-gold); background:rgba(229,185,95,0.08); grid-column:span 2;">
-                    <div class="modal-section-title" style="color:var(--accent-gold);"><i class="fa-solid fa-comment-dots"></i> 9. ماذا يقول المعلم للطالب نصاً:</div>
+                    <div class="modal-section-title" style="color:var(--accent-gold);"><i class="fa-solid fa-comment-dots"></i> 9. ماذا تقول للطالب نصاً (العبارة المحددة):</div>
                     <div style="font-size:1.02rem; color:#fef08a; font-weight:800; font-family:var(--font-quote);">${nowSay}</div>
                 </div>
 
@@ -2493,15 +3465,18 @@
                     <div class="modal-section-title"><i class="fa-solid fa-user-doctor text-accent-gold"></i> 11. حدود التصعيد ومتى نطلب المختص:</div>
                     <div style="font-size:0.88rem; color:#cbd5e1;">${refer}</div>
                 </div>
+
+                <div class="modal-section" style="border-right-color:var(--accent-gold); background:rgba(229,185,95,0.12); grid-column:span 2;">
+                    <div class="modal-section-title" style="color:var(--accent-gold); font-size:1rem;"><i class="fa-solid fa-book-bookmark"></i> 12. التوثيق العلمي الدقيق بالصفحات من مرجع «العلاج السلوكي للطفل والمراهق»:</div>
+                    <div style="font-size:0.9rem; color:#fef08a; line-height:1.6;">${bookCitation}</div>
+                </div>
             `;
 
             document.getElementById('aiResponseContent').innerHTML = html;
             const resBox = document.getElementById('aiResponseBox');
             resBox.style.display = 'block';
             resBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        // Operational Toolkit Tabs Switcher
+        }// Operational Toolkit Tabs Switcher
         function switchToolkitTab(tabId) {
             document.querySelectorAll('.toolkit-tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.toolkit-pane').forEach(pane => pane.classList.remove('active'));
@@ -2810,6 +3785,266 @@
                 console.log("%cجميع محتويات هذا الموقع وكتاب بوصلة السلوك والبرومبتات محمية بموجب حقوق النشر 2026 لمبادرة AI NAVIGATORS. يُحظر النسخ أو الاقتباس دون إذن كتابي مسبق.", "font-size: 13px; color: #64748b;");
             } catch(err) {}
         })();
-    </script>
+    
+
+        /* ===================================================
+           INTERACTIVE LOGIC: PERSONA, DUAL-MODE AI, 
+           BOOK READER PREVIEW & MEGA-PROMPTS COPY
+           =================================================== */
+
+        // 1. Persona Selector Logic
+        const personaData = {
+            teacher: {
+                title: "مسار المعلم: إدارة الفصل الفعالة والسيطرة الهادئة",
+                desc: "مسارك الأنسب: قراءة الفصول 1-4 والقواعد العشر + أطلس المشكلات الـ 11 + استخدام أمر التحليل الوظيفي واستمارات الملاحظة الصفية.",
+                icon: "fa-chalkboard-user",
+                roleName: "معلم"
+            },
+            parent: {
+                title: "مسار ولي الأمر: الدعم المنزلي وفهم سلوك الأبناء دون صراخ",
+                desc: "مسارك الأنسب: مسار ADHD التخصصي (الأيام 1-15) + أمر التعاقد السلوكي الأسري + فنيات تعديل السلوك في البيت وبناء الروتين.",
+                icon: "fa-house-chimney-user",
+                roleName: "ولي أمر"
+            },
+            student: {
+                title: "مسار الطالب واليافع: بناء التركيز ومقاومة التشتت والمماطلة",
+                desc: "مسارك الأنسب: فصل عمى الوقت وتنظيم المهام + أمر تجزئة الواجبات (Micro-Tasking) + استراتيجيات التهدئة الذاتية في الامتحانات.",
+                icon: "fa-graduation-cap",
+                roleName: "طالب"
+            },
+            specialist: {
+                title: "مسار الإخصائي والموجه: التقييم السريري وخطط التدخل المقننة",
+                desc: "مسارك الأنسب: التحليل الوظيفي FBA + إحالات مرجع د. عبد الستار إبراهيم بالصفحات (ص 50-62، ص 88-93) + صياغة خطط BIP واستمارات الإحالة.",
+                icon: "fa-user-doctor",
+                roleName: "إخصائي"
+            }
+        };
+
+        function selectPersona(role) {
+            ['teacher', 'parent', 'student', 'specialist'].forEach(r => {
+                const btn = document.getElementById('btnPersona' + r.charAt(0).toUpperCase() + r.slice(1));
+                if (btn) btn.classList.remove('active');
+            });
+
+            const activeBtn = document.getElementById('btnPersona' + role.charAt(0).toUpperCase() + role.slice(1));
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const data = personaData[role];
+            if (data) {
+                document.getElementById('personaBannerIcon').innerHTML = `<i class="fa-solid ${data.icon}"></i>`;
+                document.getElementById('personaBannerTitle').innerText = data.title;
+                document.getElementById('personaBannerDesc').innerText = data.desc;
+                const roleSelect = document.getElementById('ai_role_context');
+                if (roleSelect) roleSelect.value = role;
+            }
+        }
+
+        // 2. Dual-Mode Consultant Toggle
+        function switchAiConsultMode(mode) {
+            const btnCustom = document.getElementById('btnModeCustom');
+            const btnPreset = document.getElementById('btnModePreset');
+            const presetContainer = document.getElementById('aiPresetContainer');
+            const inputField = document.getElementById('ai_case_input');
+
+            if (mode === 'custom') {
+                btnCustom.classList.add('active');
+                btnPreset.classList.remove('active');
+                presetContainer.style.display = 'none';
+                inputField.focus();
+            } else {
+                btnPreset.classList.add('active');
+                btnCustom.classList.remove('active');
+                presetContainer.style.display = 'block';
+            }
+        }
+
+        // 3. Interactive Book Reader Preview Engine
+        let currentPreviewPage = 1;
+        const previewPagesContent = {
+            1: `
+                <div style="text-align:center; padding:1rem 0;">
+                    <div style="display:inline-block; border:2px solid var(--accent-gold); border-radius:15px; padding:1.5rem; background:linear-gradient(145deg, #101c3d, #060a17); max-width:320px; box-shadow:0 10px 30px rgba(0,0,0,0.7);">
+                        <img src="compass_logo.png" style="width:65px; margin-bottom:10px;" alt="Logo">
+                        <div style="font-size:0.75rem; color:var(--accent-cyan); font-weight:700; letter-spacing:1px; margin-bottom:6px;">مبادرة AI NAVIGATORS • الإصدار المعتمد 2026</div>
+                        <h3 style="font-family:var(--font-heading); color:#ffffff; font-size:1.35rem; line-height:1.4; margin-bottom:10px;">
+                            بوصلة السلوك المدرسية الشاملة ومسار ADHD
+                        </h3>
+                        <div style="font-size:0.85rem; color:var(--accent-gold); font-weight:700; margin-bottom:12px;">
+                            الدليل الإجرائي الميداني المدعوم بالعلاج السلوكي المعرفي
+                        </div>
+                        <div style="font-size:0.78rem; color:#cbd5e1; border-top:1px solid rgba(229,185,95,0.3); padding-top:10px;">
+                            إعداد وتأليف: <strong>أبو أيسل (Abo Aisel)</strong><br>
+                            موثق بالصفحات من مرجع: «العلاج السلوكي للطفل والمراهق»
+                        </div>
+                    </div>
+                    <div style="margin-top:1.2rem; font-size:0.86rem; color:#94a3b8; line-height:1.6;">
+                        «هذا الكتاب ليس مجرد نصائح نظرية، بل خريطة تشغيلية ميدانية تجمع بين كيمياء الدماغ، القواعد الذهبية للسيطرة الصفية، والفنيات الإكلينيكية الموثقة خطوة بخطوة».
+                    </div>
+                </div>
+            `,
+            2: `
+                <div>
+                    <h4 style="font-family:var(--font-heading); color:var(--accent-gold); font-size:1.15rem; border-bottom:1px solid rgba(229,185,95,0.3); padding-bottom:6px; margin-bottom:12px;">
+                        <i class="fa-solid fa-list-ol"></i> الفهرس العام الشامل للموسوعة المدمجة (25 فصلاً)
+                    </h4>
+                    <div style="font-size:0.82rem; color:#cbd5e1; line-height:1.8;">
+                        <strong style="color:var(--accent-cyan);">• الباب الأول:</strong> المنطلقات النظرية وفهم السلوك (الفصول 1-4) — السلوك رسالة، التحليل الوظيفي FBA، قياس الأثر.<br>
+                        <strong style="color:var(--accent-cyan);">• الباب الثاني:</strong> بوصلة السلوك والمراحل التعليمية (الفصول 5-7) — الابتدائي، الإعدادي، الثانوي.<br>
+                        <strong style="color:var(--accent-gold);">• الباب الثالث:</strong> المسار الموسع لاضطراب ADHD (الفصول 8-10) — كيمياء الدوبامين، عمى الوقت، خطة IEP و504.<br>
+                        <strong style="color:var(--accent-cyan);">• الباب الرابع:</strong> صندوق أدوات العلاج السلوكي الموثق (الفصول 11-15) — التعزيز، الاقتصاد الرمزي ص 88، التعاقد السلوكي ص 94.<br>
+                        <strong style="color:var(--accent-gold);">• الباب الخامس:</strong> أطلس المشكلات الـ 11 (الفصول 16-21) — العناد، الغضب، العدوان، التنمر، الانسحاب.<br>
+                        <strong style="color:var(--accent-cyan);">• الباب السادس:</strong> إدارة المراهقة وتحديات التمرد (الفصل 22-23) — ص 282 بالمرجع.<br>
+                        <strong style="color:var(--accent-cyan);">• الباب السابع:</strong> خطط الأزمات والشراكة مع الأهل (الفصل 24-25).<br>
+                        <strong style="color:var(--accent-gold);">• الباب الثامن والملاحق:</strong> خطة الـ 30 يوماً لـ ADHD + المعجم السلوكي (ص 307 بالمرجع) + 35 نموذجاً إجرائياً.
+                    </div>
+                </div>
+            `,
+            3: `
+                <div>
+                    <h4 style="font-family:var(--font-heading); color:var(--accent-gold); font-size:1.15rem; border-bottom:1px solid rgba(229,185,95,0.3); padding-bottom:6px; margin-bottom:12px;">
+                        <i class="fa-solid fa-compass"></i> القواعد الذهبية العشر لبوصلة السلوك المدرسي
+                    </h4>
+                    <ol style="font-size:0.82rem; color:#cbd5e1; line-height:1.7; padding-right:1.2rem; margin:0;">
+                        <li><strong>السلوك ليس هو الطفل:</strong> تعامل مع الحدث الملاحظ ولا تصبغ هوية الطالب بالعجز أو الشغب.</li>
+                        <li><strong>قراءة المشهد قبل رد الفعل:</strong> ما الذي حدث قبل السلوك (A)؟ هل كان ضغطاً، إحراجاً، أم عجزا أكاديمياً؟</li>
+                        <li><strong>الهدوء سر الهيبة:</strong> لا تدخل في صراع سلطة أمام الجمهور الصفي؛ اخفض نبرة صوتك واقترب بخصوصية.</li>
+                        <li><strong>خياران محترمان:</strong> امنح الطالب خيارين كلاهما يحقق الهدف التربوي ويحفظ كرامته.</li>
+                        <li><strong>افصل السلوك عن العاطفة:</strong> ضع حداً صارماً ومحدداً للسلوك مع بقاء العلاقة الإنسانية آمنة.</li>
+                        <li><strong>قاعدة التعزيز الذهبية:</strong> 4 عبارات تقدير وتشجيع مقابل كل توجيه تصحيحي واحد.</li>
+                        <li><strong>الحركة حاجة عصبية وليست شغباً:</strong> طلاب الاندفاعية وADHD يحتاجون تفريغاً وظيفياً مسؤولاً.</li>
+                        <li><strong>الاتساق والقدرة على التنبؤ:</strong> القوانين الثابتة تمنح الدماغ شعوراً بالأمان وتخفض المقاومة.</li>
+                        <li><strong>التوثيق الموضوعي:</strong> اكتب ما تراه وتسمعه بالأرقام والتاريخ دون أحكام مسبقة.</li>
+                        <li><strong>الاستدامة والتعميم:</strong> السلوك الجديد لا يثبت إلا بالتدريب المستمر والتعاقد السلوكي المكتوب.</li>
+                    </ol>
+                </div>
+            `,
+            4: `
+                <div>
+                    <h4 style="font-family:var(--font-heading); color:var(--accent-cyan); font-size:1.15rem; border-bottom:1px solid rgba(0,210,255,0.3); padding-bottom:6px; margin-bottom:12px;">
+                        <i class="fa-solid fa-brain"></i> مسار ADHD: كيمياء الدماغ وعمى الوقت
+                    </h4>
+                    <div style="font-size:0.83rem; color:#cbd5e1; line-height:1.7;">
+                        <div style="background:rgba(0,210,255,0.08); border-right:3px solid var(--accent-cyan); padding:8px 12px; margin-bottom:10px; border-radius:0 8px 8px 0;">
+                            <strong>حقيقة علمية (Lancet Psychiatry 2025):</strong> اضطراب فرط الحركة وتشتت الانتباه ليس ناتجاً عن "سوء تربية" أو قلة إرادة، بل هو نقص وظيفي في نواقل الدوبامين والنورأدرينالين في القشرة الجبهية الحجاجية المسؤولة عن كبح الاندفاع وتنظيم الوقت.
+                        </div>
+                        <p style="margin-bottom:8px;"><strong>ثالوث الأعراض الأساسي:</strong></p>
+                        <ul style="padding-right:1.2rem; margin-bottom:10px;">
+                            <li><strong>ضعف الانتباه والسهو:</strong> صعوبة الحفاظ على التركيز في المهام الروتينية غير الجذابة، مع سهولة الانشغال بالمشتتات الخارجية.</li>
+                            <li><strong>فرط الحركة:</strong> تململ مستمر، حركة الأصابع، وصعوبة البقاء في المقعد لفترات متصلة.</li>
+                            <li><strong>الاندفاعية وعمى الوقت (Time Blindness):</strong> مقاطعة الحديث، اتخاذ قرارات سريعة دون تقدير العواقب، وصعوبة إدراك مرور الوقت.</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            5: `
+                <div>
+                    <h4 style="font-family:var(--font-heading); color:var(--accent-gold); font-size:1.15rem; border-bottom:1px solid rgba(229,185,95,0.3); padding-bottom:6px; margin-bottom:12px;">
+                        <i class="fa-solid fa-coins"></i> فنية الاقتصاد الرمزي والتعاقد السلوكي (ص 88-97 بالمرجع)
+                    </h4>
+                    <div style="font-size:0.83rem; color:#cbd5e1; line-height:1.7;">
+                        <div style="background:rgba(229,185,95,0.08); border-right:3px solid var(--accent-gold); padding:8px 12px; margin-bottom:10px; border-radius:0 8px 8px 0;">
+                            <strong>التأصيل الإكلينيكي (أ.د عبد الستار إبراهيم وآخرون):</strong> يُعد الاقتصاد الرمزي (Token Economy) من أقوى أساليب التدعيم الفعالة مع الأطفال المندفعين ومتشتتي الانتباه (ص 88-93)، حيث يُستبدل التعزيز المؤجل برموز أو نقاط فورية قابلة للصرف.
+                        </div>
+                        <p style="margin-bottom:6px;"><strong>خطوات تطبيق الاقتصاد الرمزي في الصف والمنزل:</strong></p>
+                        <ol style="padding-right:1.2rem; margin-bottom:10px;">
+                            <li><strong>تحديد السلوكيات المستهدفة بدقة:</strong> مثال: الجلوس الهادئ لمدة 15 دقيقة، أو إكمال سطرين من الواجب.</li>
+                            <li><strong>اختيار الرموز الملموسة:</strong> فيشات بلاستيكية ملونة، ملصقات نجوم، أو بطاقات نقاط رقمية.</li>
+                            <li><strong>قائمة المعززات التبادلية (قائمة المكافآت):</strong> ربط الرموز بامتيازات مرغوبة (اختيار المقعد، قيادة طابور الصباح، 15 دقيقة لعب إضافية).</li>
+                            <li><strong>الصرف المنتظم وغير المشروط:</strong> تسليم الرمز فور حدوث السلوك المطلوب مباشرة دون تأخير.</li>
+                        </ol>
+                    </div>
+                </div>
+            `,
+            6: `
+                <div class="locked-page-overlay">
+                    <div class="locked-icon-badge">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="locked-page-title">محتوى الموسوعة الكاملة مقفل</div>
+                    <div class="locked-page-sub">
+                        باقي فصول الموسوعة (أكثر من 300 صفحة) تشمل: أطلس المشكلات الـ 11 المفصل، خطة الـ 30 يوماً الكاملة لـ ADHD، دراسات الحالة الإكلينيكية، وبطاقات التدخل الفردي BIP متاحة حصرياً لمشتركي الحزمة الاحترافية.
+                    </div>
+                    <a href="https://wa.me/201037489146?text=%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%AD%D8%B2%D9%85%D8%A9%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20%D9%84%D9%84%D9%85%D9%88%D8%B3%D9%88%D8%B9%D8%A9%20(399%20%D9%81%D9%82%D8%B7)" target="_blank" class="btn-main btn-gold" style="padding:12px 28px; font-size:1rem; box-shadow:0 8px 20px rgba(229,185,95,0.4);">
+                        <i class="fa-solid fa-lock-open"></i> احصل على الحزمة الاحترافية الآن (399 فقط بدلاً من 699)
+                    </a>
+                    <div style="font-size:0.75rem; color:#94a3b8; margin-top:10px;">
+                        منتج رقمي مكتفٍ ذاتياً بالكامل لا يتطلب أي استشارات خاصة
+                    </div>
+                </div>
+            `
+        };
+
+        function renderPreviewPage(num) {
+            currentPreviewPage = num;
+            const container = document.getElementById('readerPageDisplay');
+            if (container && previewPagesContent[num]) {
+                container.innerHTML = previewPagesContent[num];
+            }
+            const indicator = document.getElementById('currentPreviewPageNum');
+            if (indicator) indicator.innerText = num === 6 ? '6 - 350+ (مقفل)' : num;
+
+            // update quick jump pills
+            for (let i = 1; i <= 6; i++) {
+                const pill = document.getElementById('jumpPill' + i);
+                if (pill) {
+                    if (i === num) pill.classList.add('active');
+                    else pill.classList.remove('active');
+                }
+            }
+        }
+
+        function nextPreviewPage() {
+            if (currentPreviewPage < 6) {
+                renderPreviewPage(currentPreviewPage + 1);
+            }
+        }
+
+        function prevPreviewPage() {
+            if (currentPreviewPage > 1) {
+                renderPreviewPage(currentPreviewPage - 1);
+            }
+        }
+
+        function jumpToPreviewPage(num) {
+            renderPreviewPage(num);
+        }
+
+        // 4. Prompt Copy with Animated Toast
+        function copyPrompt(elementId, promptName) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const textToCopy = el.innerText || el.textContent;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showToast(`تم نسخ ${promptName} بنجاح! الصقه في ChatGPT أو Claude أو Gemini.`);
+            }).catch(err => {
+                showToast(`تم نسخ الأمر بنجاح!`);
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotify');
+            const toastMsg = document.getElementById('toastMsg');
+            if (toast && toastMsg) {
+                toastMsg.innerText = msg;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Initialize preview reader on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPreviewPage(1);
+        });
+
+</script>
+
+    <!-- Toast Notification Container -->
+    <div id="toastNotify" class="toast-notify">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMsg">تم نسخ الأمر بنجاح!</span>
+    </div>
 </body>
 </html>
