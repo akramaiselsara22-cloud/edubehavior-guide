@@ -1894,6 +1894,120 @@
             color: #060a17;
             transform: translateY(-1px);
         }
+
+        /* ===================================================
+           HOVER EXPLANATORY POPOVER & CARD TOOLTIPS
+           =================================================== */
+        .hover-interactive-card {
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        }
+
+        .hover-interactive-card:hover {
+            transform: translateY(-5px) scale(1.02) !important;
+            box-shadow: 0 12px 30px rgba(0, 210, 255, 0.25), 0 0 20px rgba(229, 185, 95, 0.2) !important;
+        }
+
+        .card-hover-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.72rem;
+            color: var(--accent-gold);
+            background: rgba(229, 185, 95, 0.12);
+            border: 1px solid rgba(229, 185, 95, 0.3);
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-top: 8px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .hover-interactive-card:hover .card-hover-hint {
+            background: var(--accent-gold);
+            color: #060a17;
+        }
+
+        /* Floating Hover Popover Window */
+        .hover-explain-popover {
+            position: fixed;
+            z-index: 99999;
+            background: linear-gradient(145deg, rgba(16, 28, 61, 0.98), rgba(9, 18, 36, 0.99));
+            border: 2px solid var(--accent-gold);
+            border-radius: 18px;
+            padding: 1.2rem 1.4rem;
+            max-width: 380px;
+            width: 90vw;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 25px rgba(229, 185, 95, 0.3);
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.95) translateY(10px);
+            transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.25s;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .hover-explain-popover.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0);
+        }
+
+        .popover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-size: 0.74rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+
+        .popover-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: #ffffff;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .popover-body {
+            font-size: 0.86rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .popover-field {
+            background: rgba(255, 255, 255, 0.04);
+            border-right: 3px solid var(--accent-gold);
+            padding: 6px 10px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.82rem;
+            color: #fef08a;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .popover-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 8px;
+            font-size: 0.76rem;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+        }
 </style>
 </head>
 <body>
@@ -2050,22 +2164,22 @@
                 </div>
 
                 <div class="persona-grid">
-                    <button class="persona-btn active" id="btnPersonaTeacher" onclick="selectPersona('teacher')">
+                    <button class="persona-btn active" id="btnPersonaTeacher" class="persona-btn active hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'persona_teacher')" onmouseleave="hideHoverExplainPopover()" onclick="selectPersona('teacher'); openCardDetailModal('persona_teacher');">
                         <div class="persona-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
                         <div class="persona-label">معلم / معلمة</div>
                         <div class="persona-desc">إدارة الصف والسيطرة وحفظ النظام اليومي</div>
                     </button>
-                    <button class="persona-btn" id="btnPersonaParent" onclick="selectPersona('parent')">
+                    <button class="persona-btn" id="btnPersonaParent" class="persona-btn hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'persona_parent')" onmouseleave="hideHoverExplainPopover()" onclick="selectPersona('parent'); openCardDetailModal('persona_parent');">
                         <div class="persona-icon"><i class="fa-solid fa-house-chimney-user"></i></div>
                         <div class="persona-label">ولي أمر</div>
                         <div class="persona-desc">التعامل المنزلي ودعم ADHD دون صراخ</div>
                     </button>
-                    <button class="persona-btn" id="btnPersonaStudent" onclick="selectPersona('student')">
+                    <button class="persona-btn" id="btnPersonaStudent" class="persona-btn hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'persona_student')" onmouseleave="hideHoverExplainPopover()" onclick="selectPersona('student'); openCardDetailModal('persona_student');">
                         <div class="persona-icon"><i class="fa-solid fa-graduation-cap"></i></div>
                         <div class="persona-label">طالب / يافع</div>
                         <div class="persona-desc">تنظيم التركيز ومقاومة التشتت والمماطلة</div>
                     </button>
-                    <button class="persona-btn" id="btnPersonaSpecialist" onclick="selectPersona('specialist')">
+                    <button class="persona-btn" id="btnPersonaSpecialist" class="persona-btn hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'persona_specialist')" onmouseleave="hideHoverExplainPopover()" onclick="selectPersona('specialist'); openCardDetailModal('persona_specialist');">
                         <div class="persona-icon"><i class="fa-solid fa-user-doctor"></i></div>
                         <div class="persona-label">إخصائي / موجه</div>
                         <div class="persona-desc">خطط BIP والتحليل السريري والإحالات المعتمدة</div>
@@ -2109,32 +2223,36 @@
                     </p>
 
                     <div class="circles-grid">
-                        <div class="circle-card">
+                        <div class="circle-card hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'circle_1')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('circle_1')">
                             <span class="circle-num">01</span>
                             <div class="circle-icon"><i class="fa-solid fa-shield-heart" style="color:var(--danger-red);"></i></div>
                             <div class="circle-title">دائرة السلامة أولاً</div>
                             <div class="circle-desc">هل يوجد خطر مباشر على الطالب أو زملائه؟ إذا وُجد خطر يتوقف التحليل فوراً لحماية الأرواح وإزالة المثيرات الحادة.</div>
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div class="circle-card">
+                        <div class="circle-card hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'circle_2')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('circle_2')">
                             <span class="circle-num">02</span>
                             <div class="circle-icon"><i class="fa-solid fa-magnifying-glass-chart" style="color:var(--accent-cyan);"></i></div>
                             <div class="circle-title">دائرة قراءة السياق (ABC)</div>
                             <div class="circle-desc">رصد ما سبق السلوك (Antecedent)، وصف السلوك الفعلي بلا نعت، وفحص ما تلاه مباشرة في الفصل (Consequence).</div>
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div class="circle-card">
+                        <div class="circle-card hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'circle_3')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('circle_3')">
                             <span class="circle-num">03</span>
                             <div class="circle-icon"><i class="fa-solid fa-hands-holding-child" style="color:var(--accent-gold);"></i></div>
                             <div class="circle-title">دائرة الاستجابة والدعم</div>
                             <div class="circle-desc">ما أقل تدخل صفي فعال يحفظ حدود الغرفة الصفية، ويقدم التيسير المناسب، ويعلّم مهارة بديلة مسؤولة؟</div>
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div class="circle-card">
+                        <div class="circle-card hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'circle_4')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('circle_4')">
                             <span class="circle-num">04</span>
                             <div class="circle-icon"><i class="fa-solid fa-chart-line" style="color:var(--success-green);"></i></div>
                             <div class="circle-title">دائرة قياس الأثر والتصعيد</div>
                             <div class="circle-desc">متابعة التكرار والشدة والمدة، ومعرفة اللحظة المهنية الدقيقة لإشراك الأخصائي أو إحالة الحالة لتقييم متخصص.</div>
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
                     </div>
                 </div>
@@ -2687,7 +2805,7 @@
 
                     <div class="circles-grid" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));">
                         <!-- Primary -->
-                        <div class="card-panel" style="background:#0e1938; border-color:var(--accent-cyan);">
+                        <div class="card-panel hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'stage_primary')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('stage_primary')" style="background:#0e1938; border-color:var(--accent-cyan);">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                                 <h3 style="color:var(--accent-cyan); font-family:var(--font-heading); font-size:1.2rem;">المرحلة الابتدائية (5 - 11 سنة)</h3>
                                 <span class="outcome-card-badge">الفصل 5</span>
@@ -2700,7 +2818,7 @@
                         </div>
 
                         <!-- Preparatory -->
-                        <div class="card-panel" style="background:#0e1938; border-color:var(--accent-gold);">
+                        <div class="card-panel hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'stage_prep')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('stage_prep')" style="background:#0e1938; border-color:var(--accent-gold);">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                                 <h3 style="color:var(--accent-gold); font-family:var(--font-heading); font-size:1.2rem;">المرحلة الإعدادية (12 - 14 سنة)</h3>
                                 <span class="outcome-card-badge" style="background:rgba(229,185,95,0.15); color:var(--accent-gold);">الفصل 6</span>
@@ -2713,7 +2831,7 @@
                         </div>
 
                         <!-- Secondary -->
-                        <div class="card-panel" style="background:#0e1938; border-color:var(--accent-purple);">
+                        <div class="card-panel hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'stage_sec')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('stage_sec')" style="background:#0e1938; border-color:var(--accent-purple);">
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                                 <h3 style="color:var(--accent-purple); font-family:var(--font-heading); font-size:1.2rem;">المرحلة الثانوية (15 - 18 سنة)</h3>
                                 <span class="outcome-card-badge" style="background:rgba(168,85,247,0.15); color:var(--accent-purple);">الفصل 7</span>
@@ -2754,34 +2872,39 @@
 
                     <!-- 5 Step Operational Protocol -->
                     <div class="adhd-steps-grid">
-                        <div class="adhd-step-box">
+                        <div class="adhd-step-box hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'adhd_1')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('adhd_1')">
                             <div class="step-num">01</div>
                             <div class="step-title">مسح المشتتات</div>
                             <div class="step-desc">إبعاد مقعد الطالب عن النوافذ والأبواب ومصادر الحركة العشوائية مع تأمين زاوية هادئة.</div>
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div class="adhd-step-box">
+                        <div class="adhd-step-box hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'adhd_2')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('adhd_2')">
                             <div class="step-num">02</div>
                             <div class="step-title">هندسة المقعد</div>
                             <div class="step-desc">الجلوس في الصف الأول قريباً من المعلم مع مساحة كافية تسمح بتعديل وضعية الجلوس بحرية.</div>
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div class="adhd-step-box">
+                        <div class="adhd-step-box hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'adhd_3')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('adhd_3')">
                             <div class="step-num">03</div>
                             <div class="step-title">تجزئة المهام (Chunking)</div>
                             <div class="step-desc">أمر واحد في كل مرة، وتقسيم ورقة العمل إلى أجزاء صغيرة مع فحص الإنجاز في أول 90 ثانية.</div>
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div class="adhd-step-box">
+                        <div class="adhd-step-box hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'adhd_4')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('adhd_4')">
                             <div class="step-num">04</div>
                             <div class="step-title">الحركة الوظيفية</div>
                             <div class="step-desc">تكليف الطالب بمهام صفية مسؤولة (توزيع الأوراق، مسح اللوح) واستخدام أدوات التململ الصامتة.</div>
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div class="adhd-step-box">
+                        <div class="adhd-step-box hover-interactive-card" onmouseenter="showHoverExplainPopover(event, 'adhd_5')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('adhd_5')">
                             <div class="step-num">05</div>
                             <div class="step-title">التعزيز اللحظي</div>
                             <div class="step-desc">تغذية راجعة فورية خاصة كل 10 دقائق لترسيخ السلوك الإيجابي ومقاومة نفاد الدوبامين.</div>
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
                     </div>
 
@@ -3128,34 +3251,46 @@
 
                 <div class="card-panel">
                     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1rem;">
-                        <div style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);">
+                        <div class="hover-interactive-card" style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);" onmouseenter="showHoverExplainPopover(event, 'vocab_behavior')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('vocab_behavior')">
                             <div style="font-weight:800; color:var(--accent-gold); font-size:0.95rem;">السلوك (Behavior):</div>
                             <div style="font-size:0.88rem; color:#cbd5e1;">أي فعل أو قول يمكن لشخص آخر ملاحظته ووصفه وقياسه دون تخمين للنوايا.</div>
+                        
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);">
+                        <div class="hover-interactive-card" style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);" onmouseenter="showHoverExplainPopover(event, 'vocab_antecedents')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('vocab_antecedents')">
                             <div style="font-weight:800; color:var(--accent-gold); font-size:0.95rem;">السوابق (Antecedents - A):</div>
                             <div style="font-size:0.88rem; color:#cbd5e1;">المثيرات والظروف والتعليمات التي وقعت مباشرة قبل حدوث السلوك في الفصل.</div>
+                        
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);">
+                        <div class="hover-interactive-card" style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);" onmouseenter="showHoverExplainPopover(event, 'vocab_consequences')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('vocab_consequences')">
                             <div style="font-weight:800; color:var(--accent-gold); font-size:0.95rem;">اللواحق (Consequences - C):</div>
                             <div style="font-size:0.88rem; color:#cbd5e1;">ما حدث مباشرة بعد السلوك (رد فعل المعلم، ضحك الزملاء) والذي يغذي استمرار السلوك.</div>
+                        
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);">
+                        <div class="hover-interactive-card" style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);" onmouseenter="showHoverExplainPopover(event, 'vocab_replacement')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('vocab_replacement')">
                             <div style="font-weight:800; color:var(--accent-gold); font-size:0.95rem;">السلوك البديل (Replacement Behavior):</div>
                             <div style="font-size:0.88rem; color:#cbd5e1;">سلوك إيجابي مقبول اجتماعياً يحقق نفس الغاية السلوكية (مثال: رفع بطاقة راحة بدل الصراخ).</div>
+                        
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);">
+                        <div class="hover-interactive-card" style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);" onmouseenter="showHoverExplainPopover(event, 'vocab_ratio')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('vocab_ratio')">
                             <div style="font-weight:800; color:var(--accent-gold); font-size:0.95rem;">نسبة التعزيز 4:1 (4 to 1 Ratio):</div>
                             <div style="font-size:0.88rem; color:#cbd5e1;">تقديم 4 تعليقات إيجابية وتشجيعية على السلوك المرغوب مقابل كل تصحيح سلوكي واحد.</div>
+                        
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
 
-                        <div style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);">
+                        <div class="hover-interactive-card" style="background:#091126; padding:1rem; border-radius:10px; border-right:3px solid var(--accent-cyan);" onmouseenter="showHoverExplainPopover(event, 'vocab_exec')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('vocab_exec')">
                             <div style="font-weight:800; color:var(--accent-gold); font-size:0.95rem;">الوظائف التنفيذية (Executive Functions):</div>
                             <div style="font-size:0.88rem; color:#cbd5e1;">مهارات الفص الجبهي في الدماغ: الذاكرة العاملة، كبح الاندفاع، التخطيط، والمرونة الذهنية.</div>
+                        
+                            <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
                         </div>
                     </div>
                 </div>
@@ -3176,55 +3311,65 @@
                     </p>
 
                     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:1rem;">
-                        <div style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;">
+                        <div class="hover-interactive-card" style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;" onmouseenter="showHoverExplainPopover(event, 'ref_1')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('ref_1')">
                             <div style="font-weight:800; color:var(--accent-cyan); font-size:0.95rem;">1. IES / What Works Clearinghouse (WWC)</div>
                             <div style="font-size:0.84rem; color:#94a3b8;">دليل الممارسة لخفض المشكلات السلوكية في صفوف K–5 القائم على الأدلة العلمية.</div>
-                        </div>
+                        <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
+</div>
 
-                        <div style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;">
+                        <div class="hover-interactive-card" style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;" onmouseenter="showHoverExplainPopover(event, 'ref_2')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('ref_2')">
                             <div style="font-weight:800; color:var(--accent-cyan); font-size:0.95rem;">2. Center on PBIS (Positive Behavioral Interventions & Supports)</div>
                             <div style="font-size:0.84rem; color:#94a3b8;">إطار الدعم السلوكي متعدد المستويات (Tiers 1, 2, 3) للوقاية والتدخل المبكر.</div>
-                        </div>
+                        <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
+</div>
 
-                        <div style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;">
+                        <div class="hover-interactive-card" style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;" onmouseenter="showHoverExplainPopover(event, 'ref_3')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('ref_3')">
                             <div style="font-weight:800; color:var(--accent-cyan); font-size:0.95rem;">3. FBA / Functional Behavior Assessment Guidelines</div>
                             <div style="font-size:0.84rem; color:#94a3b8;">معايير التحليل السلوكي الوظيفي لتحديد دوافع السلوك وربطها بالسلوك البديل.</div>
-                        </div>
+                        <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
+</div>
 
-                        <div style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;">
+                        <div class="hover-interactive-card" style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;" onmouseenter="showHoverExplainPopover(event, 'ref_4')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('ref_4')">
                             <div style="font-weight:800; color:var(--accent-cyan); font-size:0.95rem;">4. Centers for Disease Control and Prevention (CDC)</div>
                             <div style="font-size:0.84rem; color:#94a3b8;">إرشادات الإدارة الصفية، نمو الطفل، وتعزيز الانتماء المدرسي (School Connectedness).</div>
-                        </div>
+                        <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
+</div>
 
-                        <div style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;">
+                        <div class="hover-interactive-card" style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;" onmouseenter="showHoverExplainPopover(event, 'ref_5')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('ref_5')">
                             <div style="font-weight:800; color:var(--accent-cyan); font-size:0.95rem;">5. Clinical ADHD Standards (DSM-5-TR, AAP, NICE)</div>
                             <div style="font-size:0.84rem; color:#94a3b8;">حدود التشخيص الإكلينيكي لاضطراب فرط الحركة وتشتت الانتباه والتيسيرات الصفية.</div>
-                        </div>
+                        <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
+</div>
 
-                        <div style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;">
+                        <div class="hover-interactive-card" style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;" onmouseenter="showHoverExplainPopover(event, 'ref_6')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('ref_6')">
                             <div style="font-weight:800; color:var(--accent-cyan); font-size:0.95rem;">6. National Institute of Mental Health (NIMH)</div>
                             <div style="font-size:0.84rem; color:#94a3b8;">معايير التمييز بين مراحل النمو الطبيعية ومؤشرات الصحة النفسية التي تتطلب الإحالة.</div>
-                        </div>
+                        <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
+</div>
 
-                        <div style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;">
+                        <div class="hover-interactive-card" style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;" onmouseenter="showHoverExplainPopover(event, 'ref_7')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('ref_7')">
                             <div style="font-weight:800; color:var(--accent-cyan); font-size:0.95rem;">7. StopBullying.gov / US DHHS</div>
                             <div style="font-size:0.84rem; color:#94a3b8;">بروتوكولات الوقاية من التنمر والتنمر الإلكتروني والتدخل الحازم لحماية الضحية.</div>
-                        </div>
+                        <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
+</div>
 
-                        <div style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;">
+                        <div class="hover-interactive-card" style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;" onmouseenter="showHoverExplainPopover(event, 'ref_8')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('ref_8')">
                             <div style="font-weight:800; color:var(--accent-cyan); font-size:0.95rem;">8. SAMHSA (Trauma-Informed Care)</div>
                             <div style="font-size:0.84rem; color:#94a3b8;">مبادئ الرعاية المدرسية الواعية بالصدمات (الأمان، الثقة، الشفافية، والتمكين).</div>
-                        </div>
+                        <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
+</div>
 
-                        <div style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;">
+                        <div class="hover-interactive-card" style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;" onmouseenter="showHoverExplainPopover(event, 'ref_9')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('ref_9')">
                             <div style="font-weight:800; color:var(--accent-cyan); font-size:0.95rem;">9. World Health Organization (WHO)</div>
                             <div style="font-size:0.84rem; color:#94a3b8;">إرشادات تطور المراهقين والصحة النفسية في المدارس.</div>
-                        </div>
+                        <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
+</div>
 
-                        <div style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;">
+                        <div class="hover-interactive-card" style="background:#091126; border:1px solid rgba(255,255,255,0.06); padding:1rem; border-radius:10px;" onmouseenter="showHoverExplainPopover(event, 'ref_10')" onmouseleave="hideHoverExplainPopover()" onclick="openCardDetailModal('ref_10')">
                             <div style="font-weight:800; color:var(--accent-cyan); font-size:0.95rem;">10. US Dept of Education / OSEP</div>
                             <div style="font-size:0.84rem; color:#94a3b8;">حقوق الطلاب ذوي الإعاقة (IDEA & Section 504) والانضباط المدرسي الاستباقي العادل.</div>
-                        </div>
+                        <div class="card-hover-hint"><i class="fa-solid fa-circle-question"></i> تفاصيل الشرح والتطبيق</div>
+</div>
                     </div>
                 </div>
             </section>
@@ -4199,6 +4344,386 @@
             }, 200);
         }
 
+
+
+        /* ===================================================
+           HOVER EXPLANATIONS POPOVER & MODAL ENGINE
+           =================================================== */
+        const hoverExplanationsData = {
+            "circle_1": {
+                        "category": "الدوائر الحاكمة • الدائرة 01",
+                        "title": "دائرة السلامة أولاً (Safety First)",
+                        "icon": "fa-shield-heart",
+                        "color": "var(--danger-red)",
+                        "overview": "القاعدة الصارمة الأولى في بوصلة السلوك: لا دعم ولا تحليل قبل التأكد التام من خلو الموقف من أي خطر يهدد حياة أو سلامة الطالب أو زملائه.",
+                        "application": "إيقاف الحصة فوراً، إبعاد الأدوات الحادة، إخلاء الجمهور الصفي، وتأمين مسافة فيزيقية آمنة دون وعظ أو جدال وقت اشتعال الغضب.",
+                        "importance": "حماية الأرواح ومنع تفاقم الأزمات أو حدوث إصابات جسدية، وتوفير مظلة أمان قانونية وأخلاقية للمعلم والمدرسة."
+            },
+            "circle_2": {
+                        "category": "الدوائر الحاكمة • الدائرة 02",
+                        "title": "دائرة قراءة السياق ABC (Context Reading)",
+                        "icon": "fa-magnifying-glass-chart",
+                        "color": "var(--accent-cyan)",
+                        "overview": "السلوك ليس فعلاً عشوائياً في فراغ؛ بل تحركه سوابق وتغذيه لواحق. تفكيك نموذج: A (السوابق) -> B (السلوك) -> C (اللواحق).",
+                        "application": "رصد ما قيل أو طُلب قبل السلوك مباشرة، وتسجيل السلوك دون وصم شخصي، وفحص رد فعل الزملاء والمعلم بعده.",
+                        "importance": "تكشف الدافع الحقيقي (الهروب من مهمة، لفت الانتباه، الإحراج، الإشباع الحسي) وتمنع علاج الأعراض السطحية بالخطأ."
+            },
+            "circle_3": {
+                        "category": "الدوائر الحاكمة • الدائرة 03",
+                        "title": "دائرة الاستجابة والدعم (Response & Support)",
+                        "icon": "fa-hands-holding-child",
+                        "color": "var(--accent-gold)",
+                        "overview": "التدخل المتزن الذي يجمع بين وضع حد قاطع للسلوك غير المقبول، وتقديم الدعم والبديل الإيجابي للطالب في آن واحد.",
+                        "application": "إعطاء خيارين محترمين، التحدث بصوت هادئ خاص لحفظ ماء وجهه، وتدريب الطالب على مهارة بديلة مقبولة (مثل رفع بطاقة المساعدة).",
+                        "importance": "توقف التعطيل الصفي وتحفظ كرامة الطالب وهيبة المعلم، وتبني انضباطاً داخلياً قائماً على المسؤولية بدلاً من الخوف."
+            },
+            "circle_4": {
+                        "category": "الدوائر الحاكمة • الدائرة 04",
+                        "title": "دائرة قياس الأثر والتصعيد (Outcome & Progress)",
+                        "icon": "fa-chart-line",
+                        "color": "var(--success-green)",
+                        "overview": "قياس مدى نجاح الخطة التربوية بالأرقام والبيانات لمدة 7 إلى 14 يوماً مع تطبيق نسبة التعزيز الإيجابي 4:1.",
+                        "application": "تسجيل مرات تكرار السلوك في جدول المتابعة المعتمد؛ فإذا لم ينخفض التكرار بعد أسبوعين من الدعم، تُحال الحالة رسمياً للأخصائي.",
+                        "importance": "تمنع التقييم العشوائي القائم على الانطباعات الشخصية وتضمن استناد قرارات الإحالة أو تعديل الخطة إلى بيانات موضوعية."
+            },
+            "persona_teacher": {
+                        "category": "تخصيص الهوية • دور المعلم",
+                        "title": "مسار المعلم / المعلمة (Educator)",
+                        "icon": "fa-chalkboard-user",
+                        "color": "var(--accent-cyan)",
+                        "overview": "مسار مخصص لتمكين المعلم من إدارة 30 طالباً داخل الغرفة الصفية بهدوء واحترافية وبأقل جهد عصبي.",
+                        "application": "التركيز على الفصول 1-4 والقواعد العشر، وأطلس المشكلات الـ 11، وأمر التحليل الوظيفي السريع، وتطبيق سيناريو أول 90 ثانية.",
+                        "importance": "حفظ النظام الصفي وخفض الصراخ والتوتر والسيطرة الهادئة دون الدخول في صراعات سلطة مع الطلاب."
+            },
+            "persona_parent": {
+                        "category": "تخصيص الهوية • دور ولي الأمر",
+                        "title": "مسار ولي الأمر (Parent Support)",
+                        "icon": "fa-house-chimney-user",
+                        "color": "var(--accent-gold)",
+                        "overview": "مسار الدعم الأسري والمنزلي لفهم خلفيات سلوك الأبناء والتعامل مع العناد وفرط الحركة والتشتت دون صراخ.",
+                        "application": "تطبيق مسار ADHD (الأيام 1-15)، ميثاق التعاقد السلوكي الأسري، وتثبيت روتين يومي منظم للنوم والمذاكرة والشاشات.",
+                        "importance": "إنهاء المعارك اليومية في المنزل حول المذاكرة والواجبات، وبناء علاقة دافئة وآمنة تدعم ثقة الطفل بنفسه."
+            },
+            "persona_student": {
+                        "category": "تخصيص الهوية • دور الطالب",
+                        "title": "مسار الطالب واليافع (Student Empowerment)",
+                        "icon": "fa-graduation-cap",
+                        "color": "var(--accent-cyan)",
+                        "overview": "مسار تمكين الطالب لمساعدته على فهم مشاعره وانفعالاته والتغلب على التشتت وعمى الوقت وتنظيم مهامه.",
+                        "application": "استخدام أدوات تجزئة الواجبات (Micro-Tasking)، تقنيات التنفس العميق 4-4-4، وقاعدة الـ 10 دقائق لبدء المذاكرة.",
+                        "importance": "بناء الرقابة الذاتية والمسؤولية الشخصية والتخلص من الشعور بالإحباط والذنب الناجم عن التسويف المزمن."
+            },
+            "persona_specialist": {
+                        "category": "تخصيص الهوية • دور الإخصائي",
+                        "title": "مسار الإخصائي والموجه (Clinical Specialist)",
+                        "icon": "fa-user-doctor",
+                        "color": "var(--accent-purple)",
+                        "overview": "مسار التدخل الإكلينيكي والتشخيصي للأخصائيين الاجتماعيين والنفسيين والموجهين التربويين في المدارس.",
+                        "application": "صياغة خطط التدخل السلوكي الفردية المقننة (BIP)، التحليل الوظيفي FBA، وإحالات مرجع العلاج السلوكي بالصفحات.",
+                        "importance": "ضمان التدخلات المهنية القائمة على الأدلة والمعايير الطبية والنفسية المعتمدة وتوحيد التوثيق المهني للمدرسة."
+            },
+            "stage_primary": {
+                        "category": "خريطة المراحل • المرحلة الابتدائية",
+                        "title": "المرحلة الابتدائية (5 - 11 سنة)",
+                        "icon": "fa-child",
+                        "color": "var(--accent-cyan)",
+                        "overview": "مرحلة البناء الحسي والتأسيس السلوكي؛ ضبط النفس قيد التكوين التدريجي ويحتاج لقواعد خارجية ملموسة ومرئية.",
+                        "application": "استخدام الجداول المصورة، التذكير المسبق قبل انتهاء النشاط، ونسبة تعزيز عالية (5 تعزيزات مقابل تصحيح واحد).",
+                        "importance": "تمنع لوم الطفل على قلة تركيزه، وتوفر له البيئة الآمنة لاكتساب مهارات الانضباط الذاتي دون قسوة."
+            },
+            "stage_prep": {
+                        "category": "خريطة المراحل • المرحلة الإعدادية",
+                        "title": "المرحلة الإعدادية / المتوسطة (12 - 14 سنة)",
+                        "icon": "fa-user-group",
+                        "color": "var(--accent-gold)",
+                        "overview": "مرحلة الثورة الهرمونية وبداية المراهقة؛ حساسية مفرطة للنقد أمام الأقران، وبحث محموم عن الاستقلالية وإثبات الذات.",
+                        "application": "الحفاظ التام على ماء وجه الطالب، عدم توبيخه علناً أمام زملائه، تقديم خيارات محترمة، وإشراكه في وضع القواعد.",
+                        "importance": "تكسر العناد وتمنع تحول الموقف الصفي إلى استعراض قوة أمام الزملاء وتكسب ثقة المراهق."
+            },
+            "stage_sec": {
+                        "category": "خريطة المراحل • المرحلة الثانوية",
+                        "title": "المرحلة الثانوية (15 - 18 سنة)",
+                        "icon": "fa-user-graduate",
+                        "color": "var(--accent-purple)",
+                        "overview": "نضج متقدم للفص الجبهي؛ الاستعداد لتحمل مسؤولية مرحلة البلوغ مع مواجهة ضغوط الامتحانات المصيرية والتمسك بالهاتف.",
+                        "application": "اعتماد أسلوب التعاقد السلوكي المكتوب، توضيح النتائج المنطقية مسبقاً، والتعامل معه كشخص ناضج مسؤول عن قراراته.",
+                        "importance": "تعزز النضج والمسؤولية وتهيئ الطالب للحياة الجامعية والعملية دون تسلط أو صدام مستمر."
+            },
+            "adhd_1": {
+                        "category": "بروتوكول ADHD • الخطوة 01",
+                        "title": "مسح المشتتات (Distraction Elimination)",
+                        "icon": "fa-eye-slash",
+                        "color": "var(--accent-purple)",
+                        "overview": "إبعاد المشتتات البصرية والسمعية العشوائية التي تخترق تركيز طالب ADHD بسبب ضعف الترشيح العصبي في دماغه.",
+                        "application": "إبعاد المقعد عن النوافذ المفتوحة وأبواب الفصل ومصادر الحركة، مع تأمين زاوية نظر هادئة وموجهة للسبورة.",
+                        "importance": "ترفع مدة انتباه الطالب في الحصة بنسبة تزيد عن 40% وتخفض التشتت البصري التلقائي."
+            },
+            "adhd_2": {
+                        "category": "بروتوكول ADHD • الخطوة 02",
+                        "title": "هندسة المقعد (Seating Architecture)",
+                        "icon": "fa-chair",
+                        "color": "var(--accent-purple)",
+                        "overview": "تحديد الموقع الفيزيقي الأمثل داخل الفصل الدراسي لدعم الانتباه والتواصل الإيجابي غير اللفظي مع المعلم.",
+                        "application": "الجلوس في الصف الأول قريباً من المعلم، مع مساحة كافية على جانبي المقعد تسمح له بتغيير وضعية جلوسه بحرية دون إزعاج.",
+                        "importance": "تتيح للمعلم توجيه إشارات بصرية خاصة بالطالب دون لفت أنظار زملائه أو إحراجه علناً."
+            },
+            "adhd_3": {
+                        "category": "بروتوكول ADHD • الخطوة 03",
+                        "title": "تجزئة المهام (Chunking Strategy)",
+                        "icon": "fa-puzzle-piece",
+                        "color": "var(--accent-purple)",
+                        "overview": "تقنية التفتيت للمهام الكبيرة لمواجهة ضعف الذاكرة العاملة والشلل التنفيذي الناتج عن نقص الدوبامين.",
+                        "application": "إعطاء أمر واحد فقط في كل مرة، وتقسيم ورقة العمل إلى أجزاء صغيرة (سؤالين أو ثلاثة)، وفحص الإنجاز في أول 90 ثانية.",
+                        "importance": "تكسر حاجز المقاومة الأول وتمنح الدماغ جرعات دوبامين متتالية تدفعه لإكمال الواجبات بنجاح."
+            },
+            "adhd_4": {
+                        "category": "بروتوكول ADHD • الخطوة 04",
+                        "title": "الحركة الوظيفية (Functional Movement)",
+                        "icon": "fa-person-walking",
+                        "color": "var(--accent-purple)",
+                        "overview": "استثمار فرط الحركة العضوي في أدوار مفيدة ومسؤولة داخل الفصل بدلاً من محاولة كتمها وقمعها بالقوة.",
+                        "application": "تكليف الطالب بمسح اللوح، توزيع الأوراق، تسليم الدفاتر، والسماح باستخدام أدوات التململ الصامتة (Fidget tools).",
+                        "importance": "تفريغ الطاقة الحركية الزائدة بطريقة شرعية تحافظ على هدوء ونظام الحصة وتشبع حاجة جهازه العصبي."
+            },
+            "adhd_5": {
+                        "category": "بروتوكول ADHD • الخطوة 05",
+                        "title": "التعزيز اللحظي (Immediate Reinforcement)",
+                        "icon": "fa-bolt",
+                        "color": "var(--accent-purple)",
+                        "overview": "تقديم مكافآت وتغذية راجعة فورية لتعويض النقص الحاد في سرعة امتصاص الدوبامين في القشرة الجبهية.",
+                        "application": "عبارة تقدير خاصة كل 10 دقائق («أحسنت في إنهاء المسألة الأولى»)، أو استخدام بطاقات النقاط والرموز الفورية.",
+                        "importance": "تحافظ على يقظة الدماغ وتمنع انسحاب الطالب ذهنياً أو بحثه عن الإثارة من خلال إحداث فوضى في الفصل."
+            },
+            "vocab_behavior": {
+                        "category": "قاموس المفاهيم • المفهوم 01",
+                        "title": "السلوك (Behavior)",
+                        "icon": "fa-person-rays",
+                        "color": "var(--accent-cyan)",
+                        "overview": "أي فعل أو قول إجرائي يمكن لشخص آخر ملاحظته ووصفه وقياسه عددياً وزمنياً دون تخمين للنوايا أو إصدار أحكام.",
+                        "application": "استبدال الأوصاف المبهمة («طالب فوضوي») بوصف مقاس («نهض من مقعده 4 مرات وتحدث بدون إذن في 15 دقيقة»).",
+                        "importance": "يحمي الطالب من التسميات الظالمة ويوفر أساساً علمياً دقيقاً لقياس تقدم خطة التدخل."
+            },
+            "vocab_antecedents": {
+                        "category": "قاموس المفاهيم • المفهوم 02",
+                        "title": "السوابق (Antecedents - A)",
+                        "icon": "fa-clock-rotate-left",
+                        "color": "var(--accent-gold)",
+                        "overview": "المثيرات والظروف والتعليمات والأحداث التي سبقت حدوث السلوك في الفصل أو المنزل مباشرة وأدت إلى إطلاقه.",
+                        "application": "فحص الموقف: هل طُلب منه قراءة نص معقد أمام زملائه؟ هل كان يشعر بالجوع أو التعب؟ هل حدث شجار في الطابور؟",
+                        "importance": "تعديل المثيرات السابقة (الوقاية) يمنع حدوث السلوك السلبي بنسبة 70% قبل أن يبدأ."
+            },
+            "vocab_consequences": {
+                        "category": "قاموس المفاهيم • المفهوم 03",
+                        "title": "اللواحق (Consequences - C)",
+                        "icon": "fa-arrows-split-up-and-left",
+                        "color": "var(--danger-red)",
+                        "overview": "ما حدث مباشرة بعد صدور السلوك (رد فعل المعلم، ضحك الزملاء، الإخراج من الفصل) والذي يغذي استمرار السلوك.",
+                        "application": "إذا كان صراخ الطالب يدفع المعلم لطرده من الحصة، والهدف هو الهروب من الامتحان، فإن الطرد أصبح مكافأة معززة للسلوك!",
+                        "importance": "قطع التعزيز الخاطئ بعد السلوك هو المفتاح الأساسي لإطفاء السلوكيات غير المرغوبة (Extinction)."
+            },
+            "vocab_replacement": {
+                        "category": "قاموس المفاهيم • المفهوم 04",
+                        "title": "السلوك البديل (Replacement Behavior)",
+                        "icon": "fa-arrow-right-arrow-left",
+                        "color": "var(--success-green)",
+                        "overview": "سلوك إيجابي مقبول اجتماعياً وتربوياً يحقق للطالب نفس الغاية والوظيفة دون الإضرار بنظام الحصة.",
+                        "application": "تدريب الطالب على رفع كارت أصفر لطلب مساعدة المعلم في قراءة السؤال بدلاً من رمي القلم على الأرض.",
+                        "importance": "لا يمكنك إلغاء سلوك سلبي دون توفير بديل شرعي وسهل الاستخدام يحقق نفس الحاجة النفسية للطفل."
+            },
+            "vocab_ratio": {
+                        "category": "قاموس المفاهيم • المفهوم 05",
+                        "title": "نسبة التعزيز 4:1 (4 to 1 Ratio)",
+                        "icon": "fa-scale-balanced",
+                        "color": "var(--accent-gold)",
+                        "overview": "القاعدة الذهبية في هندسة السلوك: تقديم 4 عبارات تقدير وتشجيع على السلوك المرغوب مقابل كل توجيه تصحيحي واحد.",
+                        "application": "امتدح التزامه بالهدوء أو إحضاره للأدوات 4 مرات قبل أن تنبهه لنسيان الواجب، للحفاظ على استجابته الإيجابية.",
+                        "importance": "تمنع شعور الطالب بأنه مستهدف دائماً بالنقد، وتزيد من رغبته التلقائية في التعاون والالتزام بقواعد الفصل."
+            },
+            "vocab_exec": {
+                        "category": "قاموس المفاهيم • المفهوم 06",
+                        "title": "الوظائف التنفيذية (Executive Functions)",
+                        "icon": "fa-brain",
+                        "color": "var(--accent-cyan)",
+                        "overview": "مهارات الفص الجبهي في الدماغ المسؤولة عن كبح الاندفاع، التخطيط، الذاكرة العاملة، والمرونة الذهنية وإدارة الوقت.",
+                        "application": "تزويد الطالب بجداول وقوائم مرئية وخطوات مجزأة لأن دماغه غير قادر على الاحتفاظ بالأوامر المتراكمة.",
+                        "importance": "تفسر عجز الطالب الحقيقي وتمنع اتهامه بالكسل أو العناد، وتوجه المعلم لاستخدام الدعامات البصرية المناسبة."
+            },
+            "ref_1": {
+                        "category": "المراجع المعتمدة • المرجع 01",
+                        "title": "IES / What Works Clearinghouse (WWC)",
+                        "icon": "fa-building-columns",
+                        "color": "var(--accent-cyan)",
+                        "overview": "الذراع البحثي التابع لوزارة التعليم الأمريكية، يقدم أدلة إمبريقية مثبتة لخفض السلوكيات المعطلة في الصفوف الابتدائية.",
+                        "application": "الاعتماد على استراتيجيات التدخل الوقائي المسبق والتغذية الراجعة الإيجابية المستمرة.",
+                        "importance": "يضمن استناد ممارسات البوصلة إلى دراسات علمية موثقة ومجربة على مئات الفصول الدراسية."
+            },
+            "ref_2": {
+                        "category": "المراجع المعتمدة • المرجع 02",
+                        "title": "Center on PBIS (الدعم السلوكي الإيجابي)",
+                        "icon": "fa-layer-group",
+                        "color": "var(--accent-gold)",
+                        "overview": "الإطار الوطني للدعم السلوكي الإيجابي متعدد المستويات (Tiers 1, 2, 3) للوقاية والتدخل المبكر في المدارس.",
+                        "application": "تصنيف التدخلات: المستوى 1 لجميع الطلاب، المستوى 2 للمجموعات المعرضة للخطر، والمستوى 3 للحالات الفردية المكثفة.",
+                        "importance": "يوفر نموذجاً تشغيلياً يقلل من نسب الإحالات الإدارية بنسبة تفوق 50% ويحسن المناخ المدرسي العام."
+            },
+            "ref_3": {
+                        "category": "المراجع المعتمدة • المرجع 03",
+                        "title": "FBA Guidelines (التحليل السلوكي الوظيفي)",
+                        "icon": "fa-diagram-project",
+                        "color": "var(--accent-cyan)",
+                        "overview": "المعايير الدولية المقننة للتحليل السلوكي الوظيفي لتحديد دوافع السلوك وربطها بالبدائل الإيجابية.",
+                        "application": "استخدام أدوات الملاحظة المنهجية لتحديد ما إذا كان السلوك بهدف (الهروب، لفت الانتباه، أو الإشباع الحسي).",
+                        "importance": "الركيزة الأساسية لتصميم خطط التدخل الفردية (BIP) المعتمدة قانونياً وتربوياً في المدارس الحديثة."
+            },
+            "ref_4": {
+                        "category": "المراجع المعتمدة • المرجع 04",
+                        "title": "CDC Prevention (مراكز مكافحة الأمراض الأمريكية)",
+                        "icon": "fa-heart-pulse",
+                        "color": "var(--danger-red)",
+                        "overview": "إرشادات الإدارة الصفية، نمو الطفل الصحي، وتعزيز الانتماء والترابط المدرسي (School Connectedness).",
+                        "application": "تعزيز بيئة صفية دافئة وداعمة تقلل من الضغوط النفسية وتحفز الدافعية للتعلم والانتماء للمدرسة.",
+                        "importance": "أثبتت أبحاث CDC أن شعور الطالب بالانتماء والأمان في فصله هو أكبر عامل وقائي ضد العنف والتسرب الدراسي."
+            },
+            "ref_5": {
+                        "category": "المراجع المعتمدة • المرجع 05",
+                        "title": "Clinical ADHD Standards (DSM-5-TR / AAP)",
+                        "icon": "fa-bolt",
+                        "color": "var(--accent-purple)",
+                        "overview": "معايير التشخيص الإكلينيكي لاضطراب فرط الحركة وتشتت الانتباه من الجمعية الأمريكية للطب النفسي وطب الأطفال.",
+                        "application": "الالتزام بالحدود المهنية بين المعلم والطبيب، وتطبيق التيسيرات الصفية دون إصدار تشخيصات طبية متسرعة.",
+                        "importance": "تمنع الخلط الشائع بين اضطراب ADHD الحقيقي وبين فرط النشاط العابر، وتضمن حصول الطالب على حقوقه الأكاديمية."
+            },
+            "ref_6": {
+                        "category": "المراجع المعتمدة • المرجع 06",
+                        "title": "National Institute of Mental Health (NIMH)",
+                        "icon": "fa-hospital",
+                        "color": "var(--accent-cyan)",
+                        "overview": "المعهد الوطني للصحة النفسية الأمريكي؛ يحدد معايير التمييز بين مراحل النمو الطبيعية ومؤشرات القلق والاكتئاب.",
+                        "application": "تدريب المعلمين على رصد مؤشرات التحول المفاجئ في سلوك الطالب (الانسحاب، تراجع الدرجات الحاد، الانعزال).",
+                        "importance": "يوفر جدار حماية مبكر لاكتشاف مشكلات الصحة النفسية لدى الأطفال قبل تحولها إلى أزمات خطرة."
+            },
+            "ref_7": {
+                        "category": "المراجع المعتمدة • المرجع 07",
+                        "title": "StopBullying.gov / US DHHS",
+                        "icon": "fa-shield",
+                        "color": "var(--accent-gold)",
+                        "overview": "المرجعية الفيدرالية للوقاية من التنمر والتنمر الإلكتروني والتدخل الحازم لحماية الضحية وإعادة تأهيل البيئة المدرسية.",
+                        "application": "تطبيق بروتوكول عدم التسامح مع التنمر، حماية الضحية فوراً، والتعامل مع المتنمر كطالب بحاجة لتعديل سلوكي.",
+                        "importance": "خلق بيئة مدرسية آمنة نفسياً تمنع الآثار التدميرية للتنمر على الصحة النفسية للأطفال."
+            },
+            "ref_8": {
+                        "category": "المراجع المعتمدة • المرجع 08",
+                        "title": "SAMHSA (الرعاية الواعية بالصدمات)",
+                        "icon": "fa-hand-holding-heart",
+                        "color": "var(--success-green)",
+                        "overview": "مبادئ الرعاية المدرسية الواعية بالصدمات النفسية والأسرية (الأمان، الثقة، الشفافية، المساندة، والتمكين).",
+                        "application": "استبدال سؤال «ما خطب هذا الطالب؟» بسؤال «ما الذي مر به هذا الطالب؟» لتفادي إعادة إشعال صدماته النفسية.",
+                        "importance": "حماية الأطفال الذين يمرون بظروف أسرية قاسية أو عنف منزلي وتوفير ملاذ آمن لهم داخل المدرسة."
+            },
+            "ref_9": {
+                        "category": "المراجع المعتمدة • المرجع 09",
+                        "title": "World Health Organization (WHO)",
+                        "icon": "fa-globe",
+                        "color": "var(--accent-cyan)",
+                        "overview": "إرشادات منظمة الصحة العالمية لتعزيز الصحة النفسية للمراهقين والتعامل مع ضغوط مرحلة البلوغ في المدارس.",
+                        "application": "برامج دعم الصحة العاطفية وإدارة الغضب والتكيف الاجتماعي والوقاية من السلوكيات المؤذية.",
+                        "importance": "مواءمة ممارسات المدرسة مع المعايير الصحية العالمية لرعاية المراهقين وتنمية ذكائهم الانفعالي."
+            },
+            "ref_10": {
+                        "category": "المراجع المعتمدة • المرجع 10",
+                        "title": "مرجع «العلاج السلوكي للطفل والمراهق» & OSEP",
+                        "icon": "fa-book-bookmark",
+                        "color": "var(--accent-gold)",
+                        "overview": "المرجع الإكلينيكي العربي الرصين لأ.د عبد الستار إبراهيم وآخرون (330 صفحة)، مع حقوق الطلاب ذوي الاحتياجات (IDEA & 504).",
+                        "application": "التوثيق الدقيق بالصفحات لفنيات التعزيز (ص 75)، الاقتصاد الرمزي (ص 88)، التعاقد السلوكي (ص 94)، وإدارة العناد (ص 233).",
+                        "importance": "يمنح الكتاب والمنصة الأساس السريري الموثق الذي يربط بين فنيات علم النفس الإكلينيكي وواقع الإدارة الصفية الميدانية."
+            }
+};
+
+        let popoverHideTimer = null;
+
+        function showHoverExplainPopover(e, key) {
+            const data = hoverExplanationsData[key];
+            if (!data) return;
+
+            clearTimeout(popoverHideTimer);
+            const pop = document.getElementById('hoverExplainPopover');
+            if (!pop) return;
+
+            document.getElementById('popoverBadge').innerHTML = `<i class="fa-solid ${data.icon}"></i> ${data.category}`;
+            document.getElementById('popoverBadge').style.borderColor = data.color;
+            document.getElementById('popoverBadge').style.color = data.color;
+            document.getElementById('popoverTitle').innerHTML = `<i class="fa-solid ${data.icon}" style="color:${data.color};"></i> ${data.title}`;
+            document.getElementById('popoverBody').innerText = data.overview;
+            document.getElementById('popoverField').innerHTML = `<strong>التطبيق الميداني:</strong> ${data.application}`;
+
+            // Calculate Position
+            const targetEl = e.currentTarget || e.target;
+            const rect = targetEl.getBoundingClientRect();
+            const popWidth = Math.min(380, window.innerWidth * 0.9);
+            
+            let left = rect.left + (rect.width / 2) - (popWidth / 2);
+            if (left < 15) left = 15;
+            if (left + popWidth > window.innerWidth - 15) left = window.innerWidth - popWidth - 15;
+
+            let top = rect.top - 180;
+            // If overflows top, show below
+            if (top < 20) {
+                top = rect.bottom + 12;
+            }
+
+            pop.style.left = left + 'px';
+            pop.style.top = top + 'px';
+            pop.style.borderColor = data.color;
+            pop.classList.add('active');
+        }
+
+        function hideHoverExplainPopover() {
+            popoverHideTimer = setTimeout(() => {
+                const pop = document.getElementById('hoverExplainPopover');
+                if (pop) pop.classList.remove('active');
+            }, 120);
+        }
+
+        function openCardDetailModal(key) {
+            hideHoverExplainPopover();
+            const data = hoverExplanationsData[key];
+            if (!data) return;
+
+            document.getElementById('modalBadge').innerHTML = `<i class="fa-solid ${data.icon}"></i> ${data.category}`;
+            document.getElementById('modalTitle').innerHTML = data.title;
+
+            let htmlContent = `
+                <div class="modal-section" style="border-right-color:${data.color}; background:rgba(255,255,255,0.02);">
+                    <div class="modal-section-title" style="color:${data.color};"><i class="fa-solid fa-circle-info"></i> المفهوم والشرح المبسط:</div>
+                    <p style="font-size:0.95rem; line-height:1.7; color:#e2e8f0;">${data.overview}</p>
+                </div>
+
+                <div class="modal-section" style="border-right-color:var(--accent-gold);">
+                    <div class="modal-section-title" style="color:var(--accent-gold);"><i class="fa-solid fa-chalkboard-user"></i> كيف تطبقه عملياً في الفصل والمنزل؟:</div>
+                    <p style="font-size:0.92rem; line-height:1.7; color:#fef08a;">${data.application}</p>
+                </div>
+
+                <div class="modal-section" style="border-right-color:var(--success-green); background:rgba(16,185,129,0.06);">
+                    <div class="modal-section-title" style="color:var(--success-green);"><i class="fa-solid fa-star"></i> الأهمية والسر التربوي (لماذا هذا العنصر حاسم؟):</div>
+                    <p style="font-size:0.92rem; line-height:1.7; color:#a7f3d0; font-weight:600;">${data.importance}</p>
+                </div>
+
+                <div style="text-align:center; margin-top:1.5rem;">
+                    <button class="btn-main btn-gold" onclick="closeInteractiveModal()" style="padding:10px 28px; font-size:0.95rem;">
+                        <i class="fa-solid fa-check"></i> حسناً، فهمت الفكرة
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('modalBody').innerHTML = htmlContent;
+            const modal = document.getElementById('interactiveModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
 </script>
 
     <!-- Toast Notification Container -->
@@ -4206,5 +4731,18 @@
         <i class="fa-solid fa-circle-check"></i>
         <span id="toastMsg">تم نسخ الأمر بنجاح!</span>
     </div>
+
+    <!-- Floating Hover Explanatory Popover Window -->
+    <div id="hoverExplainPopover" class="hover-explain-popover">
+        <div id="popoverBadge" class="popover-badge"><i class="fa-solid fa-circle-info"></i> شارة</div>
+        <div id="popoverTitle" class="popover-title"><i class="fa-solid fa-star text-accent-gold"></i> العنوان</div>
+        <div id="popoverBody" class="popover-body">الشرح والتوضيح...</div>
+        <div id="popoverField" class="popover-field">التطبيق الميداني والأهمية...</div>
+        <div class="popover-footer">
+            <i class="fa-solid fa-hand-pointer text-accent-gold"></i>
+            <span>انقر لفتح نافذة الشرح الكاملة والتفصيلية</span>
+        </div>
+    </div>
+
 </body>
 </html>
